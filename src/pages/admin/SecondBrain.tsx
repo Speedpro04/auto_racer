@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  BrainCircuit, Search, FileText, Plus, Zap, Sparkles, Database, Car, Link as LinkIcon 
+  BrainCircuit, Search, FileText, Plus, Zap, Sparkles, Database, Car, Link as LinkIcon, Clock, Share2
 } from 'lucide-react';
-import AutoGraph from './AutoGraph';
+import AutoGraph from '../../components/admin/AutoGraph';
+import { motion } from 'framer-motion';
 
 const MOCK_NOTES = [
   { id: '1', title: 'Script: Financiamento Rápido', content: '# Roteiro de Atendimento\n\n1. Perguntar modelo de interesse\n2. Verificar score no sistema\n3. Oferecer simulação em até 3 bancos\n4. Usar [[Planilha de Taxas]] atualizada', updated: '5 min', category: 'Vendas' },
@@ -15,110 +16,128 @@ const SecondBrainAuto: React.FC = () => {
   const activeNote = MOCK_NOTES.find(n => n.id === activeNoteId) || MOCK_NOTES[0];
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr 300px', gap: '24px', minHeight: 'calc(100vh - 120px)', padding: '24px' }}>
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      style={{ display: 'grid', gridTemplateColumns: '300px 1fr 320px', gap: '32px', minHeight: 'calc(100vh - 160px)', padding: '32px' }}
+    >
       {/* Sidebar Notas */}
-      <aside style={{ background: '#0f172a', borderRadius: '24px', padding: '24px', color: 'white', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
-          <BrainCircuit size={24} color="#22c55e" />
-          <h2 style={{ fontSize: '16px', fontWeight: 900, letterSpacing: '0.15em', textTransform: 'uppercase' }}>AUTO BRAIN</h2>
+      <aside style={{ background: '#080808', borderRadius: '32px', padding: '32px', color: 'white', display: 'flex', flexDirection: 'column', border: '1px solid white/5' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' }}>
+          <div style={{ p: '10px', background: '#1dd1a1/10', borderRadius: '12px' }}>
+            <BrainCircuit size={24} color="#1dd1a1" />
+          </div>
+          <h2 style={{ fontSize: '14px', fontWeight: 900, letterSpacing: '0.2em', textTransform: 'uppercase', fontStyle: 'italic', fontFamily: 'Impact' }}>AUTO BRAIN</h2>
         </div>
 
-        <div style={{ position: 'relative', marginBottom: '20px' }}>
-          <Search size={14} style={{ position: 'absolute', left: '12px', top: '12px', color: '#475569' }} />
+        <div style={{ position: 'relative', marginBottom: '24px' }}>
+          <Search size={14} style={{ position: 'absolute', left: '16px', top: '14px', color: '#333' }} />
           <input 
             type="text"
-            placeholder="Buscar scripts..." 
-            style={{ width: '100%', padding: '10px 10px 10px 36px', borderRadius: '12px', border: '1px solid #1e293b', background: '#1e293b', color: 'white', outline: 'none', fontSize: '13px' }}
+            placeholder="Buscar Inteligência..." 
+            style={{ width: '100%', padding: '12px 12px 12px 44px', borderRadius: '16px', border: '1px solid #111', background: '#000', color: 'white', outline: 'none', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em' }}
           />
         </div>
 
-        <div style={{ flex: 1, overflowY: 'auto' }}>
+        <div style={{ flex: 1, overflowY: 'auto', marginBottom: '24px' }} className="space-y-2">
           {MOCK_NOTES.map(note => (
             <button
               key={note.id}
               onClick={() => setActiveNoteId(note.id)}
               style={{
-                width: '100%', textAlign: 'left', padding: '14px 16px', borderRadius: '16px', marginBottom: '8px', cursor: 'pointer', border: 'none', transition: '0.2s',
-                background: activeNoteId === note.id ? '#22c55e' : 'transparent',
-                color: activeNoteId === note.id ? '#0f172a' : '#94a3b8',
+                width: '100%', textAlign: 'left', padding: '16px 20px', borderRadius: '20px', cursor: 'pointer', border: '1px solid transparent', transition: '0.3s',
+                background: activeNoteId === note.id ? 'linear-gradient(135deg, #1dd1a1, #10ac84)' : 'transparent',
+                color: activeNoteId === note.id ? '#000' : '#444',
+                boxShadow: activeNoteId === note.id ? '0 10px 20px -5px rgba(29,209,161,0.2)' : 'none'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <FileText size={14} />
-                <span style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{note.title}</span>
+                <span style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{note.title}</span>
               </div>
-              <div style={{ fontSize: '10px', opacity: 0.6, marginLeft: '22px', marginTop: '4px' }}>{note.category}</div>
+              <div style={{ fontSize: '9px', opacity: 0.6, marginLeft: '24px', marginTop: '6px', fontWeight: 700, textTransform: 'uppercase' }}>{note.category}</div>
             </button>
           ))}
         </div>
 
-        <button style={{ marginTop: '16px', width: '100%', padding: '14px', background: '#22c55e', color: '#0f172a', borderRadius: '16px', fontWeight: 800, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.15em', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-          <Plus size={16} /> NOVA NOTA
+        <button style={{ width: '100%', padding: '18px', background: '#1dd1a1', color: '#000', borderRadius: '20px', fontWeight: 900, fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', boxShadow: '0 10px 30px rgba(29,209,161,0.2)' }}>
+          <Plus size={18} /> NEW INSIGHT
         </button>
       </aside>
 
       {/* Editor */}
-      <main style={{ background: 'white', borderRadius: '28px', padding: '40px', boxShadow: '0 8px 30px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <span style={{ background: '#f0fdf4', color: '#166534', padding: '6px 14px', borderRadius: '99px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', border: '1px solid #bbf7d0' }}>
-              <Database size={10} style={{ display: 'inline', marginRight: '4px' }} />
-              Polars Sync
+      <main style={{ background: '#000', borderRadius: '40px', padding: '48px', border: '1px solid white/5', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '300px', h: '300px', background: '#1dd1a1/5', filter: 'blur(100px)', borderRadius: 'full', pointerEvents: 'none' }} />
+        
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', position: 'relative', zIndex: 10 }}>
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <span style={{ background: '#1dd1a1/10', color: '#1dd1a1', padding: '8px 16px', borderRadius: '99px', fontSize: '9px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em', border: '1px solid #1dd1a1/20' }}>
+              <Database size={12} style={{ display: 'inline', marginRight: '6px' }} />
+              Polars Engine
             </span>
-            <span style={{ background: '#f1f5f9', color: '#475569', padding: '6px 14px', borderRadius: '99px', fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              Celery Active
+            <span style={{ background: 'white/5', color: '#444', padding: '8px 16px', borderRadius: '99px', fontSize: '9px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+              <Clock size={12} style={{ display: 'inline', marginRight: '6px' }} />
+              Sync: {activeNote.updated}
             </span>
           </div>
-          <span style={{ fontSize: '11px', color: '#94a3b8' }}>Editado: {activeNote.updated}</span>
+          <div style={{ display: 'flex', gap: '8px' }}>
+             <button style={{ p: '10px', background: 'white/5', borderRadius: '12px', border: 'none', cursor: 'pointer', color: '#444' }}><Share2 size={16} /></button>
+          </div>
         </div>
 
         <input 
           value={activeNote.title} 
           onChange={() => {}} 
-          style={{ fontSize: '28px', fontWeight: 900, border: 'none', outline: 'none', width: '100%', marginBottom: '24px', color: '#0f172a', letterSpacing: '-0.02em' }}
+          style={{ fontSize: '42px', fontWeight: 900, border: 'none', outline: 'none', width: '100%', marginBottom: '32px', color: 'white', letterSpacing: '-0.04em', background: 'transparent', fontFamily: 'Impact', fontStyle: 'italic', textTransform: 'uppercase' }}
         />
 
-        {/* Logo destaque como background decorativo */}
-        <div style={{ position: 'relative', flex: 1, background: '#fafafa', borderRadius: '20px', padding: '28px', overflow: 'hidden' }}>
+        {/* Editor Area with Logo Background */}
+        <div style={{ relative: 'true', flex: 1, background: '#050505', borderRadius: '32px', padding: '40px', overflow: 'hidden', border: '1px solid white/5' }}>
           <img 
             src="/logo-auto-destaque.png" 
             alt="" 
-            style={{ position: 'absolute', right: '-60px', bottom: '-40px', width: '360px', opacity: 0.04, pointerEvents: 'none' }} 
+            style={{ position: 'absolute', right: '-80px', bottom: '-50px', width: '450px', opacity: 0.03, pointerEvents: 'none', objectFit: 'contain' }} 
           />
-          <pre style={{ fontSize: '14px', lineHeight: '2', color: '#334155', whiteSpace: 'pre-wrap', position: 'relative', zIndex: 1, fontFamily: "'Inter', sans-serif" }}>
+          <pre style={{ fontSize: '15px', lineHeight: '2.2', color: '#576574', whiteSpace: 'pre-wrap', position: 'relative', zIndex: 1, fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>
             {activeNote.content}
           </pre>
         </div>
       </main>
 
       {/* Painel de Conexões */}
-      <aside style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <div style={{ background: '#0f172a', borderRadius: '24px', padding: '24px', color: 'white', flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <LinkIcon size={18} color="#22c55e" />
-            <h3 style={{ fontSize: '12px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em' }}>MAPA DE VENDAS</h3>
+      <aside style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ background: '#080808', borderRadius: '32px', padding: '32px', color: 'white', flex: 1, display: 'flex', flexDirection: 'column', gap: '24px', border: '1px solid white/5' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ p: '8px', background: '#1dd1a1/10', rounded: '10px' }}>
+              <LinkIcon size={18} color="#1dd1a1" />
+            </div>
+            <h3 style={{ fontSize: '11px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.2em', fontStyle: 'italic', fontFamily: 'Impact' }}>Sales Graph</h3>
           </div>
 
-          <AutoGraph />
+          <div style={{ background: '#000', borderRadius: '24px', overflow: 'hidden', border: '1px solid white/5' }}>
+            <AutoGraph />
+          </div>
 
-          <div style={{ background: 'rgba(255,255,255,0.05)', borderRadius: '16px', padding: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-              <Zap size={14} color="#eab308" />
-              <span style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.15em' }}>Insight RAG</span>
+          <div style={{ background: '#1dd1a1/5', borderRadius: '24px', padding: '24px', border: '1px solid #1dd1a1/10' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <Zap size={14} color="#1dd1a1" />
+              <span style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.15em', color: '#1dd1a1' }}>Intel Engine</span>
             </div>
-            <p style={{ fontSize: '11px', opacity: 0.7, lineHeight: '1.6' }}>
-              O RAG detectou alta procura por "financiamento SUV". Sugerimos criar uma campanha WhatsApp focada em Creta e T-Cross.
+            <p style={{ fontSize: '11px', color: '#444', lineHeight: '1.8', fontWeight: 700 }}>
+              O mecanismo RAG identificou tendência de alta em <span style={{ color: '#1dd1a1' }}>híbridos premium</span>. Atualize seus scripts de financiamento.
             </p>
           </div>
 
-          {/* Logo principal como badge */}
-          <div style={{ background: 'linear-gradient(135deg, #1e293b, #0f172a)', borderRadius: '20px', padding: '20px', marginTop: 'auto', textAlign: 'center', border: '1px solid rgba(34,197,94,0.2)' }}>
-            <img src="/logo-auto-principal.png" alt="Solara Auto" style={{ width: '100%', borderRadius: '12px', marginBottom: '12px', opacity: 0.9 }} />
-            <span style={{ fontSize: '9px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.25em', color: '#22c55e' }}>Solara Auto Intelligence</span>
+          {/* Luxury Badge */}
+          <div style={{ background: 'linear-gradient(135deg, #111, #000)', borderRadius: '32px', padding: '32px', marginTop: 'auto', textAlign: 'center', border: '1px solid white/5', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' }}>
+            <img src="/logo-auto-principal.png" alt="Solara Auto" style={{ width: '140px', margin: '0 auto 20px', borderRadius: '16px', border: '1px solid white/5', objectFit: 'contain' }} />
+            <div style={{ w: '40px', h: '2px', background: '#1dd1a1', margin: '0 auto 16px' }} />
+            <span style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.4em', color: 'white' }}>Solara</span>
+            <span style={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.4em', color: '#1dd1a1' }}> Auto</span>
           </div>
         </div>
       </aside>
-    </div>
+    </motion.div>
   );
 };
 

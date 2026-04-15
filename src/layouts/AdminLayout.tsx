@@ -23,8 +23,10 @@ function AdminLayout() {
       <AdminSidebar />
       <div className="flex-1 flex flex-col">
         <AdminHeader />
-        <main className="flex-1 p-8">
-          <Outlet />
+        <main className="flex-1 p-8 overflow-x-hidden">
+          <div className="max-w-[1140px] mx-auto w-full">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>
