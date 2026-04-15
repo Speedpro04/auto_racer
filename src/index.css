@@ -1,26 +1,67 @@
+@import "tailwindcss";
+
 :root {
-  --bg-primary: #0C0C0E;
-  --bg-secondary: #1A1A1F;
-  --bg-tertiary: #2A2A30;
-  --accent: #E84118;
-  --accent-hover: #FF5733;
+  --bg-primary: #000000;
+  --bg-secondary: #0A0D10;
+  --bg-tertiary: #14181C;
+  --max-content-width: 1140px;
+  --accent-primary: #1dd1a1;
+  --accent-secondary: #576574;
+  --neutral-gray: #576574;
   --text-primary: #FFFFFF;
-  --text-secondary: #A0A0B0;
-  --text-muted: #6B6B7B;
-  --border: #2A2A30;
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --error: #EF4444;
+  --text-secondary: #8395a7;
+  --text-muted: #576574;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.border-premium {
+  border: 1px solid var(--neutral-gray);
+}
+
+.border-accent {
+  border: 1px solid var(--accent-primary);
+}
+
+.content-container {
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.border-gold-premium {
+  border: 1px solid var(--border-gold);
+}
+
+.font-impact {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-handwritten {
+  font-family: 'Architects Daughter', cursive;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.shadow-impact {
+  box-shadow: 0 0 40px rgba(29, 209, 161, 0.15);
+}
+
+.text-dynamic-gradient {
+  background: linear-gradient(135deg, #1dd1a1 0%, #FFFFFF 50%, #1dd1a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -28,8 +69,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -38,14 +80,14 @@ a {
 }
 
 button {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
   border: none;
   outline: none;
 }
 
 input, select, textarea {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   outline: none;
 }
 

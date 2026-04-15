@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Car, MapPin, Phone, Filter } from 'lucide-react'
+import { Car, MapPin, Phone, Filter, ArrowRight, Gauge, Zap, Star, Bike, ShieldCheck } from 'lucide-react'
 import api from '../lib/api'
 import { Store, VehicleWithMedia } from '../types'
 
@@ -41,18 +41,12 @@ function StorePage() {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="animate-pulse">
-          <div className="h-24 bg-[#1A1A1F] rounded-xl mb-8"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="bg-[#0B0E14] min-h-screen pt-40 px-6">
+        <div className="max-w-[1140px] mx-auto animate-pulse">
+          <div className="h-64 bg-white/5 rounded-[40px] mb-12"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-[#1A1A1F] rounded-xl overflow-hidden">
-                <div className="h-48 bg-[#2A2A30]"></div>
-                <div className="p-4">
-                  <div className="h-4 bg-[#2A2A30] rounded mb-2"></div>
-                  <div className="h-6 bg-[#2A2A30] rounded w-1/2"></div>
-                </div>
-              </div>
+              <div key={i} className="h-[450px] bg-white/5 rounded-[32px]"></div>
             ))}
           </div>
         </div>
@@ -62,156 +56,215 @@ function StorePage() {
 
   if (!store) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-        <h1 className="text-4xl font-['Bebas_Neue'] text-white mb-4">
-          Loja Não Encontrada
-        </h1>
-        <Link to="/" className="text-[#E84118] hover:underline">
-          Voltar para a página inicial
-        </Link>
+      <div className="bg-[#0B0E14] min-h-screen flex items-center justify-center pt-20">
+        <div className="text-center p-12 bg-white/5 border border-white/10 rounded-[40px] backdrop-blur-3xl">
+          <Car className="w-20 h-20 text-[#222] mx-auto mb-6" />
+          <h1 className="text-3xl font-black mb-4 uppercase tracking-tighter text-white">CONCESSIONÁRIA NÃO ENCONTRADA</h1>
+          <Link to="/" className="text-[#1dd1a1] font-black uppercase tracking-widest text-sm hover:underline">
+            ← Voltar para o Estoque Elite
+          </Link>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Store Header */}
-      <div className="bg-[#1A1A1F] rounded-xl p-8 mb-8 border border-[#2A2A30]">
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-          {store.logo_url ? (
-            <img
-              src={store.logo_url}
-              alt={store.name}
-              className="h-20 object-contain"
-            />
-          ) : (
-            <Car className="w-20 h-20 text-[#E84118]" />
-          )}
-          <div className="flex-1">
-            <h1 className="text-5xl font-['Bebas_Neue'] text-white mb-2">
-              {store.name}
-            </h1>
-            {store.city && (
-              <div className="flex items-center gap-2 text-[#A0A0B0] mb-4">
-                <MapPin className="w-4 h-4" />
-                <span>{store.city}</span>
-              </div>
-            )}
-          </div>
-          <a
-            href={`https://wa.me/${store.phone}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#E84118] text-white px-6 py-3 rounded-lg hover:bg-[#FF5733] transition"
-          >
-            <Phone className="w-5 h-5" />
-            WhatsApp
-          </a>
-        </div>
-      </div>
-
-      {/* Filters */}
-      <div className="bg-[#1A1A1F] rounded-xl p-6 mb-8 border border-[#2A2A30]">
-        <div className="flex items-center gap-2 mb-4">
-          <Filter className="w-5 h-5 text-[#E84118]" />
-          <h2 className="text-xl font-['Bebas_Neue'] text-white">Filtros</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <select
-            value={filters.type}
-            onChange={(e) => handleFilterChange('type', e.target.value)}
-            className="bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-          >
-            <option value="">Tipo</option>
-            <option value="carro">Carros</option>
-            <option value="moto">Motos</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Marca"
-            value={filters.brand}
-            onChange={(e) => handleFilterChange('brand', e.target.value)}
-            className="bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-          />
-          <input
-            type="number"
-            placeholder="Preço mínimo"
-            value={filters.minPrice}
-            onChange={(e) => handleFilterChange('minPrice', e.target.value)}
-            className="bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-          />
-          <input
-            type="number"
-            placeholder="Preço máximo"
-            value={filters.maxPrice}
-            onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
-            className="bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-          />
-        </div>
-      </div>
-
-      {/* Vehicles Grid */}
-      {vehicles.length === 0 ? (
-        <div className="text-center py-16">
-          <Car className="w-24 h-24 text-[#6B6B7B] mx-auto mb-4" />
-          <p className="text-[#A0A0B0] text-lg">Nenhum veículo encontrado</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {vehicles.map((vehicle) => (
-            <VehicleCard key={vehicle.id} vehicle={vehicle} />
-          ))}
+    <div className="bg-[#0B0E14] min-h-screen text-white pb-32">
+      {/* Store Banner */}
+      {store.banner_url && (
+        <div className="w-full h-[400px] relative">
+          <img src={store.banner_url} alt="Banner" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14] to-transparent"></div>
         </div>
       )}
+
+      <div className="max-w-[1140px] mx-auto px-6 relative z-10 -mt-20">
+        {/* Store Profile Card */}
+        <div className="bg-[#14181C] rounded-[40px] p-10 border border-white/5 shadow-2xl flex flex-col md:flex-row gap-10 items-center md:items-start mb-16 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
+          
+          <div className="w-40 h-40 rounded-3xl bg-[#000000] border border-white/10 p-4 flex-shrink-0 flex items-center justify-center shadow-2xl relative z-10 hover:border-[#1dd1a1]/50 transition-colors">
+            {store.logo_url ? (
+              <img src={store.logo_url} alt={store.name} className="w-full h-full object-contain" />
+            ) : (
+              <Car className="w-16 h-16 text-[#333]" />
+            )}
+          </div>
+          
+          <div className="flex-1 text-center md:text-left relative z-10">
+            <h1 className="text-4xl md:text-6xl font-black font-impact tracking-tighter uppercase mb-4">{store.name}</h1>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 text-[10px] font-black uppercase tracking-widest text-[#576574] mb-6">
+               <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#1dd1a1]" /> {store.city || 'Matriz Premium'}</span>
+               <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#1dd1a1]" /> Certificada Solara</span>
+            </div>
+            
+            <p className="text-[#8395a7] font-medium leading-relaxed max-w-2xl mb-8">
+              {store.about_text || 'Concessionária partner de alto padrão. Veículos selecionados com rigoroso controle de qualidade.'}
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+              <a
+                href={`https://wa.me/${store.whatsapp || store.phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-[#1dd1a1] text-black px-8 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(29,209,161,0.2)]"
+              >
+                <Phone className="w-5 h-5" /> Contatar Consultor
+              </a>
+              {store.instagram && (
+                <a
+                  href={`https://instagram.com/${store.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-black uppercase tracking-widest hover:bg-white/10 transition-colors"
+                >
+                  Seguir no Instagram
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Premium Filters Area */}
+        <div className="bg-[#14181C] rounded-[32px] p-8 border border-white/5 shadow-xl mb-12">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 bg-[#1dd1a1]/10 rounded-lg"><Filter className="w-5 h-5 text-[#1dd1a1]" /></div>
+            <h2 className="text-xl font-black uppercase tracking-tighter font-impact">Filtrar Automóveis</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <select
+              value={filters.type}
+              onChange={(e) => handleFilterChange('type', e.target.value)}
+              className="bg-[#0B0E14] text-white px-6 py-4 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 outline-none transition font-bold appearance-none cursor-pointer text-sm"
+            >
+              <option value="">Todos os Tipos</option>
+              <option value="carro">Carros Superiores</option>
+              <option value="moto">Super Motos</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Marca ou Modelo..."
+              value={filters.brand}
+              onChange={(e) => handleFilterChange('brand', e.target.value)}
+              className="bg-[#0B0E14] text-white px-6 py-4 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 outline-none transition font-bold placeholder:text-[#576574] text-sm"
+            />
+            <input
+              type="number"
+              placeholder="Investimento Mínimo"
+              value={filters.minPrice}
+              onChange={(e) => handleFilterChange('minPrice', e.target.value)}
+              className="bg-[#0B0E14] text-white px-6 py-4 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 outline-none transition font-bold placeholder:text-[#576574] text-sm"
+            />
+            <input
+              type="number"
+              placeholder="Investimento Máximo"
+              value={filters.maxPrice}
+              onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
+              className="bg-[#0B0E14] text-white px-6 py-4 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 outline-none transition font-bold placeholder:text-[#576574] text-sm"
+            />
+          </div>
+        </div>
+
+        {/* Vehicles Grid */}
+        <div className="mb-8">
+           <h2 className="text-3xl font-black tracking-tighter font-impact uppercase mb-4">Estoque da Unidade</h2>
+           <div className="w-16 h-1 bg-[#1dd1a1] mb-10" />
+        </div>
+
+        {vehicles.length === 0 ? (
+          <div className="bg-[#14181C] rounded-[40px] p-20 text-center border border-white/5 shadow-2xl">
+            <Car className="w-20 h-20 text-[#222] mx-auto mb-6" />
+            <p className="text-[#8395a7] text-lg font-medium mb-8">O estoque filtrado não retornou resultados.</p>
+            <button 
+              onClick={() => setFilters({ type: '', brand: '', minPrice: '', maxPrice: '' })}
+              className="px-8 py-3 bg-white/5 border border-white/10 font-black uppercase text-[10px] tracking-widest rounded-xl hover:bg-white/10 transition"
+            >
+              Limpar Filtros Rápidos
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {vehicles.map((vehicle) => (
+              <VehicleCard key={vehicle.id} vehicle={vehicle} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
 
 function VehicleCard({ vehicle }: { vehicle: VehicleWithMedia }) {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(price)
-  }
-
-  const coverImage = vehicle.media?.find((m) => m.order === 0)?.url
+  const formatPrice = (price: number) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+  const coverImage = vehicle.media?.find((m) => m.order === 0)?.url;
 
   return (
     <Link
       to={`/veiculo/${vehicle.id}`}
-      className="bg-[#1A1A1F] rounded-xl overflow-hidden border border-[#2A2A30] hover:border-[#E84118] transition group"
+      className="group relative bg-[#14181C] rounded-[40px] border border-white/5 hover:border-[#1dd1a1]/50 overflow-hidden transition-all duration-700 hover:-translate-y-3 hover:shadow-[0_40px_80px_-20px_rgba(29,209,161,0.2)]"
     >
-      <div className="relative h-48 bg-[#2A2A30]">
+      <div className="relative h-[280px] overflow-hidden">
         {coverImage ? (
-          <img
-            src={coverImage}
-            alt={vehicle.title}
-            className="w-full h-full object-cover"
-          />
+          <img src={coverImage} alt={vehicle.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <Car className="w-16 h-16 text-[#6B6B7B]" />
-          </div>
+          <div className="w-full h-full bg-[#000000] flex items-center justify-center"><Car className="w-20 h-20 text-[#111]" /></div>
         )}
-        {vehicle.status === 'sold' && (
-          <div className="absolute top-4 right-4 bg-[#E84118] text-white px-3 py-1 rounded-full text-sm font-medium">
-            Vendido
-          </div>
-        )}
-      </div>
-      <div className="p-4">
-        <h3 className="text-lg font-medium text-white mb-2 group-hover:text-[#E84118] transition">
-          {vehicle.title}
-        </h3>
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-['Bebas_Neue'] text-[#E84118]">
-            {formatPrice(vehicle.price)}
+        
+        {/* Status Badges */}
+        <div className="absolute top-6 left-6 flex flex-col gap-2">
+          <span className="px-3 py-1.5 bg-[#0B0E14]/60 backdrop-blur-md rounded-xl text-[9px] font-black uppercase tracking-widest border border-white/10 text-white flex items-center gap-2">
+            {vehicle.type === 'moto' ? <Bike className="w-3 h-3 text-[#1dd1a1]" /> : <Car className="w-3 h-3 text-[#1dd1a1]" />}
+            {vehicle.type === 'moto' ? 'Super Bike' : 'Luxury Car'}
           </span>
-          <span className="text-sm text-[#6B6B7B]">
-            {vehicle.year} · {vehicle.km.toLocaleString('pt-BR')} km
+          <span className="px-3 py-1.5 bg-[#1dd1a1]/90 text-black rounded-xl text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
+            <Star className="w-3 h-3" /> Destaque
           </span>
         </div>
+
+        {vehicle.status === 'sold' && (
+          <div className="absolute inset-0 bg-[#0B0E14]/80 flex items-center justify-center z-20">
+            <span className="text-white text-xl font-black px-10 py-4 bg-[#576574] text-white uppercase tracking-[0.4em] rounded-2xl -rotate-12 shadow-2xl">Vendido</span>
+          </div>
+        )}
+
+        {/* Price Overlay */}
+        <div className="absolute bottom-6 left-6 right-6">
+           <div className="bg-[#0B0E14]/60 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex items-center justify-between transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <span className="text-[10px] font-black uppercase tracking-widest text-[#576574]">Investimento</span>
+              <span className="text-xl font-black text-[#1dd1a1] tracking-tighter">{formatPrice(vehicle.price)}</span>
+           </div>
+        </div>
+      </div>
+      
+      <div className="p-10 space-y-6">
+        <div>
+          <h3 className="text-2xl font-black mb-2 truncate group-hover:text-[#1dd1a1] transition-colors uppercase tracking-tighter font-impact">{vehicle.title}</h3>
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.brand}</span>
+            <div className="w-1 h-1 rounded-full bg-[#576574]" />
+            <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.year}</span>
+          </div>
+        </div>
+
+        <p className="text-[#8395a7] text-sm line-clamp-2 font-medium leading-relaxed opacity-60">
+           {vehicle.description || 'Veículo de altíssima performance com acabamento premium e tecnologia de última geração.'}
+        </p>
+
+        <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/5">
+           <div className="flex items-center gap-3">
+              <div className="p-2 bg-white/5 rounded-lg"><Gauge className="w-4 h-4 text-[#1dd1a1]" /></div>
+              <span className="font-bold text-xs tracking-tight">{vehicle.km.toLocaleString('pt-BR')} km</span>
+           </div>
+           <div className="flex items-center gap-3 justify-end">
+              <div className="p-2 bg-white/5 rounded-lg"><Zap className="w-4 h-4 text-[#1dd1a1]" /></div>
+              <span className="font-bold text-xs tracking-tight">C. Reserva</span>
+           </div>
+        </div>
+        
+        <button className="w-full py-5 bg-[#000000] border border-white/5 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] group-hover:bg-[#1dd1a1] group-hover:text-black group-hover:border-transparent transition-all duration-500 flex items-center justify-center gap-3">
+           EXPERIÊNCIA COMPLETA <ArrowRight className="w-4 h-4" />
+        </button>
       </div>
     </Link>
   )

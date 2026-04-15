@@ -3,7 +3,13 @@ export interface Store {
   slug: string
   name: string
   logo_url: string | null
+  banner_url: string | null
+  primary_color: string | null
+  secondary_color: string | null
+  about_text: string | null
   phone: string
+  whatsapp: string | null
+  instagram: string | null
   city: string
   plan: 'basic' | 'pro' | 'premium'
   active: boolean

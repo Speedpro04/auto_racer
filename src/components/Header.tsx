@@ -1,109 +1,83 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Car, Phone } from 'lucide-react'
-import { Store } from '../types'
-import api from '../lib/api'
+import { Car, Menu, X, Phone, User } from 'lucide-react'
+import { useStore } from '../hooks/useStore'
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [store, setStore] = useState<Store | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { store } = useStore()
 
   useEffect(() => {
-    const fetchStore = async () => {
-      try {
-        const subdomain = window.location.hostname.split('.')[0]
-        if (subdomain && subdomain !== 'www' && subdomain !== 'localhost') {
-          const { data } = await api.get('/store')
-          setStore(data)
-        }
-      } catch (error) {
-        console.error('Erro ao carregar loja:', error)
-      }
-    }
-
-    fetchStore()
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const primaryColor = '#1dd1a1'
+
   return (
-    <header className="bg-[#1A1A1F] border-b border-[#2A2A30] sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            {store?.logo_url ? (
-              <img src={store.logo_url} alt={store.name} className="h-10" />
-            ) : (
-              <div className="flex items-center gap-2">
-                <Car className="w-8 h-8 text-[#E84118]" />
-                <span className="text-2xl font-['Bebas_Neue'] text-white">
-                  {store?.name || 'Solara Auto'}
-                </span>
-              </div>
-            )}
+    <header
+      className={`fixed top-0 left-0 right-0 z-[1000] border-b transition-all duration-700 ${
+        scrolled 
+        ? 'bg-[#0B0E14]/90 backdrop-blur-3xl py-3 border-white/5' 
+        : 'bg-transparent py-6 border-transparent'
+      }`}
+    >
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="flex items-center justify-between">
+
+          {/* Luxury Logo Branding */}
+          <Link to="/" className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95">
+            <div className="p-2 rounded-xl bg-[#1dd1a1] text-black shadow-[0_0_20px_rgba(29,209,161,0.3)]">
+              <Car className="w-6 h-6" />
+            </div>
+            <span className="text-xl md:text-2xl font-black text-white tracking-[0.2em] font-impact uppercase">
+              SOLARA <span className="text-[#1dd1a1]">AUTO</span>
+            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-[#A0A0B0] hover:text-white transition">
-              Início
-            </Link>
-            <Link to="/stores" className="text-[#A0A0B0] hover:text-white transition">
-              Lojas
-            </Link>
-            {store && (
-              <a
-                href={`https://wa.me/${store.phone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-[#E84118] text-white px-4 py-2 rounded-lg hover:bg-[#FF5733] transition"
+          {/* Modern Navigation Menu */}
+          <nav className="hidden md:flex items-center gap-10">
+            {[
+              { label: 'Estoque', path: '/' },
+              { label: 'Sobre Nós', path: '#' },
+              { label: 'Contato', path: '#' }
+            ].map((item) => (
+              <Link 
+                key={item.label}
+                to={item.path} 
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8395a7] hover:text-[#1dd1a1] transition-all relative group"
               >
-                <Phone className="w-4 h-4" />
-                Contato
-              </a>
-            )}
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1dd1a1] transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </Link>
+            ))}
+            <Link
+              to="/login"
+              className="px-6 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#1dd1a1] hover:text-black hover:border-transparent transition-all duration-300"
+            >
+              Portal do Concessionário
+            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2"
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="md:hidden p-3 text-white hover:bg-white/5 rounded-xl transition"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden bg-[#1A1A1F] border-t border-[#2A2A30]">
-          <nav className="flex flex-col p-4 gap-4">
-            <Link
-              to="/"
-              className="text-[#A0A0B0] hover:text-white transition py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Início
-            </Link>
-            <Link
-              to="/stores"
-              className="text-[#A0A0B0] hover:text-white transition py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Lojas
-            </Link>
-            {store && (
-              <a
-                href={`https://wa.me/${store.phone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#E84118] text-white px-4 py-2 rounded-lg hover:bg-[#FF5733] transition"
-                onClick={() => setIsOpen(false)}
-              >
-                <Phone className="w-4 h-4" />
-                Contato
-              </a>
-            )}
-          </nav>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-[100%] left-0 right-0 bg-[#0A0D10] border-b border-white/5 shadow-2xl animate-in slide-in-from-top-4 duration-300">
+          <div className="p-8 flex flex-col gap-6">
+             <Link to="/" className="text-lg font-bold text-white uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Estoque Premium</Link>
+             <Link to="/login" className="px-6 py-4 bg-[#1dd1a1] text-black text-center rounded-2xl font-black uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Portal Adm</Link>
+          </div>
         </div>
       )}
     </header>

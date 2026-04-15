@@ -1,313 +1,230 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowLeft, Upload, X, Car } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Upload, X, Plus, Car, Save, Info, Camera, Image as ImageIcon } from 'lucide-react'
+import { useDropzone } from 'react-dropzone'
 import api from '../../lib/api'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../hooks/useAuth'
 
 function AdminNewVehicle() {
-  const { user } = useAuth()
   const navigate = useNavigate()
+  const { user } = useAuth()
   const [loading, setLoading] = useState(false)
-  const [uploadingImages, setUploadingImages] = useState(false)
+  const [images, setImages] = useState<Array<{ file: File; preview: string }>>([])
+  
   const [formData, setFormData] = useState({
     title: '',
-    type: 'carro',
     brand: '',
-    year: new Date().getFullYear(),
-    km: 0,
-    price: 0,
+    model: '',
+    year: '',
+    km: '',
+    price: '',
     description: '',
-    status: 'available',
+    type: 'carro',
+    status: 'available'
   })
-  const [images, setImages] = useState<File[]>([])
-  const [imagePreviews, setImagePreviews] = useState<string[]>([])
-  const [error, setError] = useState('')
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: name === 'year' || name === 'km' || name === 'price' ? Number(value) : value,
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const newImages = acceptedFiles.map((file) => ({
+      file,
+      preview: URL.createObjectURL(file),
     }))
-  }
+    setImages((prev) => [...prev, ...newImages])
+  }, [])
 
-  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || [])
-    if (files.length === 0) return
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { 'image/*': [] },
+  })
 
-    setImages((prev) => [...prev, ...files])
-
-    files.forEach((file) => {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImagePreviews((prev) => [...prev, reader.result as string])
-      }
-      reader.readAsDataURL(file)
+  const removeImage = (index: number) => {
+    setImages((prev) => {
+      const newImages = [...prev]
+      URL.revokeObjectURL(newImages[index].preview)
+      newImages.splice(index, 1)
+      return newImages
     })
   }
 
-  const removeImage = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index))
-    setImagePreviews((prev) => prev.filter((_, i) => i !== index))
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    setError('')
+    if (images.length === 0) {
+      alert('Selecione pelo menos uma imagem premium.')
+      return
+    }
 
+    setLoading(true)
     try {
-      // 1. Criar veículo
-      const { data: vehicle } = await api.post('/admin/vehicles', {
-        ...formData,
-        store_id: user?.store_id,
+      const { data: vehicle } = await api.post('/admin/vehicles', formData)
+
+      const uploadPromises = images.map(async (img, index) => {
+        const fileExt = img.file.name.split('.').pop()
+        const fileName = `${vehicle.id}/${Math.random()}.${fileExt}`
+        
+        const { error: uploadError } = await supabase.storage
+          .from('vehicles')
+          .upload(fileName, img.file)
+
+        if (uploadError) throw uploadError
+
+        const { data: urlData } = supabase.storage
+          .from('vehicles')
+          .getPublicUrl(fileName)
+
+        return api.post(`/admin/vehicles/${vehicle.id}/media`, {
+          url: urlData.publicUrl,
+          type: 'image',
+          order: index,
+        })
       })
 
-      // 2. Upload de imagens
-      if (images.length > 0) {
-        setUploadingImages(true)
-        const uploadPromises = images.map(async (image, index) => {
-          const fileExt = image.name.split('.').pop()
-          const fileName = `${vehicle.id}/${Date.now()}-${index}.${fileExt}`
-          
-          const { error: uploadError } = await supabase.storage
-            .from('vehicles')
-            .upload(`${user?.store_id}/${fileName}`, image)
-
-          if (uploadError) throw uploadError
-
-          const { data: urlData } = supabase.storage
-            .from('vehicles')
-            .getPublicUrl(`${user?.store_id}/${fileName}`)
-
-          await api.post(`/admin/vehicles/${vehicle.id}/media`, {
-            url: urlData.publicUrl,
-            type: 'image',
-            order: index,
-            size_bytes: image.size,
-          })
-        })
-
-        await Promise.all(uploadPromises)
-      }
-
+      await Promise.all(uploadPromises)
       navigate('/admin/veiculos')
-    } catch (err: any) {
-      setError(err.message || 'Erro ao cadastrar veículo')
+    } catch (error) {
+      console.error('Erro ao cadastrar:', error)
+      alert('Erro ao realizar o cadastro. Verifique os dados.')
     } finally {
       setLoading(false)
-      setUploadingImages(false)
     }
   }
 
   return (
-    <div>
-      <div className="flex items-center gap-4 mb-8">
-        <Link
-          to="/admin/veiculos"
-          className="text-[#A0A0B0] hover:text-white transition"
-        >
-          <ArrowLeft className="w-6 h-6" />
-        </Link>
-        <h1 className="text-4xl font-['Bebas_Neue'] text-white">Novo Veículo</h1>
+    <div className="max-w-5xl space-y-12 pb-20">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-4xl font-black font-impact text-white tracking-tight uppercase">Novo Patrimônio</h1>
+          <p className="text-[#576574] text-[10px] mt-2 font-black uppercase tracking-[0.4em]">Curadoria e Cadastro de Elite</p>
+        </div>
       </div>
 
-      {error && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-4 py-3 rounded-lg mb-6">
-          {error}
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Título */}
-          <div className="md:col-span-2">
-            <label className="block text-sm text-[#A0A0B0] mb-2">
-              Título do Anúncio *
-            </label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              placeholder="Ex: Civic EXL 2022"
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            />
+      <form onSubmit={handleSubmit} className="space-y-10">
+        
+        {/* Step 1: Media Upload System */}
+        <section className="bg-[#14181C] rounded-[40px] border border-[#1dd1a1]/20 p-10 shadow-2xl overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
+          
+          <div className="flex items-center gap-4 mb-10">
+             <div className="p-3 bg-[#1dd1a1] text-black rounded-2xl"><Camera className="w-6 h-6" /></div>
+             <h2 className="text-2xl font-black uppercase tracking-tighter font-impact text-white">Galeria de Alta Fidelidade</h2>
           </div>
 
-          {/* Tipo */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">Tipo *</label>
-            <select
-              name="type"
-              value={formData.type}
-              onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            >
-              <option value="carro">Carro</option>
-              <option value="moto">Moto</option>
-            </select>
+          <div
+            {...getRootProps()}
+            className={`relative border-2 border-dashed rounded-[32px] p-16 text-center transition-all duration-500 cursor-pointer group ${
+              isDragActive ? 'border-[#1dd1a1] bg-[#1dd1a1]/5' : 'border-[#576574]/30 hover:border-[#1dd1a1]/50 bg-black/20'
+            }`}
+          >
+            <input {...getInputProps()} />
+            <div className="flex flex-col items-center">
+              <div className="w-20 h-20 bg-black rounded-3xl border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl">
+                 <Upload className={`w-8 h-8 ${isDragActive ? 'text-[#1dd1a1] animate-bounce' : 'text-[#333]'}`} />
+              </div>
+              <p className="text-white font-black uppercase tracking-widest text-xs mb-2">Arraste as imagens aqui</p>
+              <p className="text-[#576574] text-xs font-bold uppercase tracking-widest opacity-60">FOTOS EM 4K • 16:9 RECOMENDADO</p>
+            </div>
           </div>
 
-          {/* Marca */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">Marca *</label>
-            <input
-              type="text"
-              name="brand"
-              value={formData.brand}
-              onChange={handleInputChange}
-              placeholder="Ex: Honda, Toyota"
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            />
-          </div>
-
-          {/* Ano */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">Ano *</label>
-            <input
-              type="number"
-              name="year"
-              value={formData.year}
-              onChange={handleInputChange}
-              min="1900"
-              max={new Date().getFullYear() + 1}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            />
-          </div>
-
-          {/* Quilometragem */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">
-              Quilometragem *
-            </label>
-            <input
-              type="number"
-              name="km"
-              value={formData.km}
-              onChange={handleInputChange}
-              min="0"
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            />
-          </div>
-
-          {/* Preço */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">Preço (R$) *</label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              min="0"
-              step="0.01"
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-              required
-            />
-          </div>
-
-          {/* Status */}
-          <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">Status</label>
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
-            >
-              <option value="available">Disponível</option>
-              <option value="paused">Pausado</option>
-              <option value="sold">Vendido</option>
-            </select>
-          </div>
-
-          {/* Descrição */}
-          <div className="md:col-span-2">
-            <label className="block text-sm text-[#A0A0B0] mb-2">Descrição</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              rows={6}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition resize-none"
-              placeholder="Descreva os detalhes do veículo..."
-            />
-          </div>
-        </div>
-
-        {/* Upload de Imagens */}
-        <div>
-          <label className="block text-sm text-[#A0A0B0] mb-2">
-            Fotos do Veículo
-          </label>
-          <div className="bg-[#1A1A1F] border-2 border-dashed border-[#2A2A30] rounded-lg p-8 text-center">
-            <Upload className="w-12 h-12 text-[#6B6B7B] mx-auto mb-4" />
-            <p className="text-[#A0A0B0] mb-4">
-              Clique para selecionar fotos ou arraste e solte aqui
-            </p>
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={handleImageSelect}
-              className="hidden"
-              id="image-upload"
-            />
-            <label
-              htmlFor="image-upload"
-              className="inline-block bg-[#E84118] text-white px-6 py-2 rounded-lg hover:bg-[#FF5733] transition cursor-pointer"
-            >
-              Selecionar Fotos
-            </label>
-          </div>
-
-          {/* Image Previews */}
-          {imagePreviews.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
-              {imagePreviews.map((preview, index) => (
-                <div key={index} className="relative group">
-                  <img
-                    src={preview}
-                    alt={`Preview ${index + 1}`}
-                    className="w-full h-32 object-cover rounded-lg"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => removeImage(index)}
-                    className="absolute top-2 right-2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
+          {images.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-10">
+              {images.map((img, idx) => (
+                <div key={idx} className="relative aspect-square rounded-2xl overflow-hidden group border border-white/10 hover:border-[#1dd1a1]/50 transition-colors shadow-lg">
+                  <img src={img.preview} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                     <button
+                      type="button"
+                      onClick={() => removeImage(idx)}
+                      className="p-3 bg-[#576574] text-white rounded-xl hover:scale-110 transition"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                  {idx === 0 && <span className="absolute top-3 left-3 px-2 py-1 bg-[#1dd1a1] text-black text-[8px] font-black uppercase tracking-widest rounded-md">Principal</span>}
                 </div>
               ))}
             </div>
           )}
-        </div>
+        </section>
 
-        {/* Submit Buttons */}
-        <div className="flex items-center gap-4 pt-4">
-          <button
+        {/* Step 2: Details */}
+        <section className="bg-[#14181C] rounded-[40px] border border-white/5 p-10 shadow-2xl space-y-12">
+           <div className="flex items-center gap-4">
+             <div className="p-3 bg-white/5 border border-white/10 rounded-2xl text-[#1dd1a1]"><Info className="w-6 h-6" /></div>
+             <h2 className="text-2xl font-black uppercase tracking-tighter font-impact text-white">Especificações Técnicas</h2>
+           </div>
+
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="group">
+                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3 group-focus-within:text-[#1dd1a1] transition-colors">Título do Anúncio</label>
+                <input 
+                  type="text" name="title" value={formData.title} onChange={handleInputChange} required
+                  className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold placeholder:text-[#222]"
+                  placeholder="Ex: PORSCHE 911 GT3 RS"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Marca</label>
+                  <input type="text" name="brand" value={formData.brand} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Ano</label>
+                  <input type="text" name="year" value={formData.year} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Quilometragem</label>
+                  <input type="number" name="km" value={formData.km} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3 group-focus-within:text-[#1dd1a1]">Preço de Venda</label>
+                  <div className="relative">
+                    <span className="absolute left-5 top-1/2 -translate-y-1/2 font-black text-[#1dd1a1]">R$</span>
+                    <input type="number" name="price" value={formData.price} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 pl-12 pr-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-black text-xl tracking-tight" />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Tipo</label>
+                <select name="type" value={formData.type} onChange={handleInputChange} className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold appearance-none">
+                  <option value="carro">Luxury Car</option>
+                  <option value="moto">Super Bike</option>
+                </select>
+              </div>
+           </div>
+
+           <div>
+              <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Narrativa de Venda / Descrição</label>
+              <textarea 
+                name="description" value={formData.description} onChange={handleInputChange} rows={6}
+                className="w-full bg-black/60 border border-white/5 py-6 px-8 rounded-[32px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-medium leading-relaxed"
+                placeholder="Descreva a história e os diferenciais deste veículo..."
+              />
+           </div>
+        </section>
+
+        {/* Global Save */}
+        <div className="fixed bottom-10 right-10 z-50">
+           <button
             type="submit"
-            disabled={loading || uploadingImages}
-            className="flex-1 bg-[#E84118] text-white px-6 py-3 rounded-lg hover:bg-[#FF5733] transition font-medium disabled:opacity-50"
-          >
-            {loading ? 'Cadastrando...' : 'Cadastrar Veículo'}
-          </button>
-          <Link
-            to="/admin/veiculos"
-            className="px-6 py-3 bg-[#1A1A1F] text-white rounded-lg hover:bg-[#2A2A30] transition border border-[#2A2A30]"
-          >
-            Cancelar
-          </Link>
+            disabled={loading}
+            className="flex items-center gap-4 bg-[#1dd1a1] text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] shadow-[0_20px_60px_rgba(29,209,161,0.4)] hover:scale-105 active:scale-95 transition-all duration-500 disabled:opacity-50"
+           >
+            {loading ? 'PUBLICANDO...' : (
+              <>
+                <Save className="w-6 h-6 border-black" />
+                EFETIVAR ANÚNCIO
+              </>
+            )}
+           </button>
         </div>
       </form>
     </div>

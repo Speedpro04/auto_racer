@@ -13,15 +13,20 @@ function AdminSidebar() {
   const { logout } = useAuth()
 
   return (
-    <aside className="w-64 bg-[#1A1A1F] border-r border-[#2A2A30] min-h-screen flex flex-col">
-      <div className="p-6 border-b border-[#2A2A30]">
-        <h1 className="text-3xl font-['Bebas_Neue'] text-[#E84118]">
-          Solara Auto
-        </h1>
-        <p className="text-sm text-[#6B6B7B] mt-1">Painel Admin</p>
+    <aside className="w-64 bg-[#0A0A0A] border-r border-[#262626] min-h-screen flex flex-col sticky top-0">
+      <div className="p-8 border-b border-[#262626]">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-8 h-8 rounded-[8px] bg-[#D4AF3720] border border-[#D4AF3740] flex items-center justify-center">
+            <Car className="w-4 h-4 text-[#D4AF37]" />
+          </div>
+          <h1 className="text-lg font-bold text-white tracking-tight">
+            Solara Auto
+          </h1>
+        </div>
+        <p className="text-[10px] uppercase tracking-[0.15em] text-[#737373] font-bold">Painel de Gestão</p>
       </div>
 
-      <nav className="flex-1 p-4 space-y-2">
+      <nav className="flex-1 p-6 space-y-1.5">
         {menuItems.map((item) => {
           const Icon = item.icon
           const isActive = location.pathname === item.path
@@ -30,26 +35,26 @@ function AdminSidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-[8px] transition-all duration-200 text-sm font-medium ${
                 isActive
-                  ? 'bg-[#E84118] text-white'
-                  : 'text-[#A0A0B0] hover:bg-[#2A2A30] hover:text-white'
+                  ? 'bg-[#D4AF37] text-[#0A0A0A] shadow-lg shadow-[#D4AF3720]'
+                  : 'text-[#A3A3A3] hover:bg-[#141414] hover:text-white'
               }`}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-4.5 h-4.5" />
               <span>{item.label}</span>
             </Link>
           )
         })}
       </nav>
 
-      <div className="p-4 border-t border-[#2A2A30]">
+      <div className="p-6 border-t border-[#262626]">
         <button
           onClick={logout}
-          className="flex items-center gap-3 px-4 py-3 w-full rounded-lg text-[#A0A0B0] hover:bg-[#2A2A30] hover:text-white transition"
+          className="flex items-center gap-3 px-4 py-3 w-full rounded-[8px] text-[#A3A3A3] hover:bg-red-500/10 hover:text-red-500 transition-all duration-200 text-sm font-medium"
         >
-          <LogOut className="w-5 h-5" />
-          <span>Sair</span>
+          <LogOut className="w-4.5 h-4.5" />
+          <span>Sair da conta</span>
         </button>
       </div>
     </aside>

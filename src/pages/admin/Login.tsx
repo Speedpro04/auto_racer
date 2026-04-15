@@ -27,48 +27,50 @@ function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0C0C0E] px-4">
-      <div className="bg-[#1A1A1F] rounded-xl p-8 w-full max-w-md border border-[#2A2A30]">
-        <div className="text-center mb-8">
+    <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A] px-4 font-sans">
+      <div className="bg-[#141414] rounded-[15px] p-8 w-full max-w-md border border-[#262626] shadow-2xl">
+        <div className="text-center mb-10">
           <div className="flex justify-center mb-4">
-            <Car className="w-16 h-16 text-[#E84118]" />
+            <div className="w-16 h-16 rounded-[15px] bg-[#0A0A0A] flex items-center justify-center shadow-inner border border-[#262626]">
+              <Car className="w-8 h-8 text-[#1dd1a1]" />
+            </div>
           </div>
-          <h1 className="text-4xl font-['Bebas_Neue'] text-white mb-2">
+          <h1 className="text-3xl font-semibold text-white tracking-tight mb-2">
             Solara Auto
           </h1>
-          <p className="text-[#A0A0B0]">Painel Administrativo</p>
+          <p className="text-[#A3A3A3] text-sm font-medium">Painel Administrativo da Loja</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 text-red-500 px-4 py-3 rounded-lg text-sm">
+            <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/10 px-4 py-3 rounded-[8px] text-sm font-medium">
               {error}
             </div>
           )}
 
           <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">
+            <label className="block text-sm font-medium text-[#A3A3A3] mb-2">
               E-mail
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
+              className="w-full bg-[#0A0A0A] text-white px-4 py-3 rounded-[8px] border border-[#262626] focus:border-[#1dd1a1] focus:ring-[#1dd1a1] outline-none transition"
               placeholder="seu@email.com"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm text-[#A0A0B0] mb-2">
+            <label className="block text-sm font-medium text-[#A3A3A3] mb-2">
               Senha
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-[#0C0C0E] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
+              className="w-full bg-[#0A0A0A] text-white px-4 py-3 rounded-[8px] border border-[#262626] focus:border-[#1dd1a1] focus:ring-[#1dd1a1] outline-none transition"
               placeholder="••••••••"
               required
             />
@@ -77,16 +79,16 @@ function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 bg-[#E84118] text-white px-6 py-3 rounded-lg hover:bg-[#FF5733] transition font-medium disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 bg-[#1dd1a1] text-[#0A0A0A] px-6 py-3.5 rounded-[8px] hover:bg-white transition font-semibold disabled:opacity-50 mt-2 shadow-lg"
           >
             <LogIn className="w-5 h-5" />
-            {loading ? 'Entrando...' : 'Entrar'}
+            {loading ? 'Autenticando...' : 'Acessar Painel'}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-[#6B6B7B]">
-          <a href="/" className="text-[#E84118] hover:underline">
-            Voltar para o site
+        <div className="mt-8 text-center text-sm font-medium text-[#737373]">
+          <a href="/" className="text-[#A3A3A3] hover:text-[#1dd1a1] transition duration-200">
+            &larr; Voltar para a vitrine
           </a>
         </div>
       </div>
