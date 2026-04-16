@@ -112,10 +112,17 @@ function AdminLogin() {
             </button>
 
             <div className="flex items-center justify-between px-2">
-              <a href="#" className="text-[9px] font-black uppercase tracking-widest text-[#444] hover:text-[#1dd1a1] transition-colors">
+              <button 
+                type="button"
+                onClick={() => setError('Por favor, entre em contato com o administrador do sistema para redefinir sua chave de segurança.')}
+                className="text-[9px] font-black uppercase tracking-widest text-[#444] hover:text-[#1dd1a1] transition-colors"
+              >
                 Esqueci minha senha
-              </a>
-              <a href="#" className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] hover:text-white transition-colors">
+              </button>
+              <a 
+                href="/contato" 
+                className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] hover:text-white transition-colors"
+              >
                 Criar conta parceira
               </a>
             </div>
