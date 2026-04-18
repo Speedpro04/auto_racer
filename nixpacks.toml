@@ -1,0 +1,3 @@
+[setup]
+  providers = ["node"]
+  node_version = "20"
