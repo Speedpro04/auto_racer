@@ -12,6 +12,11 @@ export default defineConfig({
     port: 3000,
     host: true
   },
+  preview: {
+    allowedHosts: ['auto.axoshub.com', 'localhost'],
+    port: 3000,
+    host: true
+  },
   ssr: {
     noExternal: ['framer-motion']
   }
