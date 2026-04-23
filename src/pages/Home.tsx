@@ -130,6 +130,12 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="group relative max-w-[950px] mx-auto h-[400px] md:h-[500px] rounded-[50px] overflow-hidden border border-[#1dd1a1] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
           >
+             {/* Badge Urgência */}
+             <div className="absolute top-6 left-6 z-20 bg-red-500/90 backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
+               <span className="text-lg">🔥</span>
+               <span className="text-white text-[10px] font-black uppercase tracking-widest">Últimas 3 Unidades</span>
+             </div>
+
              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
              <img 
                src={spotlightVehicles[0]?.media?.[0]?.url || "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=2070"} 
