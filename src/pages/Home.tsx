@@ -86,7 +86,7 @@ function Home() {
       </section>
 
       {/* H1 SEO - Keyword Principal */}
-      <h1 className="max-w-[1080px] mx-auto px-6 mb-[50px] text-center text-lg md:text-xl lg:text-2xl font-bold text-[#8395a7]">
+      <h1 className="max-w-[1080px] mx-auto px-6 mb-[80px] text-center text-lg md:text-xl lg:text-2xl font-bold text-[#8395a7]">
         Mais que veículos, entregamos tranquilidade. Encontre o seminovo ou importado perfeito na <span className="text-[#1dd1a1]">Auto Racer</span>
       </h1>
 
