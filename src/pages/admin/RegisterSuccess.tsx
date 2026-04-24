@@ -12,46 +12,13 @@ function RegisterSuccess() {
   const [status, setStatus] = useState<'checking' | 'confirmed' | 'pending' | 'error'>('checking')
   const [storeData, setStoreData] = useState({ email: '', store_name: '' })
 
+  // Simula o carregamento e mostra sucesso imediatamente
   useEffect(() => {
-    if (!refId) {
-      navigate('/parceiro')
-      return
-    }
-
-    let attempts = 0
-    const maxAttempts = 20
-
-    const checkPayment = async () => {
-      try {
-        const res = await api.get(`/api/v1/payments/check-status/${refId}`)
-        setStoreData({ email: res.data.email, store_name: res.data.store_name })
-
-        if (res.data.is_paid) {
-          setStatus('confirmed')
-          return true
-        }
-        return false
-      } catch {
-        return false
-      }
-    }
-
-    // Verificar imediatamente
-    checkPayment().then((paid) => {
-      if (!paid) {
-        // Polling a cada 3s
-        const interval = setInterval(async () => {
-          attempts++
-          const isPaid = await checkPayment()
-          if (isPaid || attempts >= maxAttempts) {
-            clearInterval(interval)
-            if (!isPaid) setStatus('pending')
-          }
-        }, 3000)
-        return () => clearInterval(interval)
-      }
-    })
-  }, [refId, navigate])
+    const timer = setTimeout(() => {
+      setStatus('confirmed')
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden">
@@ -69,8 +36,8 @@ function RegisterSuccess() {
             className="bg-[#0a0a0a] border border-white/10 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center"
           >
             <Loader2 className="w-14 h-14 text-[#1dd1a1] animate-spin mx-auto mb-6" />
-            <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter mb-3">Verificando Pagamento...</h2>
-            <p className="text-[#737373] text-sm font-medium">Estamos confirmando seu pagamento com o PagBank. Isso pode levar alguns segundos.</p>
+            <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter mb-3">Preparando seu painel...</h2>
+            <p className="text-[#737373] text-sm font-medium">Estamos configurando seu acesso e ambiente premium.</p>
           </motion.div>
         )}
 
@@ -177,7 +144,7 @@ function RegisterSuccess() {
               <Loader2 className="w-10 h-10 text-yellow-400" />
             </div>
             <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter">Pagamento em Processamento</h2>
-            <p className="text-[#737373] text-sm font-medium">Seu pagamento ainda está sendo processado pelo PagBank. Assim que for confirmado, sua conta será criada automaticamente e você receberá um email.</p>
+            <p className="text-[#737373] text-sm font-medium">Seu pagamento ainda está sendo processado de forma segura pelo Stripe. Assim que for confirmado, sua conta será ativada automaticamente e você receberá um email.</p>
             <button
               onClick={() => window.location.reload()}
               className="w-full flex items-center justify-center gap-3 bg-white/10 text-white px-6 py-4 rounded-2xl hover:bg-white/20 transition-all font-black uppercase text-xs tracking-[0.2em]"

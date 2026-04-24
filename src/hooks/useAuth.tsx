@@ -53,7 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     // Autentica via a API FastAPI
-    const { data } = await api.post('/api/v1/auth/login', { email, password })
+    const { data } = await api.post('/api/auth/login', { email, password })
 
     if (!data.success) {
       throw new Error('Credenciais inválidas')

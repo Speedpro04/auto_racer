@@ -9,59 +9,7 @@ function AdminRegister() {
   const [loading, setLoading] = useState(false)
   const [showRegPass, setShowRegPass] = useState(false)
   const [showRegConfirm, setShowRegConfirm] = useState(false)
-  const [checkingPayment, setCheckingPayment] = useState(false)
-  const [paymentConfirmed, setPaymentConfirmed] = useState(false)
-  
-  const [regData, setRegData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    storeName: '',
-    password: '',
-    confirmPassword: ''
-  })
-
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-  const refFromUrl = searchParams.get('ref')
-
-  // Se voltou do PagBank com reference_id, verificar status do pagamento
-  useEffect(() => {
-    if (refFromUrl) {
-      setCheckingPayment(true)
-      const checkStatus = async () => {
-        try {
-          const res = await api.get(`/api/v1/payments/check-status/${refFromUrl}`)
-          if (res.data.is_paid) {
-            setPaymentConfirmed(true)
-          } else {
-            // Polling a cada 3 segundos por até 60 segundos
-            let attempts = 0
-            const interval = setInterval(async () => {
-              attempts++
-              try {
-                const r = await api.get(`/api/v1/payments/check-status/${refFromUrl}`)
-                if (r.data.is_paid) {
-                  setPaymentConfirmed(true)
-                  clearInterval(interval)
-                }
-              } catch { /* ignore */ }
-              if (attempts >= 20) {
-                clearInterval(interval)
-                setCheckingPayment(false)
-                setError('Pagamento ainda não confirmado. Se você já pagou, aguarde alguns instantes e recarregue a página.')
-              }
-            }, 3000)
-            return () => clearInterval(interval)
-          }
-        } catch {
-          setCheckingPayment(false)
-          setError('Erro ao verificar pagamento.')
-        }
-      }
-      checkStatus()
-    }
-  }, [refFromUrl])
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -81,22 +29,34 @@ function AdminRegister() {
     }
 
     try {
-      // Criar checkout no PagBank (ao invés de criar conta direto)
-      const res = await api.post('/api/v1/payments/create-checkout', {
+      const res = await api.post('/api/auth/register', {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,
-        phone: regData.phone,
-        owner_name: regData.name
+        phone: regData.phone
       })
 
-      const { payment_url } = res.data
+      if (res.data.success) {
+        // Se a loja já nasceu ativa (ex: Master Login)
+        if (res.data.store?.active) {
+          navigate('/cadastro-sucesso')
+          return
+        }
 
-      if (payment_url) {
-        // Redirecionar para a página de pagamento do PagBank
-        window.location.href = payment_url
+        // Caso contrário, gera sessão de checkout no Stripe
+        const checkoutRes = await api.post('/api/payments/create-checkout', {
+          user_id: res.data.user_id,
+          email: regData.email,
+          store_id: res.data.store?.id
+        })
+
+        if (checkoutRes.data.payment_url) {
+          window.location.href = checkoutRes.data.payment_url
+        } else {
+          setError('Erro ao gerar link de pagamento.')
+        }
       } else {
-        setError('Não foi possível gerar o link de pagamento. Tente novamente.')
+        setError('Erro ao criar conta. Tente novamente.')
       }
     } catch (err: any) {
       const detail = err?.response?.data?.detail || 'Erro ao processar. Tente novamente.'
@@ -106,51 +66,7 @@ function AdminRegister() {
     }
   }
 
-  // Tela de verificação de pagamento (voltou do PagBank)
-  if (refFromUrl) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-full" />
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="relative z-50 w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center"
-        >
-          {paymentConfirmed ? (
-            <div className="space-y-6">
-              <div className="flex justify-center">
-                <div className="w-20 h-20 bg-[#1dd1a1]/20 rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-10 h-10 text-[#1dd1a1]" />
-                </div>
-              </div>
-              <h2 className="text-3xl font-black font-impact italic text-white uppercase tracking-tighter">Pagamento Confirmado!</h2>
-              <p className="text-[#737373] text-sm font-medium">Sua conta foi criada com sucesso. Você já pode acessar o sistema.</p>
-              <button
-                onClick={() => navigate('/login')}
-                className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] mt-4"
-              >
-                Ir para o Login
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              <Loader2 className="w-12 h-12 text-[#1dd1a1] animate-spin mx-auto" />
-              <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter">Verificando Pagamento...</h2>
-              <p className="text-[#737373] text-sm font-medium">Estamos confirmando seu pagamento com o PagBank. Isso pode levar alguns segundos.</p>
-              {error && (
-                <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
-                  {error}
-                </div>
-              )}
-            </div>
-          )}
-        </motion.div>
-      </div>
-    )
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden py-20">
@@ -178,13 +94,13 @@ function AdminRegister() {
 
           <div className="mb-10 text-center md:text-left">
             <h2 className="text-3xl font-black font-impact italic text-white uppercase tracking-tighter mb-2">Seja um Parceiro</h2>
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#555]">Preencha e prossiga para o pagamento</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#555]">Preencha e crie sua conta agora mesmo</p>
           </div>
 
-          {/* Badge de preço */}
+          {/* Badge de acesso gratuito temporário */}
           <div className="mb-8 flex items-center justify-center gap-3 bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 rounded-2xl px-5 py-3">
-            <CreditCard className="w-5 h-5 text-[#1dd1a1]" />
-            <span className="text-sm font-black text-[#1dd1a1] uppercase tracking-widest">Plano Parceiro — R$ 69,90/mês</span>
+            <CheckCircle2 className="w-5 h-5 text-[#1dd1a1]" />
+            <span className="text-sm font-black text-[#1dd1a1] uppercase tracking-widest">Acesso VIP Gratuito Liberado</span>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-8 relative z-10">
@@ -317,7 +233,7 @@ function AdminRegister() {
             </button>
 
             <p className="text-center text-[9px] text-[#444] uppercase tracking-widest font-bold">
-              Você será redirecionado para o PagBank para finalizar o pagamento de R$ 69,90
+              Ao criar a conta você terá acesso total ao sistema de gestão premium.
             </p>
           </form>
         </motion.div>

@@ -66,7 +66,7 @@ function AdminLogin() {
     }
 
     try {
-      await api.post('/api/v1/auth/register', {
+      await api.post('/api/auth/register', {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,
@@ -93,7 +93,7 @@ function AdminLogin() {
     setError('')
 
     try {
-      await api.post('/api/v1/auth/recover-password', { email: forgotEmail })
+      await api.post('/api/auth/forgot-password', { email: forgotEmail })
       setForgotSuccess(true)
       setTimeout(() => {
         setIsForgotPassOpen(false)
