@@ -9,6 +9,14 @@ function AdminRegister() {
   const [loading, setLoading] = useState(false)
   const [showRegPass, setShowRegPass] = useState(false)
   const [showRegConfirm, setShowRegConfirm] = useState(false)
+  const [regData, setRegData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    storeName: '',
+    password: '',
+    confirmPassword: ''
+  })
   const navigate = useNavigate()
 
   const handleRegister = async (e: React.FormEvent) => {
