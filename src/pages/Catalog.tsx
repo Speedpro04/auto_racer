@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Car, Search, Gauge, Shield, ArrowRight, X, Info } from 'lucide-react'
+import { Car, Search, Gauge, Shield, ArrowRight, X, Info, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import api from '../lib/api'
 
@@ -174,10 +174,20 @@ function Catalog() {
                     {/* Botão Principal de Conversão */}
                     <Link 
                       to={`/veiculo/${vehicle.slug}`}
+                      className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl text-[11px] font-black uppercase tracking-widest text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/btn"
+                    >
+                      Ver Detalhes <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+
+                    {/* Botão Direto para o Lojista */}
+                    <a 
+                      href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} no catálogo da Auto Racer e gostaria de negociar.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest text-black hover:bg-white transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
                     >
-                      Negociar Agora <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
+                      Negociar Agora <Phone size={16} />
+                    </a>
                   </div>
                 </div>
               </motion.div>

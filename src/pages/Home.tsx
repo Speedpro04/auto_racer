@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Car, Search, ArrowRight, ShieldCheck, Zap, Star, Play, Shield, Sparkles } from 'lucide-react'
+import { Car, Search, ArrowRight, ShieldCheck, Zap, Star, Play, Shield, Sparkles, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import api from '../lib/api'
 import { VehicleWithMedia, Store } from '../types'
@@ -213,10 +213,18 @@ function Home() {
                       <span className="text-xl font-black text-white">Consulte</span>
                    </div>
                 </div>
-                <div className="pt-4">
-                   <Link to={`/veiculo/${vehicle.slug || vehicle.id}`} className="inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] text-black rounded-[20px] hover:bg-[#00f3ff] hover:text-[#555] hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-xs w-full md:w-auto">
-                      TENHO INTERESSE <ArrowRight className="w-5 h-5 text-black group-hover/btn:text-[#555] group-hover/btn:translate-x-2 transition-all" />
+                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                   <Link to={`/veiculo/${vehicle.slug || vehicle.id}`} className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-[20px] hover:bg-white/10 transition-all duration-300 group/btn font-black uppercase tracking-widest text-[10px]">
+                      VER DETALHES
                    </Link>
+                   <a 
+                    href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} na Auto Racer e gostaria de negociar.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] text-black rounded-[20px] hover:bg-white hover:text-black hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-[10px]"
+                   >
+                      NEGOCIAR AGORA <Phone className="w-4 h-4" />
+                   </a>
                 </div>
                 <script type="application/ld+json">
                   {JSON.stringify({

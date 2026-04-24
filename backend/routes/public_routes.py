@@ -35,9 +35,15 @@ async def list_vehicles(
     """Lista veículos da loja com filtros"""
     store_id = request.state.store_id
 
+    # Select vehicles and join with stores table to get phone/whatsapp
     query = supabase.table("vehicles").select(
-        "id, store_id, slug, title, type, brand, year, km, price, description, status, created_at"
-    ).eq("store_id", store_id).eq("status", "available")
+        "id, store_id, slug, title, type, brand, year, km, price, description, status, created_at, "
+        "stores(name, slug, phone)"
+    ).eq("status", "available")
+
+    # If in a subdomain, filter by that store. Otherwise, show all (Global Catalog)
+    if store_id:
+        query = query.eq("store_id", store_id)
 
     if type:
         query = query.eq("type", type)

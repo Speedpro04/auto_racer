@@ -289,9 +289,22 @@ function VehicleCard({ vehicle }: { vehicle: VehicleWithMedia }) {
            </div>
         </div>
         
-        <button className="w-full py-5 bg-[#000000] border border-white/5 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] group-hover:bg-[#1dd1a1] group-hover:text-black group-hover:border-transparent transition-all duration-500 flex items-center justify-center gap-3">
-           EXPERIÊNCIA COMPLETA <ArrowRight className="w-4 h-4" />
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link 
+            to={`/veiculo/${vehicle.slug || vehicle.id}`}
+            className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/btn"
+          >
+            DETALHES
+          </Link>
+          <a 
+            href={`https://wa.me/${store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} na sua loja através da Auto Racer e gostaria de negociar.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-white transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
+          >
+            NEGOCIAR <Phone size={14} />
+          </a>
+        </div>
       </div>
     </Link>
   )
