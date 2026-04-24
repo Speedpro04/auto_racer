@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     BASE_DOMAIN: str = "solaraauto.com.br"
     JWT_SECRET: str
     ENVIRONMENT: str = "development"
+    PAGBANK_TOKEN: str = ""
+    PAGBANK_API_URL: str = "https://sandbox.api.pagseguro.com"
 
     class Config:
         env_file = ".env"

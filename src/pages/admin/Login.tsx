@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { LogIn, ArrowLeft, X, Send, Store, User, Phone, Mail, CheckCircle2, Lock, Eye, EyeOff } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../hooks/useAuth'
@@ -215,14 +215,12 @@ function AdminLogin() {
               >
                 Esqueci minha senha
               </button>
-              <button 
-
-                type="button"
-                onClick={() => setIsRegisterOpen(true)}
+              <Link
+                to="/parceiro"
                 className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] hover:text-white transition-colors"
               >
                 Criar conta parceira
-              </button>
+              </Link>
             </div>
           </form>
 

@@ -8,9 +8,12 @@ import StoresList from './pages/StoresList'
 import Catalog from './pages/Catalog'
 import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
+import Partners from './pages/public/Partners'
 
 // Páginas Admin
 import AdminLogin from './pages/admin/Login'
+import AdminRegister from './pages/admin/Register'
+import RegisterSuccess from './pages/admin/RegisterSuccess'
 import AdminDashboard from './pages/admin/Dashboard'
 import AdminVehicles from './pages/admin/Vehicles'
 import AdminNewVehicle from './pages/admin/NewVehicle'
@@ -35,10 +38,13 @@ function AppRoutes() {
         <Route path="/contato" element={<Contact />} />
         <Route path="/:slug" element={<StorePage />} />
         <Route path="/veiculo/:slug" element={<VehicleDetail />} />
+        <Route path="/parceiro" element={<Partners />} />
       </Route>
 
       {/* Rotas Admin */}
       <Route path="/login" element={<AdminLogin />} />
+      <Route path="/cadastro" element={<AdminRegister />} />
+      <Route path="/cadastro-sucesso" element={<RegisterSuccess />} />
       <Route element={<AdminLayout />}>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/veiculos" element={<AdminVehicles />} />
