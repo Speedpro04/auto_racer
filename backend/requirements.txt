@@ -10,3 +10,6 @@ celery>=5.3.6
 redis>=5.0.1
 flower>=2.0.1
 polars>=0.20.0
+edge-tts==6.1.15
+mutagen==1.47.0
+imageio-ffmpeg==0.5.1
