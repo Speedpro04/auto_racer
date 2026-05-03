@@ -1,10 +1,29 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useMemo } from 'react'
 import AdminSidebar from '../components/admin/AdminSidebar'
 import AdminHeader from '../components/admin/AdminHeader'
 import { useAuth } from '../hooks/useAuth'
+import { AlertCircle, Clock, CreditCard, X } from 'lucide-react'
 
 function AdminLayout() {
-  const { user, loading } = useAuth()
+  const { user, store, loading } = useAuth()
+  const navigate = useNavigate()
+  const [dismissedBanner, setDismissedBanner] = useState(false)
+
+  const trialInfo = useMemo(() => {
+    if (!store?.trial_ends_at) return null
+    
+    const trialEnd = new Date(store.trial_ends_at)
+    const now = new Date()
+    const diffMs = trialEnd.getTime() - now.getTime()
+    const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24))
+    const expired = daysLeft <= 0
+
+    return { daysLeft, expired, trialEnd }
+  }, [store])
+
+  // Check if trial expired and no active subscription
+  const isBlocked = trialInfo?.expired && store?.plan === 'basic'
 
   if (loading) {
     return (
@@ -18,11 +37,88 @@ function AdminLayout() {
     return <Navigate to="/login" replace />
   }
 
+  // Trial expirado → bloqueia o painel e redireciona para checkout
+  if (isBlocked) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4">
+        <div className="max-w-lg w-full text-center space-y-8">
+          <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto">
+            <AlertCircle className="w-10 h-10 text-red-400" />
+          </div>
+          
+          <div>
+            <h1 className="text-3xl font-black font-impact italic uppercase tracking-tighter text-white mb-3">
+              Período de Teste <span className="text-red-400">Expirado</span>
+            </h1>
+            <p className="text-[#8395a7] text-sm leading-relaxed">
+              Seus 10 dias gratuitos terminaram. Para continuar usando o Auto Racer 
+              e manter sua loja ativa, assine o Plano Parceiro por apenas <strong className="text-[#1dd1a1]">R$ 69,90/mês</strong>.
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              // Salvar dados para o checkout
+              localStorage.setItem('pending_reg_data', JSON.stringify({
+                email: user.email,
+                storeName: store?.name || '',
+                phone: store?.phone || '',
+                name: ''
+              }))
+              navigate('/checkout')
+            }}
+            className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+          >
+            <CreditCard className="w-5 h-5" />
+            <span>Assinar Agora — R$ 69,90/mês</span>
+          </button>
+
+          <p className="text-[9px] text-[#444] font-black uppercase tracking-[0.3em]">
+            Sem fidelidade. Cancele quando quiser.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen flex bg-[#d2dae2]">
       <AdminSidebar />
       <div className="flex-1 flex flex-col">
         <AdminHeader />
+
+        {/* Trial Banner — mostra quando faltam 5 dias ou menos */}
+        {trialInfo && !trialInfo.expired && trialInfo.daysLeft <= 5 && !dismissedBanner && (
+          <div className="mx-8 mt-4 flex items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-3">
+            <div className="flex items-center gap-3">
+              <Clock className="w-5 h-5 text-amber-400 shrink-0" />
+              <p className="text-sm text-amber-200 font-bold">
+                {trialInfo.daysLeft === 1
+                  ? 'Último dia de teste gratuito!'
+                  : `Restam ${trialInfo.daysLeft} dias de teste gratuito.`}
+                {' '}
+                <button
+                  onClick={() => {
+                    localStorage.setItem('pending_reg_data', JSON.stringify({
+                      email: user.email,
+                      storeName: store?.name || '',
+                      phone: store?.phone || '',
+                      name: ''
+                    }))
+                    navigate('/checkout')
+                  }}
+                  className="underline text-[#1dd1a1] hover:text-white transition-colors"
+                >
+                  Assinar agora
+                </button>
+              </p>
+            </div>
+            <button onClick={() => setDismissedBanner(true)} className="text-amber-400/50 hover:text-amber-400 transition-colors">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
         <main className="flex-1 p-8 overflow-x-hidden">
           <div className="max-w-[1140px] mx-auto w-full">
             <Outlet />

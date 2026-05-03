@@ -9,12 +9,12 @@ export default defineConfig({
   ],
   base: '/',
   server: {
-    port: 3005,
+    port: 3007,
     host: true
   },
   preview: {
     allowedHosts: ['auto.axoshub.com', 'localhost'],
-    port: 3005,
+    port: 3007,
     host: true
   },
   resolve: {

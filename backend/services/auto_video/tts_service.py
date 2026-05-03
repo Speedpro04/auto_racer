@@ -25,6 +25,7 @@ async def generate_tts(texto: str, job_id: str) -> str:
     Gera áudio MP3 com Google TTS e salva em outputs/{job_id}_audio.mp3.
     Retorna o path do arquivo gerado.
     """
+    os.makedirs("outputs", exist_ok=True)
     output_path = f"outputs/{job_id}_audio.mp3"
 
     if not GOOGLE_TTS_KEY:

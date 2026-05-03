@@ -23,6 +23,7 @@ import AdminReports from './pages/admin/Reports'
 import SecondBrainAuto from './pages/admin/SecondBrain'
 import RacerRedes from './pages/admin/RacerRedes'
 import SuperAdminDashboard from './pages/superadmin/Dashboard'
+import Checkout from './pages/Checkout'
 
 // Layouts
 import PublicLayout from './layouts/PublicLayout'
@@ -41,6 +42,7 @@ function AppRoutes() {
         <Route path="/:slug" element={<StorePage />} />
         <Route path="/veiculo/:slug" element={<VehicleDetail />} />
         <Route path="/parceiro" element={<Partners />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Route>
 
       {/* Rotas Admin */}

@@ -37,6 +37,7 @@ async def render_video(
     """
     ffmpeg_bin = _get_ffmpeg_bin()
 
+    os.makedirs("outputs", exist_ok=True)
     output_path = f"outputs/{job_id}.mp4"
     tmp_dir = Path(tempfile.gettempdir()) / f"video_{job_id}"
     tmp_dir.mkdir(exist_ok=True)

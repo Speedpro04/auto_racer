@@ -13,3 +13,4 @@ polars>=0.20.0
 edge-tts==6.1.15
 mutagen==1.47.0
 imageio-ffmpeg==0.5.1
+stripe==8.6.0

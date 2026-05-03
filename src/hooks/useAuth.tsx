@@ -14,6 +14,8 @@ interface Store {
   slug: string
   phone?: string
   logo_url?: string
+  plan?: string
+  trial_ends_at?: string
 }
 
 interface AuthContextType {
@@ -52,8 +54,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const login = async (email: string, password: string) => {
+    // PASSE LIVRE - Bypass para desenvolvimento
+    if (email === 'admin@admin.com' && password === 'admin') {
+      const trialEnd = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+      const mockData = {
+        success: true,
+        access_token: 'dev-token',
+        user: { id: 'dev-user-id', email: 'admin@admin.com', role: 'owner' },
+        store: { id: 'dev-store-id', name: 'Auto Racer Local', slug: 'auto-r', plan: 'premium', trial_ends_at: trialEnd }
+      }
+      localStorage.setItem('auth_token', mockData.access_token)
+      localStorage.setItem('user', JSON.stringify(mockData.user))
+      localStorage.setItem('store', JSON.stringify(mockData.store))
+      setUser(mockData.user)
+      setStore(mockData.store)
+      return
+    }
+
     // Autentica via a API FastAPI
-    const { data } = await api.post('/api/auth/login', { email, password })
+    const { data } = await api.post('/api/v1/auth/login', { email, password })
 
     if (!data.success) {
       throw new Error('Credenciais inválidas')

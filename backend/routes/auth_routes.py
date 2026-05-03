@@ -76,7 +76,7 @@ async def login(request: LoginRequest):
 @router.post("/register")
 async def register(request: RegisterRequest):
     """
-    Registra um novo parceiro, cria a loja e o usuário associado.
+    Registra um novo parceiro com 10 dias de trial gratuito.
     """
     try:
         # 1. Cadastrar usuário no Supabase Auth
@@ -92,6 +92,7 @@ async def register(request: RegisterRequest):
 
         # 2. Gerar slug a partir do nome da loja
         import re
+        from datetime import datetime, timedelta, timezone
         base_slug = re.sub(r'[^a-z0-9]+', '-', request.store_name.lower()).strip('-')
         slug = base_slug
         
@@ -100,13 +101,15 @@ async def register(request: RegisterRequest):
         if existing_slug.data:
             slug = f"{base_slug}-{user_id[:6]}"
 
-        # 3. Criar a loja (stores)
+        # 3. Criar a loja com trial de 10 dias
+        trial_end = (datetime.now(timezone.utc) + timedelta(days=10)).isoformat()
         store_data = {
             "name": request.store_name,
             "slug": slug,
             "phone": request.phone,
             "plan": "basic",
-            "active": True
+            "active": True,
+            "trial_ends_at": trial_end
         }
         store_response = supabase.table("stores").insert(store_data).execute()
         
@@ -126,13 +129,13 @@ async def register(request: RegisterRequest):
 
         return {
             "success": True,
-            "message": "Conta criada com sucesso.",
+            "message": "Conta criada com sucesso. Você tem 10 dias grátis!",
             "user_id": user_id,
-            "store_slug": slug
+            "store_slug": slug,
+            "trial_ends_at": trial_end
         }
 
     except Exception as e:
-        # Detalhes do erro para debug
         raise HTTPException(status_code=400, detail=str(e))
 
 @router.post("/recover-password")

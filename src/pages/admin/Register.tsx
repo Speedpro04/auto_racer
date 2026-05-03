@@ -37,35 +37,15 @@ function AdminRegister() {
     }
 
     try {
-      const res = await api.post('/api/auth/register', {
+      // Acesso VIP Gratuito — cria conta direto sem checkout
+      await api.post('/api/v1/auth/register', {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,
         phone: regData.phone
       })
 
-      if (res.data.success) {
-        // Se a loja já nasceu ativa (ex: Master Login)
-        if (res.data.store?.active) {
-          navigate('/cadastro-sucesso')
-          return
-        }
-
-        // Caso contrário, gera sessão de checkout no Stripe
-        const checkoutRes = await api.post('/api/payments/create-checkout', {
-          user_id: res.data.user_id,
-          email: regData.email,
-          store_id: res.data.store?.id
-        })
-
-        if (checkoutRes.data.payment_url) {
-          window.location.href = checkoutRes.data.payment_url
-        } else {
-          setError('Erro ao gerar link de pagamento.')
-        }
-      } else {
-        setError('Erro ao criar conta. Tente novamente.')
-      }
+      navigate('/cadastro-sucesso')
     } catch (err: any) {
       const detail = err?.response?.data?.detail || 'Erro ao processar. Tente novamente.'
       setError(detail)
@@ -108,7 +88,7 @@ function AdminRegister() {
           {/* Badge de acesso gratuito temporário */}
           <div className="mb-8 flex items-center justify-center gap-3 bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 rounded-2xl px-5 py-3">
             <CheckCircle2 className="w-5 h-5 text-[#1dd1a1]" />
-            <span className="text-sm font-black text-[#1dd1a1] uppercase tracking-widest">Acesso VIP Gratuito Liberado</span>
+            <span className="text-sm font-black text-[#1dd1a1] uppercase tracking-widest">10 Dias Grátis — Sem Cartão</span>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-8 relative z-10">
@@ -234,8 +214,8 @@ function AdminRegister() {
                 <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
               ) : (
                 <>
-                  <CreditCard className="w-5 h-5" />
-                  <span>Prosseguir para Pagamento</span>
+                  <CheckCircle2 className="w-5 h-5" />
+                  <span>Criar Minha Conta Grátis</span>
                 </>
               )}
             </button>
