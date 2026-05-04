@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Car, Search, Gauge, Shield, ArrowRight, X, Info, Phone } from 'lucide-react'
+import { Car, Search, Gauge, Shield, ArrowRight, X, Info, Phone, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import api from '../lib/api'
 
@@ -24,7 +24,11 @@ const MOCK_VEHICLES = [
 Você não está comprando apenas um carro, mas sim acesso a uma performance inigualável e um status de exclusividade. Motor ajustado milimetricamente para entregar potência brutal sem perder o conforto para o dia a dia. 
 
 Acabamento interno em couro premium e fibra de carbono. Entregamos para todo o Brasil com logística VIP.`,
-      media: [{ url: `https://images.unsplash.com/photo-${['1614162692292-7ac56d7f7f1e', '1544829099-b9a0c07fad1a', '1618843479313-40f8afb4b4d8', '1606152421802-db97b9c7a11b', '1555215695-3004980ad54e', '1563720223185-11003d5169a6'][i % 6]}?auto=format&fit=crop&w=1000&q=80` }]
+      media: [{ url: `https://images.unsplash.com/photo-${['1614162692292-7ac56d7f7f1e', '1544829099-b9a0c07fad1a', '1618843479313-40f8afb4b4d8', '1606152421802-db97b9c7a11b', '1555215695-3004980ad54e', '1563720223185-11003d5169a6'][i % 6]}?auto=format&fit=crop&w=1000&q=80` }],
+      store: {
+        name: `${brand} Oficial Brasil`,
+        address: 'Avenida Europa, São Paulo - SP'
+      }
     };
   })
 ];
@@ -167,6 +171,15 @@ function Catalog() {
 
                   <div className="text-xl md:text-xl font-black text-[#1dd1a1] tracking-tighter drop-shadow-md">
                     {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(vehicle.price)}
+                  </div>
+
+                  {/* Informações da Loja / Parceiro */}
+                  <div className="bg-[#0B0E14]/80 border border-white/5 rounded-2xl p-4 flex flex-col gap-1.5">
+                    <span className="text-[10px] uppercase font-black tracking-widest text-[#576574]">Vendido e entregue por:</span>
+                    <span className="text-sm font-bold text-white flex items-center gap-2">
+                      <MapPin size={14} className="text-[#1dd1a1] flex-shrink-0" /> 
+                      {vehicle.stores?.name || vehicle.store?.name || 'Unidade Auto Racer'} — {vehicle.stores?.address || vehicle.store?.address || 'São Paulo, SP'}
+                    </span>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">

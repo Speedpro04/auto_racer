@@ -91,7 +91,7 @@ function VehicleDetail() {
         <div className="text-center p-12 bg-white/5 border border-white/10 rounded-[40px] backdrop-blur-3xl">
           <Car className="w-20 h-20 text-[#111] mx-auto mb-6" />
           <h1 className="text-xl font-black mb-4 uppercase tracking-tighter">VEÍCULO INDISPONÍVEL</h1>
-          <Link to="/" className="text-[#1dd1a1] font-black uppercase tracking-widest text-sm hover:underline">
+          <Link to="/catalogo" className="text-[#1dd1a1] font-black uppercase tracking-widest text-sm hover:underline">
             ← Voltar para o Estoque Elite
           </Link>
         </div>
@@ -113,11 +113,11 @@ function VehicleDetail() {
         
         {/* Navigation */}
         <Link 
-          to="/" 
+          to="/catalogo" 
           className="inline-flex items-center gap-2 text-[#576574] hover:text-[#1dd1a1] transition-colors mb-12 group font-black uppercase tracking-widest text-xs"
         >
           <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          Voltar para Galeria
+          Voltar para o Catálogo
         </Link>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
