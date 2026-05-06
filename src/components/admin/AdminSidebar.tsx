@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { LayoutDashboard, Car, Settings, LogOut, BrainCircuit, ShieldAlert, BarChart, Radio } from 'lucide-react'
+import { LayoutDashboard, Car, Settings, LogOut, BrainCircuit, ShieldAlert, BarChart, Sparkles } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
   { icon: BrainCircuit, label: 'Second Brain', path: '/admin/second-brain' },
   { icon: Car, label: 'Frota Elite', path: '/admin/veiculos' },
-  { icon: Radio, label: 'Racer Redes', path: '/admin/racer-redes' },
+  { icon: Sparkles, label: 'Marketing IA', path: '/admin/racer-redes' },
   { icon: BarChart, label: 'Relatórios', path: '/admin/relatorios' },
   { icon: Settings, label: 'Perfil Store', path: '/admin/loja' },
 ]
