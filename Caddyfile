@@ -1,13 +1,14 @@
 :80 {
-    root * /app/dist
-    file_server
-
-    # Fallback for SPA
-    try_files {path} /index.html
-
-    # Proxy API requests to the backend
-    handle_path /api/* {
+    # 1) API sempre vai para o backend
+    handle /api/* {
         reverse_proxy localhost:8000
+    }
+
+    # 2) Frontend SPA
+    root * /app/dist
+    handle {
+        try_files {path} /index.html
+        file_server
     }
 
     # Logging
