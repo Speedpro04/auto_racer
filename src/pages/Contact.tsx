@@ -136,8 +136,8 @@ function Contact() {
               <Mail className="w-8 h-8 text-[#1dd1a1] mb-6" />
               <h3 className="text-2xl font-black uppercase tracking-tighter mb-2 italic">E-mail Oficial</h3>
               <p className="text-[#8395a7] text-sm font-medium mb-6">Propostas comerciais, parcerias B2B e suporte dedicado.</p>
-              <a href="mailto:axushu50@gmail.com" className="text-xl font-bold text-white hover:text-[#1dd1a1] transition-colors break-all">
-                axushu50@gmail.com
+              <a href="mailto:autoracershop@gmail.com" className="text-xl font-bold text-white hover:text-[#1dd1a1] transition-colors break-all">
+                autoracershop@gmail.com
               </a>
             </div>
 

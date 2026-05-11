@@ -23,7 +23,10 @@ function Footer() {
       </div>
       
       <div className="max-w-[1140px] mx-auto mt-12 border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-         <p className="text-[#333] text-[9px] font-black uppercase tracking-[0.5em]">© 2026 Auto Racer — Intelligence System</p>
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <p className="text-[#333] text-[9px] font-black uppercase tracking-[0.5em]">© 2026 Auto Racer — Intelligence System</p>
+            <p className="text-[#555] text-[9px] font-black uppercase tracking-[0.3em]">Desenvolvido por <span className="text-[#1dd1a1]">AxosHub</span></p>
+          </div>
          <div className="text-[#333] text-[9px] font-black uppercase tracking-[0.3em] flex gap-4">
             <a href="#" className="hover:text-[#1dd1a1]">Privacidade</a>
             <a href="#" className="hover:text-[#1dd1a1]">Termos</a>
