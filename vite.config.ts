@@ -10,10 +10,11 @@ export default defineConfig({
   base: '/',
   server: {
     port: 3007,
-    host: true
+    host: true,
+    allowedHosts: ['autoracer.shop', 'auto.axoshub.com', 'localhost']
   },
   preview: {
-    allowedHosts: ['auto.axoshub.com', 'localhost'],
+    allowedHosts: ['autoracer.shop', 'auto.axoshub.com', 'localhost'],
     port: 3007,
     host: true
   },
