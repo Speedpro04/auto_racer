@@ -360,9 +360,9 @@ function Home() {
               <div className="relative hidden lg:block">
                 <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-full" />
                 <img 
-                  src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=1000" 
+                  src="https://images.unsplash.com/photo-1562141989-c5c79ac8f576?auto=format&fit=crop&q=80&w=1000" 
                   className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[400px] w-full" 
-                  alt="Lojista parceiro Auto Racer"
+                  alt="Showroom de luxo parceiro Auto Racer"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
                   <p className="text-black font-black text-3xl font-impact tracking-tighter uppercase italic leading-none">
