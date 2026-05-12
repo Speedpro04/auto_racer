@@ -324,6 +324,58 @@ function Home() {
       {/* Simulator Modal */}
       <FinancingCalculator isOpen={isSimulatorOpen} onClose={() => setIsSimulatorOpen(false)} />
 
+      {/* Partner Section for Lojistas */}
+      <section className="max-w-[1140px] mx-auto px-6 py-20">
+        <div className="relative p-1 bg-gradient-to-r from-transparent via-[#1dd1a1]/50 to-transparent rounded-[50px]">
+          <div className="bg-[#0A0D10] rounded-[49px] p-10 md:p-20 relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10" />
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-full" />
+            
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="inline-block px-4 py-2 bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6 border border-[#1dd1a1]/20">
+                  Oportunidade para Lojistas Elite
+                </span>
+                <h2 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase italic leading-[0.9] mb-8">
+                  Sua Loja na Vitrine Mais <br />
+                  <span className="text-[#1dd1a1]">Exclusiva do Vale</span>
+                </h2>
+                <p className="text-[#8395a7] text-lg font-medium leading-relaxed mb-10 max-w-lg">
+                  Não somos apenas um classificado. Somos o selo de confiança que o seu estoque merece no Vale do Paraíba. Valorizamos o seu ativo e conectamos sua loja aos compradores mais qualificados da região.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    to="/contato?ref=parceiro" 
+                    className="px-10 py-5 bg-[#1dd1a1] text-black font-black uppercase text-[10px] tracking-widest rounded-2xl hover:bg-[#00f3ff] transition-all text-center"
+                  >
+                    Quero Ser um Parceiro
+                  </Link>
+                  <div className="flex items-center gap-4 px-6 py-5 border border-white/10 rounded-2xl bg-white/5">
+                    <Zap className="w-5 h-5 text-[#1dd1a1]" />
+                    <span className="text-[9px] font-black uppercase tracking-widest text-white">Venda 3x Mais Rápido</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative hidden lg:block">
+                <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-full" />
+                <img 
+                  src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&q=80&w=1000" 
+                  className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[400px] w-full" 
+                  alt="Lojista parceiro Auto Racer"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
+                  <p className="text-black font-black text-3xl font-impact tracking-tighter uppercase italic leading-none">
+                    + de 50 <br />
+                    Lojas Parceiras
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Premium Stores Showcase */}
       <section className="max-w-[1140px] mx-auto px-6 py-32 border-t border-white/5 mt-10">
         <div className="text-center mb-16">
