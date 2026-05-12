@@ -20,12 +20,12 @@ function Partners() {
           </div>
           
           <h1 className="text-[30px] md:text-[55px] font-black font-impact tracking-tighter uppercase italic leading-[0.9] text-white drop-shadow-2xl mb-6">
-            Escale suas vendas com a <br />
-            <span className="text-[#1dd1a1] drop-shadow-[0_0_40px_rgba(29,209,161,0.4)]">Auto Racer</span>
+            Escale suas vendas no <br />
+            <span className="text-[#1dd1a1] drop-shadow-[0_0_40px_rgba(29,209,161,0.4)]">Vale do Paraíba</span>
           </h1>
           
           <p className="text-[#8395a7] text-base md:text-lg max-w-2xl mx-auto font-medium tracking-tight leading-relaxed">
-            Faça parte da vitrine automotiva premium que mais cresce no Brasil. Transforme seu estoque em uma máquina de vendas com tecnologia de ponta.
+            Faça parte da vitrine automotiva premium líder na nossa região. Transforme seu estoque em uma máquina de vendas com tecnologia de ponta e tráfego pago segmentado.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ function Partners() {
             
             <div className="relative z-10 flex-1">
               <h3 className="text-2xl font-black font-impact italic uppercase tracking-widest text-white mb-2">Plano Parceiro</h3>
-              <p className="text-[#576574] text-xs font-bold uppercase tracking-[0.2em] mb-8">Vitrine Premium Compartilhada</p>
+              <p className="text-[#576574] text-xs font-bold uppercase tracking-[0.2em] mb-8">Vitrine Premium no Vale</p>
               
               <div className="mb-10 flex items-end gap-2">
                 <span className="text-4xl font-black font-impact text-[#1dd1a1]">R$ 69,90</span>
@@ -52,11 +52,12 @@ function Partners() {
               <ul className="space-y-4 mb-10">
                 {[
                   "Painel Administrativo Completo",
+                  "Anúncios Segmentados no Vale do Paraíba",
                   "Cadastro Ilimitado de Veículos",
                   "Upload de Imagens em Alta Resolução",
                   "Contato Direto Via WhatsApp",
                   "Integração com IA (Second Brain)",
-                  "Estatísticas de Visitas"
+                  "Estatísticas de Visitas em Tempo Real"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 text-sm text-[#8395a7] font-medium">
                     <CheckCircle2 className="w-5 h-5 text-[#1dd1a1] shrink-0" />
