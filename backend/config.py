@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     SUPABASE_URL: str
     SUPABASE_SERVICE_KEY: str
     SUPABASE_ANON_KEY: str
-    BASE_DOMAIN: str = "solaraauto.com.br"
+    BASE_DOMAIN: str = "autoracer.shop"
     JWT_SECRET: str
     ENVIRONMENT: str = "development"
     PAGBANK_TOKEN: str = ""

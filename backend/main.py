@@ -6,6 +6,7 @@ from routes import public_routes, admin_routes, auth_routes, payment_routes, aut
 from config import get_settings
 from dotenv import load_dotenv
 import os
+import re
 
 load_dotenv()
 
@@ -18,12 +19,16 @@ app = FastAPI(
 )
 
 # CORS Configuration
+allowed_origins = ["*"] if settings.ENVIRONMENT == "development" else [
+    f"https://{settings.BASE_DOMAIN}"
+]
+allowed_origin_regex = None if settings.ENVIRONMENT == "development" else \
+    rf"^https://([a-z0-9-]+\.)?{re.escape(settings.BASE_DOMAIN)}$"
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"] if settings.ENVIRONMENT == "development" else [
-        f"https://*.{settings.BASE_DOMAIN}",
-        f"https://{settings.BASE_DOMAIN}"
-    ],
+    allow_origins=allowed_origins,
+    allow_origin_regex=allowed_origin_regex,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
