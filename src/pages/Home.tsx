@@ -18,8 +18,8 @@ function Home() {
           api.get('/vehicles?limit=12'),
           api.get('/stores'),
         ])
-        setRecentVehicles(vehiclesRes.data)
-        setStores(storesRes.data)
+        setRecentVehicles(Array.isArray(vehiclesRes.data) ? vehiclesRes.data : [])
+        setStores(Array.isArray(storesRes.data) ? storesRes.data : [])
       } catch (error) {
         console.error('Erro ao carregar dados:', error)
       }

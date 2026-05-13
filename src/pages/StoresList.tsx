@@ -13,7 +13,7 @@ function StoresList() {
     const fetchStores = async () => {
       try {
         const { data } = await api.get('/stores')
-        setStores(data)
+        setStores(Array.isArray(data) ? data : [])
       } catch (error) {
         console.error('Erro ao carregar lojas:', error)
       } finally {

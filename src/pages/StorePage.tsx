@@ -25,7 +25,7 @@ function StorePage() {
         ])
         const storeData = storeRes.data
         setStore(storeData)
-        setVehicles(vehiclesRes.data)
+        setVehicles(Array.isArray(vehiclesRes.data) ? vehiclesRes.data : [])
 
         // SEO Dinâmico
         if (storeData) {
