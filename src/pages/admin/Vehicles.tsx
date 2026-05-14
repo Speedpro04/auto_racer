@@ -18,7 +18,7 @@ function AdminVehicles() {
   const fetchVehicles = async () => {
     try {
       const { data } = await api.get('/admin/vehicles')
-      setVehicles(data)
+      setVehicles(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error('Erro ao carregar veículos:', error)
     } finally {

@@ -43,7 +43,7 @@ function Catalog() {
     const fetchVehicles = async () => {
       try {
         const { data } = await api.get('/vehicles')
-        setVehicles(data.length > 0 ? data : MOCK_VEHICLES)
+        setVehicles(Array.isArray(data) && data.length > 0 ? data : MOCK_VEHICLES)
       } catch (error) {
         setVehicles(MOCK_VEHICLES)
       } finally {

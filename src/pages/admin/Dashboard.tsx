@@ -20,7 +20,8 @@ function AdminDashboard() {
           api.get('/admin/vehicles'),
         ])
         setStats(statsRes.data)
-        setRecentVehicles(vehiclesRes.data.slice(0, 5))
+        const vehiclesData = Array.isArray(vehiclesRes.data) ? vehiclesRes.data : []
+        setRecentVehicles(vehiclesData.slice(0, 5))
       } catch (error) {
         console.error('Erro ao carregar dashboard:', error)
       } finally {
@@ -158,7 +159,7 @@ function AdminDashboard() {
                   </div>
                   <div className="text-right">
                     <span className="block text-xl font-black text-white tracking-tighter group-hover:text-[#1dd1a1] transition-colors">
-                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(vehicle.price)}
+                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(vehicle.price) || 0)}
                     </span>
                     <span className="inline-block mt-1 px-3 py-1 rounded-full bg-white/5 text-[9px] font-black uppercase text-[#576574] tracking-widest border border-white/5">
                       {vehicle.status}
