@@ -69,7 +69,7 @@ function Partners() {
 
             <Link 
               to="/cadastro"
-              className="relative z-10 w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+              className="relative z-10 w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
             >
               Começar Agora <ArrowRight className="w-4 h-4" />
             </Link>
@@ -119,7 +119,7 @@ function Partners() {
               href="https://wa.me/5512978138934?text=Olá! Tenho interesse em desenvolver um App Exclusivo (White Label) para minha concessionária com a Auto Racer."
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 w-full flex items-center justify-center gap-3 bg-transparent border-2 border-[#1dd1a1] text-[#1dd1a1] px-6 py-5 rounded-2xl hover:bg-[#1dd1a1] hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em]"
+              className="relative z-10 w-full flex items-center justify-center gap-3 bg-transparent border-2 border-[#1dd1a1] text-[#1dd1a1] px-6 py-5 rounded-2xl hover:bg-[#1dd1a1] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em]"
             >
               Falar com Especialista <Zap className="w-4 h-4" />
             </a>

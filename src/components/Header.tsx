@@ -53,7 +53,7 @@ function Header() {
             ))}
             <Link
               to="/login"
-              className="px-6 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#1dd1a1] hover:text-black hover:border-transparent transition-all duration-300"
+              className="px-6 py-2.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#1dd1a1] hover:text-gray-800 hover:border-transparent transition-all duration-300"
             >
               Portal do Concessionário
             </Link>

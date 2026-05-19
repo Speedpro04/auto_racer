@@ -112,7 +112,7 @@ function AboutUs() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
                 to="/catalogo"
-                className="px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
+                className="px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:text-gray-800 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
               >
                 Acessar Catálogo Agora <ArrowRight size={20} />
               </Link>

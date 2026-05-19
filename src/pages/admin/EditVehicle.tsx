@@ -91,7 +91,7 @@ function AdminEditVehicle() {
   return (
     <div>
       <div className="flex items-center gap-4 mb-8">
-        <Link to="/admin/veiculos" className="text-[#444] hover:text-black transition">
+        <Link to="/admin/veiculos" className="text-[#444] hover:text-gray-800 transition">
           <ArrowLeft className="w-6 h-6" />
         </Link>
         <h1 className="text-xl font-impact text-black uppercase tracking-tight">Editar Veículo</h1>
@@ -240,7 +240,7 @@ function AdminEditVehicle() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white hover:text-black transition disabled:opacity-50"
+            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white hover:text-gray-800 transition disabled:opacity-50"
           >
             {loading ? 'Salvando...' : 'Salvar Alterações'}
           </button>

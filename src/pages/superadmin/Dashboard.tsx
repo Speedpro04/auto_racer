@@ -114,7 +114,7 @@ function SuperAdminDashboard() {
         <div>
            <div className="flex items-center justify-between mb-8">
               <h2 className="text-xl font-black text-white uppercase tracking-tighter font-impact italic">Clientes SaaS (Lojistas)</h2>
-              <button className="px-6 py-3 bg-white/5 text-[#1dd1a1] border border-[#1dd1a1]/20 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#1dd1a1] hover:text-black transition-all">
+              <button className="px-6 py-3 bg-white/5 text-[#1dd1a1] border border-[#1dd1a1]/20 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#1dd1a1] hover:text-gray-800 transition-all">
                 + Novo Lojista
               </button>
            </div>

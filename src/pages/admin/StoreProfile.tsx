@@ -155,7 +155,7 @@ function AdminStoreProfile() {
               />
               <label
                 htmlFor="logo-upload"
-                className="absolute -bottom-3 -right-3 w-12 h-12 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:text-black hover:scale-110 transition active:scale-95"
+                className="absolute -bottom-3 -right-3 w-12 h-12 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:text-gray-800 hover:scale-110 transition active:scale-95"
               >
                 <Upload className="w-5 h-5" />
               </label>
@@ -225,7 +225,7 @@ function AdminStoreProfile() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#1dd1a1] text-[#0A0A0A] px-12 py-5 rounded-[12px] hover:bg-white hover:text-black transition font-black uppercase tracking-tighter text-sm shadow-xl shadow-[#D4AF3710] disabled:opacity-50"
+            className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#1dd1a1] text-[#0A0A0A] px-12 py-5 rounded-[12px] hover:bg-white hover:text-gray-800 transition font-black uppercase tracking-tighter text-sm shadow-xl shadow-[#D4AF3710] disabled:opacity-50"
           >
             {loading ? 'Salvando...' : (
               <>

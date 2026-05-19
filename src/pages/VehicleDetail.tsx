@@ -196,7 +196,7 @@ function VehicleDetail() {
                    <a 
                     href={`https://wa.me/${vehicle.store?.phone || '5511999999999'}?text=Olá! Tenho interesse no ${vehicle.title} — ${vehicle.year} — ${vehicle.km.toLocaleString('pt-BR')}km. Podemos conversar?`}
                     target="_blank"
-                    className="flex items-center justify-center gap-4 w-full bg-[#1dd1a1] text-black py-6 rounded-2xl font-black uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 hover:shadow-[0_0_30px_rgba(29,209,161,0.4)] transition-all duration-500 group"
+                    className="flex items-center justify-center gap-4 w-full bg-[#1dd1a1] text-black py-6 rounded-2xl font-black uppercase tracking-widest hover:bg-white hover:text-gray-800 hover:scale-105 hover:shadow-[0_0_30px_rgba(29,209,161,0.4)] transition-all duration-500 group"
                    >
                      <MessageSquare className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                      Quero Este Carro
