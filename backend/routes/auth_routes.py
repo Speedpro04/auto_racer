@@ -15,6 +15,7 @@ class RegisterRequest(BaseModel):
     password: str
     store_name: str
     phone: str
+    name: str = ""
 
 class RecoverPasswordRequest(BaseModel):
     email: str

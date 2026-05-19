@@ -480,7 +480,7 @@ export default function FlowStudio() {
             <motion.button
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#1dd1a1] text-black font-black text-[12px] uppercase tracking-wider py-3.5 hover:bg-white transition-all shadow-[0_10px_30px_rgba(29,209,161,0.25)]"
+              className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#1dd1a1] text-black font-black text-[12px] uppercase tracking-wider py-3.5 hover:bg-white hover:text-black transition-all shadow-[0_10px_30px_rgba(29,209,161,0.25)]"
             >
               <Download className="w-4 h-4" /> Baixar Imagem Editada
             </motion.button>

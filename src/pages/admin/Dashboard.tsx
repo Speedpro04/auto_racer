@@ -80,7 +80,7 @@ function AdminDashboard() {
           </Link>
           <Link
             to="/admin/veiculos/novo"
-            className="flex items-center gap-2 bg-[#1dd1a1] text-black px-8 py-4 rounded-2xl hover:bg-white hover:scale-105 active:scale-95 transition-all duration-300 font-black uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(29,209,161,0.2)]"
+            className="flex items-center gap-2 bg-[#1dd1a1] text-black px-8 py-4 rounded-2xl hover:bg-white hover:text-black hover:scale-105 active:scale-95 transition-all duration-300 font-black uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(29,209,161,0.2)]"
           >
             <Plus className="w-5 h-5" />
             Inserir Máquina

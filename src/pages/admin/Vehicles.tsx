@@ -58,7 +58,7 @@ function AdminVehicles() {
         </div>
         <Link
           to="/admin/veiculos/novo"
-          className="flex items-center gap-2 bg-[#1dd1a1] text-[#0A0A0A] px-5 py-2.5 rounded-[12px] hover:bg-white transition font-black uppercase tracking-tighter text-sm"
+          className="flex items-center gap-2 bg-[#1dd1a1] text-[#0A0A0A] px-5 py-2.5 rounded-[12px] hover:bg-white hover:text-black transition font-black uppercase tracking-tighter text-sm"
         >
           <Plus className="w-5 h-5" />
           Novo Veículo
@@ -99,7 +99,7 @@ function AdminVehicles() {
           <p className="text-[#A3A3A3] font-medium mb-8">Nenhum veículo encontrado no seu inventário atual.</p>
           <Link
             to="/admin/veiculos/novo"
-            className="inline-flex items-center gap-2 bg-[#1dd1a1] text-[#0A0A0A] px-10 py-4 rounded-[12px] hover:bg-white transition font-black uppercase tracking-widest text-[11px]"
+            className="inline-flex items-center gap-2 bg-[#1dd1a1] text-[#0A0A0A] px-10 py-4 rounded-[12px] hover:bg-white hover:text-black transition font-black uppercase tracking-widest text-[11px]"
           >
             <Plus className="w-4 h-4" />
             Cadastrar Veículo

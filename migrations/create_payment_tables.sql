@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS public.payment_transactions (
   subscription_id UUID REFERENCES public.subscriptions(id) ON DELETE SET NULL,
   pagbank_order_id TEXT,
   pagbank_charge_id TEXT,
-  type TEXT CHECK (type IN ('CHECKOUT', 'SUBSCRIPTION_RENEWAL', 'REFUND')),
+  type TEXT CHECK (type IN ('CHECKOUT', 'STRIPE_CHECKOUT', 'SUBSCRIPTION_RENEWAL', 'REFUND')),
   status TEXT,
   amount INTEGER,
   raw_payload JSONB,

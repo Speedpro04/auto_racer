@@ -16,8 +16,10 @@ CREATE TABLE stores (
     logo_url TEXT,
     phone TEXT NOT NULL,
     city TEXT,
-    plan TEXT NOT NULL DEFAULT 'basic' CHECK (plan IN ('basic', 'pro', 'premium')),
+    plan TEXT NOT NULL DEFAULT 'basic' CHECK (plan IN ('basic', 'pro', 'premium', 'parceiro', 'exclusivo')),
     active BOOLEAN DEFAULT true,
+    trial_ends_at TIMESTAMPTZ,
+    subscription_expires_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 

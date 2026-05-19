@@ -73,7 +73,7 @@ function AdminNewVehicle() {
         const uploadData = new FormData()
         uploadData.append('file', img.file)
 
-        // Upload no backend (vai pro bucket solara_media e retorna a URL)
+        // Upload no backend (vai pro bucket autoracer_media e retorna a URL)
         const { data } = await api.post('/admin/upload', uploadData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         })

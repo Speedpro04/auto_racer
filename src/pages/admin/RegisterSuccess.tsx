@@ -117,7 +117,7 @@ function RegisterSuccess() {
               >
                 <button
                   onClick={() => navigate('/login')}
-                  className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+                  className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
                 >
                   <Zap className="w-5 h-5" />
                   <span>Acessar Meu Painel</span>
@@ -164,7 +164,7 @@ function RegisterSuccess() {
             <p className="text-[#737373] text-sm font-medium">Não conseguimos verificar seu pagamento. Entre em contato com nosso suporte.</p>
             <button
               onClick={() => navigate('/parceiro')}
-              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-4 rounded-2xl hover:bg-white transition-all font-black uppercase text-xs tracking-[0.2em]"
+              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-4 rounded-2xl hover:bg-white hover:text-black transition-all font-black uppercase text-xs tracking-[0.2em]"
             >
               Voltar aos Planos
             </button>

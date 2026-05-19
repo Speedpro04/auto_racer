@@ -162,15 +162,19 @@ async def stripe_webhook(request: Request):
 
         store_id = store_result.data[0]["id"]
 
-        # Vincular usuario à loja
+        # Vincular usuario à loja (id = auth.users.id, mesmo que user_id)
         supabase.table("store_users").insert({
+            "id": user_id,
             "store_id": store_id,
-            "user_id": user_id,
             "role": "owner",
             "email": reg["email"]
         }).execute()
 
-        # Criar assinatura
+        # Criar assinatura com datas de período e expiração
+        from datetime import datetime, timedelta, timezone
+        now = datetime.now(timezone.utc)
+        period_end = now + timedelta(days=30)
+
         supabase.table("subscriptions").insert({
             "store_id": store_id,
             "user_id": user_id,
@@ -178,8 +182,15 @@ async def stripe_webhook(request: Request):
             "status": "ACTIVE",
             "amount": 6990,
             "pagbank_order_id": order_id,
-            "pagbank_charge_id": charge_id
+            "pagbank_charge_id": charge_id,
+            "current_period_start": now.isoformat(),
+            "current_period_end": period_end.isoformat()
         }).execute()
+
+        # Atualizar loja com data de expiração da assinatura
+        supabase.table("stores").update({
+            "subscription_expires_at": period_end.isoformat()
+        }).eq("id", store_id).execute()
 
         # Atualizar registro pendente
         supabase.table("pending_registrations").update({

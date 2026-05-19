@@ -204,7 +204,7 @@ function Catalog() {
                       href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} no catálogo da Auto Racer e gostaria de negociar.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest text-black hover:bg-white transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
+                      className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest text-black hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
                     >
                       Negociar Agora <Phone size={16} />
                     </a>
@@ -237,7 +237,7 @@ function Catalog() {
               </h2>
               <Link
                 to="/parceiro"
-                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
+                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
               >
                 Conhecer Planos de Parceiro <ArrowRight size={20} />
               </Link>
@@ -292,7 +292,7 @@ function Catalog() {
               <div className="pt-6 shrink-0 mt-auto border-t border-white/10">
                 <Link 
                   to={`/veiculo/${selectedDescVehicle.slug}`}
-                  className="w-full py-5 bg-[#1dd1a1] text-black rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
+                  className="w-full py-5 bg-[#1dd1a1] text-black rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:text-black hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
                 >
                   Continuar Negociação <ArrowRight size={18} />
                 </Link>

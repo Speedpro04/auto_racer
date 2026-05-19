@@ -240,7 +240,7 @@ function AdminEditVehicle() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white transition disabled:opacity-50"
+            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white hover:text-black transition disabled:opacity-50"
           >
             {loading ? 'Salvando...' : 'Salvar Alterações'}
           </button>

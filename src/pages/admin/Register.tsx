@@ -42,7 +42,8 @@ function AdminRegister() {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,
-        phone: regData.phone
+        phone: regData.phone,
+        name: regData.name
       })
 
       navigate('/cadastro-sucesso')
@@ -208,7 +209,7 @@ function AdminRegister() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
+              className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
             >
               {loading ? (
                 <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />

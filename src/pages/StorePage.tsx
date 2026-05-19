@@ -117,7 +117,7 @@ function StorePage() {
                 href={`https://wa.me/${store.whatsapp || store.phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-[#1dd1a1] text-black px-8 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(29,209,161,0.2)]"
+                className="flex items-center gap-3 bg-[#1dd1a1] text-black px-8 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-white hover:text-black hover:scale-105 transition-all shadow-[0_0_30px_rgba(29,209,161,0.2)]"
               >
                 <Phone className="w-5 h-5" /> Contatar Consultor
               </a>
@@ -307,7 +307,7 @@ function VehicleCard({ vehicle, store }: { vehicle: VehicleWithMedia, store?: St
             href={`https://wa.me/${store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} na sua loja através da Auto Racer e gostaria de negociar.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-white transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
+            className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[10px] font-black uppercase tracking-widest text-black hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
           >
             NEGOCIAR <Phone size={14} />
           </a>

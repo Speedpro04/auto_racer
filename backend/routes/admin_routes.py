@@ -218,17 +218,17 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
     import uuid
     file_path = f"{store_id}/{uuid.uuid4()}{file_ext}"
     
-    # Upload para o Supabase Storage (bucket: solara_media)
+    # Upload para o Supabase Storage (bucket: autoracer_media)
     try:
         # Nota: O cliente supabase-py as vezes precisa do storage_client diretamente
-        response = supabase.storage.from_("solara_media").upload(
+        response = supabase.storage.from_("autoracer_media").upload(
             path=file_path,
             file=file_content,
             file_options={"content-type": file.content_type}
         )
         
         # Obter URL pública
-        url_response = supabase.storage.from_("solara_media").get_public_url(file_path)
+        url_response = supabase.storage.from_("autoracer_media").get_public_url(file_path)
         
         return {"url": url_response, "path": file_path}
     except Exception as e:
