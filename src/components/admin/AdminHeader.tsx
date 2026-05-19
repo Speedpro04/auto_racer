@@ -10,7 +10,7 @@ function AdminHeader() {
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex items-center gap-4">
              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1dd1a1] animate-pulse" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#1dd1a1] text-black animate-pulse" />
                 <span className="text-[11px] font-black text-[#2d3436] uppercase tracking-widest">Polars: Active</span>
              </div>
              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
@@ -32,7 +32,7 @@ function AdminHeader() {
           <div className="flex items-center gap-4 border-r border-white/5 pr-6">
              <button className="p-2.5 rounded-xl bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all relative">
                 <Bell className="w-5 h-5" />
-                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#1dd1a1] rounded-full ring-2 ring-black" />
+                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#1dd1a1] text-black rounded-full ring-2 ring-black" />
              </button>
              <button className="p-2.5 rounded-xl bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">
                 <Activity className="w-5 h-5" />

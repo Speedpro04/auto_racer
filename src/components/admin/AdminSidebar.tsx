@@ -66,7 +66,7 @@ function AdminSidebar() {
               <span className="text-[10px] font-black text-white uppercase tracking-widest">Proteção Ativa</span>
            </div>
            <div className="w-full h-1 bg-white/5 rounded-full">
-              <div className="w-full h-full bg-[#1dd1a1] rounded-full animate-pulse" />
+              <div className="w-full h-full bg-[#1dd1a1] text-black rounded-full animate-pulse" />
            </div>
         </div>
         <button

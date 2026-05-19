@@ -181,7 +181,7 @@ export default function AdminReports() {
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Visitas</span>
                </div>
                <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-full bg-[#1dd1a1] shadow-[0_0_10px_#1dd1a1]"></div>
+                 <div className="w-3 h-3 rounded-full bg-[#1dd1a1] text-black shadow-[0_0_10px_#1dd1a1]"></div>
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Leads</span>
                </div>
                <div className="flex items-center gap-2">

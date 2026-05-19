@@ -173,7 +173,7 @@ function Home() {
       <section className="max-w-[1140px] mx-auto px-6 mb-[60px] space-y-40">
         <div className="text-center mb-20 relative">
 <h2 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase mb-6 italic">Carros Seminovos à Venda: <span className="text-[#1dd1a1]">Curadoria de Alta Performance</span></h2>
-            <div className="w-24 h-1.5 bg-[#1dd1a1] mx-auto rounded-full mb-6" />
+            <div className="w-24 h-1.5 bg-[#1dd1a1] text-black mx-auto rounded-full mb-6" />
             <p className="font-['Architects_Daughter'] text-2xl md:text-xl text-white opacity-60">Você merece o próximo nível.</p>
             <p className="text-[#576574] text-sm mt-4">Explore nossa curadoria de carros seminovos, importados e usados com laudo cautelar e garantia estendida. Veículos de alta performance com financiamento facilitado.</p>
          </div>
@@ -364,7 +364,7 @@ function Home() {
                   className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[400px] w-full" 
                   alt="Showroom de luxo parceiro Auto Racer"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
+                <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] text-black p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
                   <p className="text-black font-black text-3xl font-impact tracking-tighter uppercase italic leading-none">
                     + de 50 <br />
                     Lojas Parceiras

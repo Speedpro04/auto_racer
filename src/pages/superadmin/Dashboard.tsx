@@ -60,7 +60,7 @@ function SuperAdminDashboard() {
       <div className="border-b border-white/5 bg-[#111]">
         <div className="max-w-[1400px] mx-auto px-8 h-20 flex items-center justify-between">
            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-[#1dd1a1] rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#1dd1a1] text-black rounded-xl flex items-center justify-center">
                  <ShieldCheck className="w-6 h-6 text-black" />
               </div>
               <div>

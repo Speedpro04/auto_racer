@@ -48,7 +48,7 @@ function Header() {
                 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#8395a7] hover:text-[#1dd1a1] transition-all relative group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1dd1a1] transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1dd1a1] text-black transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
               </Link>
             ))}
             <Link

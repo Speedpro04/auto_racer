@@ -196,7 +196,7 @@ function StorePage() {
         {/* Vehicles Grid */}
         <div className="mb-8">
            <h2 className="text-xl font-black tracking-tighter font-impact uppercase mb-4">Veja Nosso Estoque de Seminovos em {store.city || 'Unidade Auto Racer'}</h2>
-           <div className="w-16 h-1 bg-[#1dd1a1] mb-10" />
+           <div className="w-16 h-1 bg-[#1dd1a1] text-black mb-10" />
         </div>
 
         {vehicles.length === 0 ? (

@@ -197,7 +197,7 @@ function AdminDashboard() {
              </div>
              <p className="text-[#576574] text-xs font-bold leading-relaxed uppercase">Sua base de conhecimento RAG foi atualizada com novos termos de financiamento híbrido.</p>
              <div className="mt-8 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#1dd1a1] animate-ping" />
+                <div className="w-2 h-2 rounded-full bg-[#1dd1a1] text-black animate-ping" />
                 <span className="text-[9px] font-black text-[#1dd1a1] uppercase tracking-[0.2em]">Sincronizado</span>
              </div>
           </div>

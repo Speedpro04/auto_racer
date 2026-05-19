@@ -125,7 +125,7 @@ function Checkout() {
             className="flex flex-col justify-center"
           >
             <div className="bg-gradient-to-br from-[#1dd1a1]/10 to-transparent border border-[#1dd1a1]/20 rounded-[40px] p-10 text-center">
-              <div className="w-20 h-20 bg-[#1dd1a1] rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(29,209,161,0.3)]">
+              <div className="w-20 h-20 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(29,209,161,0.3)]">
                 <CreditCard className="w-10 h-10 text-black" />
               </div>
               
