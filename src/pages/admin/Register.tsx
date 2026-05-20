@@ -38,7 +38,7 @@ function AdminRegister() {
 
     try {
       // Acesso VIP Gratuito — cria conta direto sem checkout
-      await api.post('/api/v1/auth/register', {
+      await api.post('/auth/register', {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,
