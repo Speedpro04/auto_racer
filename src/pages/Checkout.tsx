@@ -38,7 +38,7 @@ function Checkout() {
     const regData = JSON.parse(regDataRaw)
 
     try {
-      const response = await api.post('/api/v1/payments/create-checkout', {
+      const response = await api.post('/payments/create-checkout', {
         email: regData.email,
         password: regData.password,
         store_name: regData.storeName,

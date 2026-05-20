@@ -28,6 +28,7 @@ function Home() {
   }, [])
 
   const spotlightVehicles = recentVehicles.slice(0, 6)
+  const spotlightImage = spotlightVehicles[0]?.media?.[0]?.url
 
   return (
     <div className="text-white font-sans w-full overflow-hidden relative">
@@ -115,11 +116,20 @@ function Home() {
              </div>
 
              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
-             <img 
-               src={spotlightVehicles[0]?.media?.[0]?.url || "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=2070"} 
-               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" 
-               alt={`${spotlightVehicles[0]?.title || "Carro de Luxo"} seminovo à venda — Auto Racer`}
-             />
+             {spotlightImage ? (
+               <img
+                 src={spotlightImage}
+                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]"
+                 alt={`${spotlightVehicles[0]?.title || "Carro de Luxo"} seminovo à venda — Auto Racer`}
+               />
+             ) : (
+               <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(29,209,161,0.3),transparent_45%),linear-gradient(135deg,#12161c_0%,#0b0e14_45%,#060708_100%)] flex items-end p-10">
+                 <div className="z-20">
+                   <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#1dd1a1] mb-3">Imagem oficial em atualização</p>
+                   <p className="text-white/80 text-sm font-semibold">Conteúdo visual real será publicado em breve.</p>
+                 </div>
+               </div>
+             )}
              {spotlightVehicles[0] && (
                <script type="application/ld+json">
                  {JSON.stringify({
@@ -149,14 +159,14 @@ function Home() {
           >
              <div>
                 <h2 className="inline-block px-4 py-2 bg-[#1dd1a1] text-black text-[10px] font-black uppercase tracking-widest rounded-xl mb-4">Destaque do Mês</h2>
-                <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase mb-4 italic">{spotlightVehicles[0]?.title || "Porsche 911 GT3 RS"}</h3>
+                <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase mb-4 italic">{spotlightVehicles[0]?.title || "Veículo Premium em Destaque"}</h3>
                 <p className="font-['Architects_Daughter'] text-2xl text-[#1dd1a1] mb-2">"Venha conferir esse maravilhoso carro!"</p>
              </div>
              <div className="flex flex-col gap-4 min-w-[200px] items-start md:items-end">
                 <span className="text-xl font-black text-white tracking-widest">{spotlightVehicles[0] ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(spotlightVehicles[0].price) : "R$ 1.850.000"}</span>
                  <div className="relative">
-                    <Link to={spotlightVehicles[0] ? `/veiculo/${spotlightVehicles[0].slug || spotlightVehicles[0].id}` : "#"} className="flex items-center justify-center gap-2 px-8 py-5 bg-[#1dd1a1] text-black font-black uppercase text-xs tracking-widest rounded-[20px] hover:bg-[#00f3ff] hover:text-[#555] transition-all group/btn relative z-10 w-full md:w-auto">
-                       Falar com Especialista <Play className="w-4 h-4 text-black group-hover/btn:text-[#555] transition-colors" />
+                    <Link to={spotlightVehicles[0] ? `/veiculo/${spotlightVehicles[0].slug || spotlightVehicles[0].id}` : "#"} className="flex items-center justify-center gap-2 px-8 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-xs tracking-widest rounded-[20px] hover:bg-white hover:!text-[#1dd1a1] transition-all group/btn relative z-10 w-full md:w-auto text-center">
+                       Falar com Especialista <Play className="w-4 h-4" />
                     </Link>
                     <span className="absolute -bottom-8 right-0 text-[#1dd1a1] font-['Architects_Daughter'] text-sm md:text-base opacity-80 whitespace-nowrap rotate-[-3deg]">
                        "Pronto para redefinir seu padrão."
@@ -178,20 +188,26 @@ function Home() {
             <p className="text-[#576574] text-sm mt-4">Explore nossa curadoria de carros seminovos, importados e usados com laudo cautelar e garantia estendida. Veículos de alta performance com financiamento facilitado.</p>
          </div>
         {(spotlightVehicles.length > 1 ? spotlightVehicles.slice(1, 5) : [
-          { id: 'mock1', title: 'Audi RS6 Avant', description: 'Performance e estética com um V8 biturbo brutal.', price: 1200000, km: 0, media: [{url: 'https://images.unsplash.com/photo-1606152421802-db97b9c7a11b?auto=format&fit=crop&q=80&w=2074'}] },
-          { id: 'mock2', title: 'Mercedes AMG GT', description: 'O puro estado da arte das pistas para as ruas.', price: 1550000, km: 500, media: [{url: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=2070'}] },
-          { id: 'mock3', title: 'Lamborghini Huracán', description: 'V10 aspirado numa obra-prima do design.', price: 3200000, km: 1200, media: [{url: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&q=80&w=2071'}] },
-          { id: 'mock4', title: 'Land Rover Defender', description: 'Luxo e capacidade inigualável em qualquer terreno.', price: 850000, km: 200, media: [{url: 'https://images.unsplash.com/photo-1563720223185-11003d5169a6?auto=format&fit=crop&q=80&w=2070'}] }
+          { id: 'mock1', title: 'Veículo Premium 01', description: 'Performance e estética com engenharia de alto padrão.', price: 1200000, km: 0, media: [] },
+          { id: 'mock2', title: 'Veículo Premium 02', description: 'Acabamento sofisticado e dinâmica de condução refinada.', price: 1550000, km: 500, media: [] },
+          { id: 'mock3', title: 'Veículo Premium 03', description: 'Projeto esportivo com design marcante e presença forte.', price: 3200000, km: 1200, media: [] },
+          { id: 'mock4', title: 'Veículo Premium 04', description: 'Versatilidade, conforto e tecnologia para uso premium.', price: 850000, km: 200, media: [] }
         ]).map((vehicle: any, idx) => (
           <div key={vehicle.id} className={`flex flex-col ${idx % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-start gap-20 group`}>
              <div className="relative shrink-0 w-full md:w-[500px] mt-[70px]">
                 <div className="absolute -inset-4 bg-gradient-to-tr from-[#1dd1a1]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 <div className="relative h-[320px] w-full rounded-[45px] overflow-hidden border border-[#1dd1a1] shadow-2xl">
-                   <img 
-                    src={vehicle.media?.[0]?.url} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] relative z-10" 
-                    alt={`${vehicle.title} seminovo à venda com garantia — Auto Racer`}
-                   />
+                   {vehicle.media?.[0]?.url ? (
+                     <img
+                      src={vehicle.media?.[0]?.url}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] relative z-10"
+                      alt={`${vehicle.title} seminovo à venda com garantia — Auto Racer`}
+                     />
+                   ) : (
+                     <div className="w-full h-full bg-[radial-gradient(circle_at_75%_10%,rgba(29,209,161,0.25),transparent_40%),linear-gradient(145deg,#151a21_0%,#0e1217_50%,#090c10_100%)] flex items-end p-8 relative z-10">
+                       <p className="text-[10px] font-black tracking-[0.2em] uppercase text-white/75">Sem foto oficial no momento</p>
+                     </div>
+                   )}
                    
                    {/* Logo Watermark */}
                    {(vehicle.stores?.logo_url || vehicle.store?.logo_url) && (
@@ -203,7 +219,7 @@ function Home() {
              </div>
              <div className="flex-1 space-y-6 mt-0 md:mt-[50px]">
                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#1dd1a1] bg-[#1dd1a1]/5 px-5 py-2 rounded-full border border-[#1dd1a1]/10">100% Periciado e Aprovado</span>
-                <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase leading-[0.9] italic">{vehicle.title} — {vehicle.brand}</h3>
+                <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase leading-[0.9] italic">Veículo Premium Disponível</h3>
                 <p className="font-['Architects_Daughter'] text-2xl text-[#1dd1a1] opacity-90 leading-relaxed max-w-xl">
                    "Cansado da insegurança ao trocar de carro? Aqui, cada motor V8 é certificado para você acelerar sem medo."
                 </p>
@@ -228,7 +244,7 @@ function Home() {
                     href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} na Auto Racer e gostaria de negociar.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] text-black rounded-[20px] hover:bg-white hover:text-gray-800 hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-[10px]"
+                    className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] !text-[#1f2937] rounded-[20px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-[10px] text-center"
                    >
                       NEGOCIAR AGORA <Phone className="w-4 h-4" />
                    </a>
@@ -286,12 +302,12 @@ function Home() {
                </div>
                
                <div className="w-full md:w-auto relative">
-                  <button onClick={() => setIsSimulatorOpen(true)} className="inline-flex items-center justify-center gap-4 px-10 py-6 bg-[#1dd1a1] text-black rounded-[25px] hover:bg-[#00f3ff] hover:text-[#555] hover:-translate-y-2 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] group/btn w-full relative z-10">
+                  <button onClick={() => setIsSimulatorOpen(true)} className="inline-flex items-center justify-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] group/btn w-full relative z-10">
                      <div className="flex flex-col items-center text-center">
-                        <h2 className="font-black uppercase tracking-widest text-sm mb-1 text-black group-hover/btn:text-[#555] transition-colors">Aprovação Elite em Minutos</h2>
-                        <h3 className="font-black text-[10px] opacity-80 text-black group-hover/btn:text-[#555] tracking-[0.2em] transition-colors uppercase">O carro dos seus sonhos sem burocracia.</h3>
+                        <h2 className="font-black uppercase tracking-widest text-sm mb-1">Aprovação Elite em Minutos</h2>
+                        <h3 className="font-black text-[10px] opacity-80 tracking-[0.2em] transition-colors uppercase">O carro dos seus sonhos sem burocracia.</h3>
                      </div>
-                     <ArrowRight className="w-6 h-6 text-black group-hover/btn:text-[#555] group-hover/btn:translate-x-2 transition-all" />
+                     <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-2 transition-all" />
                   </button>
                   <div className="absolute -bottom-10 right-4 text-white font-['Architects_Daughter'] text-xl opacity-90 rotate-[-5deg]">
                      100% Online e Seguro.
@@ -347,7 +363,7 @@ function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     to="/contato?ref=parceiro" 
-                    className="px-10 py-5 bg-[#1dd1a1] text-black font-black uppercase text-[10px] tracking-widest rounded-2xl hover:bg-[#00f3ff] transition-all text-center"
+                    className="px-10 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-[10px] tracking-widest rounded-2xl hover:bg-white hover:!text-[#1dd1a1] transition-all text-center"
                   >
                     Quero Ser um Parceiro
                   </Link>
@@ -359,15 +375,12 @@ function Home() {
               </div>
               <div className="relative hidden lg:block">
                 <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-full" />
-                <img 
-                  src="https://images.unsplash.com/photo-1562141989-c5c79ac8f576?auto=format&fit=crop&q=80&w=1000" 
-                  className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[400px] w-full" 
-                  alt="Showroom de luxo parceiro Auto Racer"
-                />
+                <div className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 h-[400px] w-full bg-[radial-gradient(circle_at_20%_20%,rgba(29,209,161,0.25),transparent_42%),linear-gradient(135deg,#141921_0%,#0d1117_55%,#090b0f_100%)] p-10 flex items-end">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/80">Espaço reservado para showroom real da loja parceira</p>
+                </div>
                 <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] text-black p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
-                  <p className="text-black font-black text-3xl font-impact tracking-tighter uppercase italic leading-none">
-                    + de 50 <br />
-                    Lojas Parceiras
+                  <p className="text-black font-['Architects_Daughter'] font-bold text-4xl tracking-tight leading-[0.95]">
+                    + de 50 lojas parceiras
                   </p>
                 </div>
               </div>
@@ -425,7 +438,7 @@ function Home() {
               href="https://wa.me/5512978138934?text=Olá! Gostaria de uma consultoria premium da Auto Racer."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 px-12 py-[18px] bg-[#1dd1a1] text-black font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-[#00f3ff] hover:text-[#555] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300 active:scale-95 group/btn"
+              className="flex items-center gap-4 px-12 py-[18px] bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300 active:scale-95 group/btn"
             >
               CONVERSAR AGORA <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
             </a>

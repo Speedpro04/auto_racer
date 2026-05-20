@@ -14,16 +14,10 @@ function AboutUs() {
   return (
     <div className="bg-[#0B0E14] min-h-screen text-white pb-20 overflow-hidden">
       
-      {/* FULLSCREEN HERO SECTION WITH IMAGE 02 */}
+      {/* FULLSCREEN HERO SECTION */}
       <section className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
-        {/* Background Image - assuming public/logo/imagem 02.png or just an unsplash placeholder if not found, but setting up the structure */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/logo/imagem 02.png" 
-            onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=2000&q=80" }} // Fallback
-            alt="Auto Racer Asset" 
-            className="w-full h-full object-cover grayscale-[0.3]"
-          />
+          <div className="w-full h-full bg-[radial-gradient(circle_at_15%_20%,rgba(29,209,161,0.2),transparent_40%),radial-gradient(circle_at_85%_10%,rgba(29,209,161,0.12),transparent_35%),linear-gradient(140deg,#10141a_0%,#0b0e14_45%,#07090d_100%)]" />
           {/* Dark Overlay for Text Readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#0B0E14]/90 via-[#0B0E14]/70 to-[#0B0E14]" />
         </div>
@@ -112,9 +106,9 @@ function AboutUs() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
                 to="/catalogo"
-                className="px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:text-gray-800 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
+                className="group px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
               >
-                Acessar Catálogo Agora <ArrowRight size={20} />
+                <span className="group-hover:!text-[#1dd1a1]">Acessar Catálogo Agora</span> <ArrowRight size={20} className="!text-[#1f2937] group-hover:!text-[#1dd1a1]" />
               </Link>
             </div>
           </div>

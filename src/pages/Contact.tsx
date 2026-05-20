@@ -171,9 +171,9 @@ function Contact() {
 
             <Link 
               to="/parceiro"
-              className="w-full flex items-center justify-center gap-4 py-8 bg-[#1dd1a1] text-black font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-white hover:text-gray-800 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300"
+              className="group w-full flex items-center justify-center gap-4 py-8 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300"
             >
-              QUERO TESTAR 10 DIAS GRÁTIS <ArrowRight size={20} />
+              <span className="group-hover:!text-[#1dd1a1]">QUERO TESTAR 10 DIAS GRÁTIS</span> <ArrowRight size={20} className="!text-[#1f2937] group-hover:!text-[#1dd1a1]" />
             </Link>
             
             <div className="mt-8 pt-8 border-t border-white/5 space-y-4">

@@ -12,13 +12,53 @@ function RegisterSuccess() {
   const [status, setStatus] = useState<'checking' | 'confirmed' | 'pending' | 'error'>('checking')
   const [storeData, setStoreData] = useState({ email: '', store_name: '' })
 
-  // Simula o carregamento e mostra sucesso imediatamente
+  // Verifica status real do pagamento via backend
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setStatus('confirmed')
-    }, 1500)
-    return () => clearTimeout(timer)
-  }, [])
+    if (!refId) {
+      setStatus('error')
+      return
+    }
+
+    let cancelled = false
+    let interval: ReturnType<typeof setInterval> | null = null
+    let attempts = 0
+    const maxAttempts = 24 // ~2 minutos (24 * 5s)
+
+    const checkStatus = async () => {
+      try {
+        const { data } = await api.get(`/payments/check-status/${refId}`)
+        if (cancelled) return
+
+        setStoreData({
+          email: data?.email || '',
+          store_name: data?.store_name || ''
+        })
+
+        if (data?.is_paid || data?.status === 'PAID') {
+          setStatus('confirmed')
+          if (interval) clearInterval(interval)
+          return
+        }
+
+        setStatus('pending')
+        attempts += 1
+        if (attempts >= maxAttempts && interval) {
+          clearInterval(interval)
+        }
+      } catch {
+        if (!cancelled) setStatus('error')
+        if (interval) clearInterval(interval)
+      }
+    }
+
+    checkStatus()
+    interval = setInterval(checkStatus, 5000)
+
+    return () => {
+      cancelled = true
+      if (interval) clearInterval(interval)
+    }
+  }, [refId])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden">

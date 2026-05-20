@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Car, Search, Gauge, Shield, ArrowRight, X, Info, Phone, MapPin } from 'lucide-react'
+import { Car, Search, ArrowRight, X, Info } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import api from '../lib/api'
 
@@ -24,7 +24,7 @@ const MOCK_VEHICLES = [
 Você não está comprando apenas um carro, mas sim acesso a uma performance inigualável e um status de exclusividade. Motor ajustado milimetricamente para entregar potência brutal sem perder o conforto para o dia a dia. 
 
 Acabamento interno em couro premium e fibra de carbono. Entregamos para todo o Brasil com logística VIP.`,
-      media: [{ url: `https://images.unsplash.com/photo-${['1614162692292-7ac56d7f7f1e', '1544829099-b9a0c07fad1a', '1618843479313-40f8afb4b4d8', '1606152421802-db97b9c7a11b', '1555215695-3004980ad54e', '1563720223185-11003d5169a6'][i % 6]}?auto=format&fit=crop&w=1000&q=80` }],
+      media: [],
       store: {
         name: `${brand} Oficial Brasil`,
         address: 'Avenida Europa, São Paulo - SP'
@@ -133,11 +133,17 @@ function Catalog() {
               >
                 {/* Imagem do carro (Ocupa a largura no celular, e metade no desktop) */}
                 <Link to={`/veiculo/${vehicle.slug}`} className="relative h-[300px] lg:h-[450px] lg:w-1/2 overflow-hidden flex-shrink-0 cursor-pointer block">
-                  <img 
-                    src={vehicle.media?.[0]?.url || "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e"} 
-                    alt={`${vehicle.title} Auto Racer`}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
-                  />
+                  {vehicle.media?.[0]?.url ? (
+                    <img
+                      src={vehicle.media?.[0]?.url}
+                      alt={`${vehicle.title} Auto Racer`}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[radial-gradient(circle_at_75%_20%,rgba(29,209,161,0.25),transparent_40%),linear-gradient(135deg,#161c23_0%,#10151b_55%,#0a0d12_100%)] p-8 flex items-end">
+                      <p className="text-[10px] font-black uppercase tracking-[0.28em] text-white/80">Imagem oficial em atualização</p>
+                    </div>
+                  )}
                   <div className="absolute top-6 left-6 flex gap-2 flex-col">
                     <span className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-xl text-[10px] font-black tracking-widest uppercase border border-white/10">
                       {vehicle.brand}
@@ -158,28 +164,14 @@ function Catalog() {
                 {/* Informações ao lado (ou abaixo no celular) */}
                 <div className="p-8 lg:p-14 flex flex-col justify-center flex-1 space-y-6">
                   <div>
-                    <h3 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase italic">{vehicle.title}</h3>
+                    <h3 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase italic">Veículo Premium Disponível</h3>
                     <p className="font-['Architects_Daughter'] text-lg text-[#1dd1a1] opacity-80 mt-2">
                       "Sem burocracia. Sem surpresa."
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-6 text-[#8395a7] font-bold text-sm uppercase tracking-widest bg-white/5 p-4 rounded-2xl border border-white/5">
-                    <span className="flex items-center gap-2"><Gauge size={16} className="text-[#1dd1a1]" /> {vehicle.km.toLocaleString('pt-BR')} KM</span>
-                    <span className="flex items-center gap-2"><Shield size={16} className="text-[#1dd1a1]" /> Garantia Elite</span>
-                  </div>
-
-                  <div className="text-xl md:text-xl font-black text-[#1dd1a1] tracking-tighter drop-shadow-md">
-                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(vehicle.price)}
-                  </div>
-
-                  {/* Informações da Loja / Parceiro */}
-                  <div className="bg-[#0B0E14]/80 border border-white/5 rounded-2xl p-4 flex flex-col gap-1.5">
-                    <span className="text-[10px] uppercase font-black tracking-widest text-[#576574]">Vendido e entregue por:</span>
-                    <span className="text-sm font-bold text-white flex items-center gap-2">
-                      <MapPin size={14} className="text-[#1dd1a1] flex-shrink-0" /> 
-                      {vehicle.stores?.name || vehicle.store?.name || 'Unidade Auto Racer'} — {vehicle.stores?.address || vehicle.store?.address || 'São Paulo, SP'}
-                    </span>
+                  <div className="text-sm font-bold text-[#8395a7] uppercase tracking-widest bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                    Dados completos sob consulta com especialista
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -204,9 +196,9 @@ function Catalog() {
                       href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} no catálogo da Auto Racer e gostaria de negociar.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest text-black hover:bg-white hover:text-gray-800 transition-all flex items-center justify-center gap-2 group/btn shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
+                      className="group/cta flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest !text-[#1f2937] hover:bg-white hover:!text-[#1dd1a1] transition-all flex items-center justify-center text-center shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
                     >
-                      Negociar Agora <Phone size={16} />
+                      <span className="w-full text-center leading-none">Negociar Agora</span>
                     </a>
                   </div>
                 </div>
@@ -237,7 +229,7 @@ function Catalog() {
               </h2>
               <Link
                 to="/parceiro"
-                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] text-black font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:text-gray-800 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
+                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
               >
                 Conhecer Planos de Parceiro <ArrowRight size={20} />
               </Link>
@@ -292,7 +284,7 @@ function Catalog() {
               <div className="pt-6 shrink-0 mt-auto border-t border-white/10">
                 <Link 
                   to={`/veiculo/${selectedDescVehicle.slug}`}
-                  className="w-full py-5 bg-[#1dd1a1] text-black rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:text-gray-800 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
+                  className="w-full py-5 bg-[#1dd1a1] !text-[#1f2937] rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
                 >
                   Continuar Negociação <ArrowRight size={18} />
                 </Link>
