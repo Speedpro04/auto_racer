@@ -159,7 +159,7 @@ function Checkout() {
                   <Loader2 className="w-6 h-6 animate-spin" />
                 ) : (
                   <>
-                    <span>Começar 15 Dias Grátis</span>
+                    <p className="text-xs text-[#576574] mt-2">Seu cartão de crédito será lido de forma segura apenas após o término dos 15 dias de teste gratuito. Não haverá cobrança durante o período de teste.</p><span>Começar 15 Dias Grátis</span>
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}

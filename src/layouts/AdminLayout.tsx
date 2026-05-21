@@ -111,6 +111,7 @@ function AdminLayout() {
                 >
                   Assinar agora
                 </button>
+                <p className="text-xs text-[#8395a7] mt-2">Seu cartão será cobrado somente após o término dos 15 dias de teste gratuito. Você pode cancelar a qualquer momento sem cobranças.</p>
               </p>
             </div>
             <button onClick={() => setDismissedBanner(true)} className="text-amber-400/50 hover:text-amber-400 transition-colors">
