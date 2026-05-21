@@ -363,13 +363,13 @@ function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     to="/contato?ref=parceiro" 
-                    className="px-10 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-[10px] tracking-widest rounded-2xl hover:bg-white hover:!text-[#1dd1a1] transition-all text-center"
+                    className="px-10 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-[14px] tracking-widest rounded-2xl hover:bg-white hover:!text-[#1dd1a1] transition-all text-center"
                   >
                     Quero Ser um Parceiro
                   </Link>
                   <div className="flex items-center gap-4 px-6 py-5 border border-white/10 rounded-2xl bg-white/5">
                     <Zap className="w-5 h-5 text-[#1dd1a1]" />
-                    <span className="text-[9px] font-black uppercase tracking-widest text-white">Venda 3x Mais Rápido</span>
+                    <span className="text-[13px] font-black uppercase tracking-widest text-white">AJUDAMOS VOCE A VENDER SEUS CARROS.</span>
                   </div>
                 </div>
               </div>
@@ -426,8 +426,8 @@ function Home() {
             </div>
             
             <h2 className="text-xl md:text-[40px] font-black font-impact tracking-tighter uppercase mb-6 italic leading-[0.9]">
-              Fale com um Especialista <br />
-              <span className="text-[#1dd1a1]">Auto Racer</span>
+              Ajudo Você a Vender <br />
+              <span className="text-[#1dd1a1]">Seu Carro Mais Rápido</span>
             </h2>
             
             <p className="font-['Architects_Daughter'] text-2xl text-white opacity-80 mb-12">
