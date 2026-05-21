@@ -33,7 +33,7 @@ class CheckoutRequest(BaseModel):
 async def create_checkout(data: CheckoutRequest, request: Request):
     """
     1. Salva os dados do registro como pendente
-    2. Cria um checkout no Stripe (R$69,90)
+    2. Cria um checkout no Stripe (Assinatura R$89,00/mês com 15 dias grátis)
     3. Retorna a URL de pagamento para redirecionar o usuario
     """
     reference_id = f"AUTORACER-{uuid.uuid4().hex[:12].upper()}"
@@ -60,13 +60,22 @@ async def create_checkout(data: CheckoutRequest, request: Request):
                 'price_data': {
                     'currency': 'brl',
                     'product_data': {
-                        'name': 'Auto Racer — Plano Parceiro (1º mês)',
+                        'name': 'Auto Racer — Plano Parceiro',
                     },
-                    'unit_amount': 6990,
+                    'unit_amount': 8900,
+                    'recurring': {
+                        'interval': 'month',
+                    },
                 },
                 'quantity': 1,
             }],
-            mode='payment',
+            mode='subscription',
+            subscription_data={
+                'trial_period_days': 15,
+                'metadata': {
+                    'reference_id': reference_id,
+                },
+            },
             success_url=f"{origin}/cadastro-sucesso?ref={reference_id}",
             cancel_url=f"{origin}/cadastro",
             client_reference_id=reference_id,
@@ -90,8 +99,10 @@ async def create_checkout(data: CheckoutRequest, request: Request):
 @router.post("/webhook")
 async def stripe_webhook(request: Request):
     """
-    Webhook chamado pelo Stripe quando o pagamento é confirmado.
-    Cria a conta do usuario e a loja automaticamente.
+    Webhook chamado pelo Stripe para eventos de assinatura.
+    - checkout.session.completed: Cria a conta do usuario e a loja (trial ativo).
+    - customer.subscription.deleted: Marca assinatura como cancelada.
+    - invoice.payment_succeeded: Renova a assinatura após o trial.
     """
     payload = await request.body()
     sig_header = request.headers.get("stripe-signature")
@@ -105,20 +116,23 @@ async def stripe_webhook(request: Request):
     except stripe.error.SignatureVerificationError as e:
         raise HTTPException(status_code=400, detail="Invalid signature")
 
-    if event['type'] == 'checkout.session.completed':
+    event_type = event['type']
+
+    # ─── CHECKOUT COMPLETO (trial iniciado) ───
+    if event_type == 'checkout.session.completed':
         session = event['data']['object']
         reference_id = session.get('client_reference_id')
-        order_id = session.get('id')
-        charge_id = session.get('payment_intent', "")
+        subscription_id = session.get('subscription', '')
+        customer_id = session.get('customer', '')
 
         # Log da transação
         supabase.table("payment_transactions").insert({
             "reference_id": reference_id,
-            "pagbank_order_id": order_id,
-            "pagbank_charge_id": charge_id,
+            "pagbank_order_id": subscription_id,
+            "pagbank_charge_id": customer_id,
             "type": "STRIPE_CHECKOUT",
-            "status": "PAID",
-            "amount": 6990,
+            "status": "TRIAL",
+            "amount": 8900,
             "raw_payload": session
         }).execute()
 
@@ -143,8 +157,10 @@ async def stripe_webhook(request: Request):
 
         user_id = auth_response.user.id
 
-        # Criar loja
+        # Criar loja com trial de 15 dias
         import re
+        from datetime import datetime, timedelta, timezone
+
         base_slug = re.sub(r'[^a-z0-9]+', '-', reg["store_name"].lower()).strip('-')
         slug = base_slug
         
@@ -152,12 +168,15 @@ async def stripe_webhook(request: Request):
         if existing_slug.data:
             slug = f"{base_slug}-{user_id[:6]}"
 
+        trial_end = (datetime.now(timezone.utc) + timedelta(days=15)).isoformat()
+
         store_result = supabase.table("stores").insert({
             "name": reg["store_name"],
             "slug": slug,
             "phone": reg.get("phone", ""),
             "plan": "parceiro",
-            "active": True
+            "active": True,
+            "trial_ends_at": trial_end
         }).execute()
 
         store_id = store_result.data[0]["id"]
@@ -175,14 +194,15 @@ async def stripe_webhook(request: Request):
         now = datetime.now(timezone.utc)
         period_end = now + timedelta(days=30)
 
+        # Criar assinatura (status TRIALING)
         supabase.table("subscriptions").insert({
             "store_id": store_id,
             "user_id": user_id,
             "plan": "parceiro",
-            "status": "ACTIVE",
-            "amount": 6990,
-            "pagbank_order_id": order_id,
-            "pagbank_charge_id": charge_id,
+            "status": "TRIALING",
+            "amount": 8900,
+            "pagbank_order_id": subscription_id,
+            "pagbank_charge_id": customer_id,
             "current_period_start": now.isoformat(),
             "current_period_end": period_end.isoformat()
         }).execute()
@@ -196,6 +216,40 @@ async def stripe_webhook(request: Request):
         supabase.table("pending_registrations").update({
             "status": "PAID"
         }).eq("reference_id", reference_id).execute()
+
+    # ─── PAGAMENTO DA ASSINATURA CONFIRMADO (após trial) ───
+    elif event_type == 'invoice.payment_succeeded':
+        invoice = event['data']['object']
+        subscription_id = invoice.get('subscription', '')
+        customer_id = invoice.get('customer', '')
+        amount = invoice.get('amount_paid', 8900)
+
+        # Só processar faturas de renovação (não a do trial)
+        if invoice.get('billing_reason') == 'subscription_cycle':
+            # Atualizar assinatura para ACTIVE
+            supabase.table("subscriptions").update({
+                "status": "ACTIVE"
+            }).eq("pagbank_order_id", subscription_id).execute()
+
+            # Log da transação
+            supabase.table("payment_transactions").insert({
+                "pagbank_order_id": subscription_id,
+                "pagbank_charge_id": customer_id,
+                "type": "SUBSCRIPTION_RENEWAL",
+                "status": "PAID",
+                "amount": amount,
+                "raw_payload": invoice
+            }).execute()
+
+    # ─── ASSINATURA CANCELADA ───
+    elif event_type == 'customer.subscription.deleted':
+        subscription = event['data']['object']
+        subscription_id = subscription.get('id', '')
+
+        # Marcar assinatura como cancelada
+        supabase.table("subscriptions").update({
+            "status": "CANCELLED"
+        }).eq("pagbank_order_id", subscription_id).execute()
 
     return {"status": "success"}
 

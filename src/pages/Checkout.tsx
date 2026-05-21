@@ -12,13 +12,15 @@ function Checkout() {
   // Simulando dados que viriam do registro ou estado global
   const planData = {
     name: 'Plano Parceiro',
-    price: '69,90',
+    price: '89,00',
+    trialDays: 15,
     description: 'Vitrine Premium Compartilhada',
     features: [
       'Cadastro Ilimitado de Veículos',
       'Acesso ao Módulo Racer Redes (Vídeos IA)',
       'Integração com Second Brain (IA)',
-      'Suporte Prioritário'
+      'Suporte Prioritário',
+      '15 dias grátis para testar'
     ]
   }
 
@@ -83,7 +85,7 @@ function Checkout() {
               <h1 className="text-4xl font-black font-impact italic uppercase tracking-tighter mb-2">
                 Checkout <span className="text-[#1dd1a1]">Seguro</span>
               </h1>
-              <p className="text-[#8395a7] font-medium">Finalize sua assinatura para liberar o acesso total ao sistema.</p>
+              <p className="text-[#8395a7] font-medium">Cadastre seu cartão e ganhe <span className="text-[#1dd1a1] font-bold">15 dias grátis</span> para testar o sistema completo.</p>
             </div>
 
             <div className="bg-[#111111] border border-white/5 rounded-3xl p-8 relative overflow-hidden group">
@@ -94,9 +96,14 @@ function Checkout() {
               <h2 className="text-xl font-bold mb-1">{planData.name}</h2>
               <p className="text-xs font-black uppercase tracking-widest text-[#576574] mb-6">{planData.description}</p>
               
+              <div className="mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 mb-4">
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#1dd1a1]">🎉 15 dias grátis</span>
+                </div>
+              </div>
               <div className="flex items-end gap-2 mb-8">
                 <span className="text-4xl font-black font-impact text-[#1dd1a1]">R$ {planData.price}</span>
-                <span className="text-[#576574] text-xs font-bold uppercase tracking-widest pb-1">/mês</span>
+                <span className="text-[#576574] text-xs font-bold uppercase tracking-widest pb-1">/mês após o trial</span>
               </div>
 
               <ul className="space-y-4">
@@ -130,8 +137,11 @@ function Checkout() {
               </div>
               
               <h3 className="text-2xl font-black font-impact italic uppercase mb-4">Quase lá!</h3>
-              <p className="text-sm text-[#8395a7] mb-10 leading-relaxed">
-                Ao clicar no botão abaixo, você será redirecionado para a página oficial do Stripe para concluir o pagamento de forma segura.
+              <p className="text-sm text-[#8395a7] mb-4 leading-relaxed">
+                Cadastre seu cartão de crédito para iniciar seus <span className="text-[#1dd1a1] font-bold">15 dias grátis</span>. Você será redirecionado para a página segura do Stripe.
+              </p>
+              <p className="text-xs text-[#576574] mb-10 leading-relaxed">
+                Nenhuma cobrança será feita durante o período de teste. Após 15 dias, a assinatura de <span className="text-white font-bold">R$ 89,00/mês</span> será ativada automaticamente.
               </p>
 
               {error && (
@@ -149,14 +159,14 @@ function Checkout() {
                   <Loader2 className="w-6 h-6 animate-spin" />
                 ) : (
                   <>
-                    <span>Ir para Pagamento</span>
+                    <span>Começar 15 Dias Grátis</span>
                     <ArrowRight className="w-5 h-5" />
                   </>
                 )}
               </button>
               
               <p className="mt-6 text-[9px] text-[#444] font-black uppercase tracking-[0.3em]">
-                Sem fidelidade. Cancele quando quiser.
+                Sem fidelidade. Cancele a qualquer momento, mesmo durante o trial.
               </p>
             </div>
           </motion.div>

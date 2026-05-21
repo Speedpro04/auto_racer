@@ -77,7 +77,7 @@ async def login(request: LoginRequest):
 @router.post("/register")
 async def register(request: RegisterRequest):
     """
-    Registra um novo parceiro com 10 dias de trial gratuito.
+    Registra um novo parceiro com 15 dias de trial gratuito.
     """
     try:
         # 1. Cadastrar usuário no Supabase Auth
@@ -102,8 +102,8 @@ async def register(request: RegisterRequest):
         if existing_slug.data:
             slug = f"{base_slug}-{user_id[:6]}"
 
-        # 3. Criar a loja com trial de 10 dias
-        trial_end = (datetime.now(timezone.utc) + timedelta(days=10)).isoformat()
+        # 3. Criar a loja com trial de 15 dias
+        trial_end = (datetime.now(timezone.utc) + timedelta(days=15)).isoformat()
         store_data = {
             "name": request.store_name,
             "slug": slug,
@@ -130,7 +130,7 @@ async def register(request: RegisterRequest):
 
         return {
             "success": True,
-            "message": "Conta criada com sucesso. Você tem 10 dias grátis!",
+            "message": "Conta criada com sucesso. Você tem 15 dias grátis!",
             "user_id": user_id,
             "store_slug": slug,
             "trial_ends_at": trial_end

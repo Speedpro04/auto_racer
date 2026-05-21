@@ -51,8 +51,8 @@ function AdminLayout() {
               Período de Teste <span className="text-red-400">Expirado</span>
             </h1>
             <p className="text-[#8395a7] text-sm leading-relaxed">
-              Seus 10 dias gratuitos terminaram. Para continuar usando o Auto Racer 
-              e manter sua loja ativa, assine o Plano Parceiro por apenas <strong className="text-[#1dd1a1]">R$ 69,90/mês</strong>.
+              Seus 15 dias gratuitos terminaram. Para continuar usando o Auto Racer 
+              e manter sua loja ativa, assine o Plano Parceiro por apenas <strong className="text-[#1dd1a1]">R$ 89,00/mês</strong>.
             </p>
           </div>
 
@@ -70,7 +70,7 @@ function AdminLayout() {
             className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
           >
             <CreditCard className="w-5 h-5" />
-            <span>Assinar Agora — R$ 69,90/mês</span>
+            <span>Assinar Agora — R$ 89,00/mês</span>
           </button>
 
           <p className="text-[9px] text-[#444] font-black uppercase tracking-[0.3em]">

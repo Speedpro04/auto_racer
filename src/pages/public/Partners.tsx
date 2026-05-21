@@ -44,8 +44,13 @@ function Partners() {
               <h3 className="text-2xl font-black font-impact italic uppercase tracking-widest text-white mb-2">Plano Parceiro</h3>
               <p className="text-[#576574] text-xs font-bold uppercase tracking-[0.2em] mb-8">Vitrine Premium no Vale</p>
               
+              <div className="mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1dd1a1]/10 border border-[#1dd1a1]/20">
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#1dd1a1]">🎉 15 dias grátis</span>
+                </div>
+              </div>
               <div className="mb-10 flex items-end gap-2">
-                <span className="text-4xl font-black font-impact text-[#1dd1a1]">R$ 69,90</span>
+                <span className="text-4xl font-black font-impact text-[#1dd1a1]">R$ 89,00</span>
                 <span className="text-[#576574] text-sm font-bold uppercase tracking-widest pb-1">/mês</span>
               </div>
 

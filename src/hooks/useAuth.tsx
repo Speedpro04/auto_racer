@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     // PASSE LIVRE - Bypass para desenvolvimento
     if (email === 'admin@admin.com' && password === 'admin') {
-      const trialEnd = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+      const trialEnd = new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString()
       const mockData = {
         success: true,
         access_token: 'dev-token',
