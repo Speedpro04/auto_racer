@@ -96,18 +96,18 @@ function AdminDashboard() {
             variants={itemVariants}
             className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative group overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-full blur-3xl group-hover:bg-[#1dd1a1]/15 transition-all duration-500" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-[4px] blur-3xl group-hover:bg-[#1dd1a1]/15 transition-all duration-500" />
             <div className="flex items-center justify-between mb-8">
               <div className="p-4 bg-black rounded-[4px] border border-white/10 group-hover:border-[#1dd1a1]/50 transition-all duration-500">
                 <stat.icon className="w-6 h-6" style={{ color: stat.color }} />
               </div>
-              <div className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1.5 rounded-full">
+              <div className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1.5 rounded-[4px]">
                 {stat.trend}
               </div>
             </div>
             <span className="block text-[10px] text-[#576574] font-black uppercase tracking-[0.3em] mb-2">{stat.label}</span>
             <span className="block text-xl font-black text-white tracking-tighter">{stat.value}</span>
-            <div className="mt-4 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+            <div className="mt-4 h-1 w-full bg-white/5 rounded-[4px] overflow-hidden">
                <motion.div 
                  initial={{ width: 0 }}
                  animate={{ width: '65%' }}
@@ -132,7 +132,7 @@ function AdminDashboard() {
               </h2>
               <p className="text-[9px] font-black text-[#444] uppercase tracking-[0.4em] mt-2">Update sincronizado em tempo real</p>
             </div>
-            <Link to="/admin/veiculos" className="px-5 py-2.5 rounded-full bg-white/5 text-[10px] font-black uppercase tracking-widest text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">Ver todos</Link>
+            <Link to="/admin/veiculos" className="px-5 py-2.5 rounded-[4px] bg-white/5 text-[10px] font-black uppercase tracking-widest text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">Ver todos</Link>
           </div>
           <div className="p-4 space-y-2">
             {recentVehicles.length === 0 ? (
@@ -152,7 +152,7 @@ function AdminDashboard() {
                       <h3 className="text-lg font-bold text-white group-hover:text-[#1dd1a1] transition-colors uppercase tracking-tight font-impact">{vehicle.title}</h3>
                       <div className="flex items-center gap-3 mt-1">
                         <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.brand}</span>
-                        <div className="w-1 h-1 rounded-full bg-[#333]" />
+                        <div className="w-1 h-1 rounded-[4px] bg-[#333]" />
                         <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.year}</span>
                       </div>
                     </div>
@@ -161,7 +161,7 @@ function AdminDashboard() {
                     <span className="block text-xl font-black text-white tracking-tighter group-hover:text-[#1dd1a1] transition-colors">
                       {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(vehicle.price) || 0)}
                     </span>
-                    <span className="inline-block mt-1 px-3 py-1 rounded-full bg-white/5 text-[9px] font-black uppercase text-[#576574] tracking-widest border border-white/5">
+                    <span className="inline-block mt-1 px-3 py-1 rounded-[4px] bg-white/5 text-[9px] font-black uppercase text-[#576574] tracking-widest border border-white/5">
                       {vehicle.status}
                     </span>
                   </div>
@@ -177,7 +177,7 @@ function AdminDashboard() {
           className="space-y-6"
         >
           <div className="bg-[#1dd1a1] rounded-[4px] p-10 flex flex-col justify-between text-black shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] relative overflow-hidden h-[400px]">
-             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-3xl rounded-full" />
+             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-3xl rounded-[4px]" />
              <div className="relative z-10">
                <div className="w-12 h-12 bg-black rounded-[4px] flex items-center justify-center mb-10 shadow-xl">
                  <Activity className="w-6 h-6 text-[#1dd1a1]" />
@@ -197,7 +197,7 @@ function AdminDashboard() {
              </div>
              <p className="text-[#576574] text-xs font-bold leading-relaxed uppercase">Sua base de conhecimento RAG foi atualizada com novos termos de financiamento híbrido.</p>
              <div className="mt-8 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#1dd1a1] text-black animate-ping" />
+                <div className="w-2 h-2 rounded-[4px] bg-[#1dd1a1] text-black animate-ping" />
                 <span className="text-[9px] font-black text-[#1dd1a1] uppercase tracking-[0.2em]">Sincronizado</span>
              </div>
           </div>

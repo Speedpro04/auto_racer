@@ -74,12 +74,12 @@ export default function FinancingCalculator({ isOpen, onClose }: FinancingCalcul
         {/* Botão Fechar dentro do Card */}
         <button 
           onClick={onClose}
-          className="absolute top-[39px] right-[39px] p-2 bg-white/5 hover:bg-red-500/20 text-[#555] hover:text-red-500 rounded-full transition-all z-[100] shadow-lg"
+          className="absolute top-[39px] right-[39px] p-2 bg-white/5 hover:bg-red-500/20 text-[#555] hover:text-red-500 rounded-[4px] transition-all z-[100] shadow-lg"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#1dd1a1]/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px] pointer-events-none" />
 
       <div className="text-center mb-8 relative z-10">
          <h2 className="text-3xl md:text-5xl font-black font-impact tracking-tighter uppercase mb-2 italic">
@@ -112,7 +112,7 @@ export default function FinancingCalculator({ isOpen, onClose }: FinancingCalcul
                 type="range" 
                 min="100000" max="5000000" step="50000"
                 value={vehicleValue} onChange={handleVehicleValueChange}
-                className="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-[#1dd1a1]"
+                className="w-full h-2 bg-white/5 rounded-[4px] appearance-none cursor-pointer accent-[#1dd1a1]"
               />
               <div className="flex justify-between text-[10px] text-[#555] font-black tracking-widest">
                 <span>R$ 100k</span><span>R$ 5 Milhões+</span>
@@ -129,7 +129,7 @@ export default function FinancingCalculator({ isOpen, onClose }: FinancingCalcul
                 type="range" 
                 min="0" max={vehicleValue} step="10000"
                 value={downPayment} onChange={(e) => setDownPayment(Number(e.target.value))}
-                className="w-full h-2 bg-white/5 rounded-full appearance-none cursor-pointer accent-[#00f3ff]"
+                className="w-full h-2 bg-white/5 rounded-[4px] appearance-none cursor-pointer accent-[#00f3ff]"
               />
               <div className="flex justify-between text-[10px] text-[#555] font-black tracking-widest">
                 <span>R$ 0</span><span>{formatCurrency(vehicleValue)}</span>

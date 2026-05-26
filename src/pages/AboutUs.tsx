@@ -23,7 +23,7 @@ function AboutUs() {
         </div>
 
         <div className="relative z-10 max-w-[1140px] px-6 text-center mt-20">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-8 animate-pulse">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-8 animate-pulse">
             CONECTANDO VOCÊ AOS MELHORES
           </span>
           <h1 className="text-xl md:text-xl lg:text-[58px] font-black font-impact tracking-tighter uppercase mb-6 italic leading-[0.9] drop-shadow-2xl text-white">
@@ -72,19 +72,19 @@ function AboutUs() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-32">
           <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-[4px] group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Tudo em um lugar"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Vitrine Digital</h4>
             <p className="text-[#576574] text-sm font-bold uppercase tracking-widest leading-relaxed">Filtre, compare e encontre seu próximo veículo sem sair de casa, navegando pelo estoque de múltiplas lojas.</p>
           </div>
           <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-[4px] group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Zero barreira"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Contato Direto</h4>
             <p className="text-[#576574] text-sm font-bold uppercase tracking-widest leading-relaxed">A Auto Racer não interfere na venda. Ao escolher um modelo, você clica e fala direto com a loja dona do veículo.</p>
           </div>
           <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
-            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-[4px] group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Foco no usuário"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Tecnologia</h4>
             <p className="text-[#576574] text-sm font-bold uppercase tracking-widest leading-relaxed">Nossa plataforma foi desenvolvida para ser acessível e intuitiva, facilitando a sua busca diária.</p>
@@ -93,7 +93,7 @@ function AboutUs() {
 
         {/* CTA Section */}
         <div className="relative rounded-[4px] overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-16 md:p-24 text-center shadow-[0_0_100px_rgba(29,209,161,0.05)]">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1dd1a1]/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1dd1a1]/10 blur-[100px] rounded-[4px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
           
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase italic mb-6 text-white">

@@ -174,9 +174,9 @@ export default function BrandDNA() {
                 </span>
                 <span className="text-purple-400">{progress}%</span>
               </div>
-              <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+              <div className="h-1.5 bg-white/5 rounded-[4px] overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 rounded-full"
+                  className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 rounded-[4px]"
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.3 }}
                 />
@@ -197,7 +197,7 @@ export default function BrandDNA() {
           >
             {/* Color Palette */}
             <div className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6 overflow-hidden relative">
-              <div className="absolute top-0 right-0 w-60 h-60 bg-purple-500/5 blur-[80px] rounded-full" />
+              <div className="absolute top-0 right-0 w-60 h-60 bg-purple-500/5 blur-[80px] rounded-[4px]" />
               <div className="flex items-center gap-3 mb-5 relative z-10">
                 <Palette className="w-5 h-5 text-purple-400" />
                 <h3 className="text-[17px] font-bold text-white">Paleta Cromática</h3>
@@ -312,7 +312,7 @@ export default function BrandDNA() {
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6 + i * 0.08 }}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/15 to-blue-500/15 border border-purple-500/20 text-[13px] font-bold text-purple-300"
+                    className="px-4 py-2 rounded-[4px] bg-gradient-to-r from-purple-500/15 to-blue-500/15 border border-purple-500/20 text-[13px] font-bold text-purple-300"
                   >
                     {trait}
                   </motion.span>

@@ -9,12 +9,12 @@ function AdminHeader() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex items-center gap-4">
-             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#1dd1a1] text-black animate-pulse" />
+             <div className="flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-white/5 border border-white/5">
+                <div className="w-1.5 h-1.5 rounded-[4px] bg-[#1dd1a1] text-black animate-pulse" />
                 <span className="text-[11px] font-black text-[#2d3436] uppercase tracking-widest">Polars: Active</span>
              </div>
-             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#3b82f6] shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+             <div className="flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-white/5 border border-white/5">
+                <div className="w-1.5 h-1.5 rounded-[4px] bg-[#3b82f6] shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
                 <span className="text-[11px] font-black text-[#2d3436] uppercase tracking-widest">Brain: Sync</span>
              </div>
           </div>
@@ -23,7 +23,7 @@ function AdminHeader() {
             <input 
               type="text" 
               placeholder="Buscar no sistema..." 
-              className="bg-[#2d3436] border border-[#2d3436] rounded-full py-3 pl-12 pr-6 text-sm font-black text-white placeholder:text-[#8395a7] outline-none focus:border-[#1dd1a1]/50 w-72 transition-all shadow-md"
+              className="bg-[#2d3436] border border-[#2d3436] rounded-[4px] py-3 pl-12 pr-6 text-sm font-black text-white placeholder:text-[#8395a7] outline-none focus:border-[#1dd1a1]/50 w-72 transition-all shadow-md"
             />
           </div>
         </div>
@@ -32,7 +32,7 @@ function AdminHeader() {
           <div className="flex items-center gap-4 border-r border-white/5 pr-6">
              <button className="p-2.5 rounded-[4px] bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all relative">
                 <Bell className="w-5 h-5" />
-                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#1dd1a1] text-black rounded-full ring-2 ring-black" />
+                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#1dd1a1] text-black rounded-[4px] ring-2 ring-black" />
              </button>
              <button className="p-2.5 rounded-[4px] bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">
                 <Activity className="w-5 h-5" />

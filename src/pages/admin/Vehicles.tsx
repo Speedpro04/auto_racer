@@ -93,7 +93,7 @@ function AdminVehicles() {
         </div>
       ) : filteredVehicles.length === 0 ? (
         <div className="bg-[#14181C] rounded-[4px] p-16 text-center border border-[#1dd1a1]/30 shadow-2xl">
-          <div className="w-20 h-20 bg-black border border-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 bg-black border border-white/5 rounded-[4px] flex items-center justify-center mx-auto mb-6">
             <Car className="w-10 h-10 text-[#222]" />
           </div>
           <p className="text-[#A3A3A3] font-medium mb-8">Nenhum veículo encontrado no seu inventário atual.</p>

@@ -108,7 +108,7 @@ function Catalog() {
               {/* Mid-scroll SPIN Banner de Objeção */}
               {index === 3 && (
                 <div className="bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 rounded-[4px] p-10 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
-                  <div className="absolute top-0 left-0 w-[400px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-full" />
+                  <div className="absolute top-0 left-0 w-[400px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px]" />
                   <div className="flex-1 relative z-10">
                     <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] block mb-4">Transparência Total</span>
                     <h2 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase italic mb-4">
@@ -264,7 +264,7 @@ function Catalog() {
                 </div>
                 <button 
                   onClick={() => setSelectedDescVehicle(null)}
-                  className="w-12 h-12 bg-white/5 hover:bg-[#1dd1a1] hover:text-gray-800 rounded-full flex items-center justify-center transition-all text-[#8395a7]"
+                  className="w-12 h-12 bg-white/5 hover:bg-[#1dd1a1] hover:text-gray-800 rounded-[4px] flex items-center justify-center transition-all text-[#8395a7]"
                 >
                   <X size={24} />
                 </button>

@@ -20,7 +20,7 @@ function AdminSidebar() {
       <div className="p-10 border-b border-white/5">
         <Link to="/admin" className="flex flex-col gap-4">
           <div className="relative group">
-             <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700" />
+             <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-xl rounded-[4px] opacity-0 group-hover:opacity-100 transition-all duration-700" />
              <img 
                src="/logo-auto-principal.png" 
                alt="Auto Racer" 
@@ -65,8 +65,8 @@ function AdminSidebar() {
               <ShieldAlert className="w-4 h-4 text-[#1dd1a1]" />
               <span className="text-[10px] font-black text-white uppercase tracking-widest">Proteção Ativa</span>
            </div>
-           <div className="w-full h-1 bg-white/5 rounded-full">
-              <div className="w-full h-full bg-[#1dd1a1] text-black rounded-full animate-pulse" />
+           <div className="w-full h-1 bg-white/5 rounded-[4px]">
+              <div className="w-full h-full bg-[#1dd1a1] text-black rounded-[4px] animate-pulse" />
            </div>
         </div>
         <button

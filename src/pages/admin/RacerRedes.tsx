@@ -150,8 +150,8 @@ function RacerRedes() {
     >
       {/* ── Hero Header ── */}
       <div className="rounded-[4px] border border-white/5 bg-[#2d3436] p-8 relative overflow-hidden shadow-2xl">
-        <div className="absolute -top-20 -right-20 w-60 h-60 bg-purple-500/10 blur-[80px] rounded-full" />
-        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#1dd1a1]/10 blur-[80px] rounded-full" />
+        <div className="absolute -top-20 -right-20 w-60 h-60 bg-purple-500/10 blur-[80px] rounded-[4px]" />
+        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#1dd1a1]/10 blur-[80px] rounded-[4px]" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
@@ -198,7 +198,7 @@ function RacerRedes() {
               {isActive && (
                 <motion.div
                   layoutId="activeTabIndicator"
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-full"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-[4px]"
                   style={{ backgroundColor: tab.color }}
                   transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 />
@@ -250,7 +250,7 @@ function RacerRedes() {
               </div>
               <div className="mt-4 rounded-[4px] border border-white/10 bg-black/25 p-3 text-[13px] text-[#b2bec3]">
                 <p className="text-white font-bold mb-1">Legendas</p>
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#1dd1a1]/20 px-3 py-1 text-[#1dd1a1] font-semibold">
+                <div className="inline-flex items-center gap-2 rounded-[4px] bg-[#1dd1a1]/20 px-3 py-1 text-[#1dd1a1] font-semibold">
                   <Subtitles className="w-3.5 h-3.5" /> Sempre Ativas
                 </div>
               </div>

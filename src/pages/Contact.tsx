@@ -11,8 +11,8 @@ function Contact() {
     <div className="bg-[#0B0E14] min-h-screen text-white pt-40 pb-20 relative overflow-hidden">
       
       {/* Elementos de fundo e Turbina */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#1dd1a1]/5 blur-[200px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#1dd1a1]/5 blur-[250px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#1dd1a1]/5 blur-[200px] rounded-[4px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-[#1dd1a1]/5 blur-[250px] rounded-[4px] pointer-events-none z-0" />
       
       {/* Turbina Gigante na Base */}
       <div className="absolute bottom-[320px] left-0 w-full flex justify-center pointer-events-none select-none z-0 opacity-40">
@@ -23,7 +23,7 @@ function Contact() {
         
         {/* Cabeçalho */}
         <header className="mb-20 text-center max-w-3xl mx-auto">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-6 relative">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-6 relative">
             <Zap className="w-3" />
             Plataforma de Inteligência Automotiva
           </span>
@@ -45,7 +45,7 @@ function Contact() {
             
             {/* Card 1: Geração de Vídeos */}
             <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-[#1dd1a1]/5 blur-[60px] rounded-full transition-colors group-hover:bg-[#1dd1a1]/15" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#1dd1a1]/5 blur-[60px] rounded-[4px] transition-colors group-hover:bg-[#1dd1a1]/15" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-[4px] bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Video className="w-7 h-7 text-[#1dd1a1]" />
@@ -62,7 +62,7 @@ function Contact() {
 
             {/* Card 2: Identidade Visual IA */}
             <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-purple-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/5 blur-[60px] rounded-full transition-colors group-hover:bg-purple-500/15" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/5 blur-[60px] rounded-[4px] transition-colors group-hover:bg-purple-500/15" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-[4px] bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Palette className="w-7 h-7 text-purple-400" />
@@ -79,7 +79,7 @@ function Contact() {
 
             {/* Card 3: Edição Visual IA */}
             <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-blue-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[60px] rounded-full transition-colors group-hover:bg-blue-500/15" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[60px] rounded-[4px] transition-colors group-hover:bg-blue-500/15" />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-[4px] bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Wand2 className="w-7 h-7 text-blue-400" />
@@ -99,7 +99,7 @@ function Contact() {
         {/* Frase de impacto */}
         <section className="mb-20 max-w-4xl mx-auto text-center">
           <div className="relative rounded-[4px] bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 p-12 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#1dd1a1]/5 blur-[100px] rounded-[4px] pointer-events-none" />
             <div className="relative z-10">
               <TrendingUp className="w-10 h-10 text-[#1dd1a1] mx-auto mb-6" />
               <h2 className="text-xl md:text-[32px] font-black font-impact tracking-tighter uppercase italic leading-[1.1] mb-4">
@@ -178,25 +178,25 @@ function Contact() {
             
             <div className="mt-8 pt-8 border-t border-white/5 space-y-4">
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#1dd1a1]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-[4px] bg-[#1dd1a1]/10 flex items-center justify-center flex-shrink-0">
                   <Video className="w-4 h-4 text-[#1dd1a1]" />
                 </div>
                 <span className="text-xs font-bold text-[#8395a7] uppercase tracking-wider">Geração de Vídeos com Narração e Legendas</span>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-[4px] bg-purple-500/10 flex items-center justify-center flex-shrink-0">
                   <Palette className="w-4 h-4 text-purple-400" />
                 </div>
                 <span className="text-xs font-bold text-[#8395a7] uppercase tracking-wider">Marketing IA com Identidade da Sua Marca</span>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-[4px] bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                   <Wand2 className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="text-xs font-bold text-[#8395a7] uppercase tracking-wider">Edição Visual Inteligente de Fotos</span>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-[4px] bg-white/5 flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-4 h-4 text-[#1dd1a1]" />
                 </div>
                 <span className="text-xs font-bold text-[#8395a7] uppercase tracking-wider">Sigilo Total de Dados Fiscais</span>

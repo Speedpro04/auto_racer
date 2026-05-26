@@ -63,8 +63,8 @@ function Checkout() {
   return (
     <div className="min-h-screen bg-[#050505] text-white py-20 px-4 relative overflow-hidden">
       {/* Glow Effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1dd1a1]/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#1dd1a1]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1dd1a1]/10 blur-[120px] rounded-[4px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#1dd1a1]/5 blur-[120px] rounded-[4px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <button 
@@ -97,7 +97,7 @@ function Checkout() {
               <p className="text-xs font-black uppercase tracking-widest text-[#576574] mb-6">{planData.description}</p>
               
               <div className="mb-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 mb-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 mb-4">
                   <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#1dd1a1]">🎉 15 dias grátis</span>
                 </div>
               </div>
@@ -132,7 +132,7 @@ function Checkout() {
             className="flex flex-col justify-center"
           >
             <div className="bg-gradient-to-br from-[#1dd1a1]/10 to-transparent border border-[#1dd1a1]/20 rounded-[4px] p-10 text-center">
-              <div className="w-20 h-20 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(29,209,161,0.3)]">
+              <div className="w-20 h-20 bg-[#1dd1a1] text-black rounded-[4px] flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(29,209,161,0.3)]">
                 <CreditCard className="w-10 h-10 text-black" />
               </div>
               

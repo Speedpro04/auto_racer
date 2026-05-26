@@ -102,7 +102,7 @@ function SuperAdminDashboard() {
            </div>
 
            <div className="bg-gradient-to-br from-[#1dd1a1]/20 to-[#111] p-8 rounded-[4px] border border-[#1dd1a1]/30 relative overflow-hidden">
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/20 blur-3xl rounded-full" />
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/20 blur-3xl rounded-[4px]" />
               <DollarSign className="w-8 h-8 text-[#1dd1a1] mb-6 relative z-10" />
               <p className="text-[10px] text-[#1dd1a1] font-black uppercase tracking-[0.3em] mb-2 relative z-10">MRR Estimado</p>
               <h3 className="text-xl font-black text-[#1dd1a1] tracking-tighter relative z-10">
@@ -150,7 +150,7 @@ function SuperAdminDashboard() {
                           <td className="px-8 py-6 text-center">
                              <div className="inline-flex items-center justify-center gap-4">
                                 <div className="text-center"><span className="block text-white font-bold">{store.vehicles[0]?.count || 0}</span><span className="text-[9px] uppercase text-[#555]">Carros</span></div>
-                                <div className="w-1 h-1 rounded-full bg-[#333]" />
+                                <div className="w-1 h-1 rounded-[4px] bg-[#333]" />
                                 <div className="text-center"><span className="block text-white font-bold">{store.leads[0]?.count || 0}</span><span className="text-[9px] uppercase text-[#555]">Leads</span></div>
                              </div>
                           </td>

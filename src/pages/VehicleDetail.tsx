@@ -124,7 +124,7 @@ function VehicleDetail() {
           {/* Left Column: Gallery */}
           <div className="lg:col-span-12">
              <div className="space-y-4">
-               <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] bg-[#1dd1a1]/5 border border-[#1dd1a1]/20 px-4 py-2 rounded-full">
+               <span className="inline-flex mb-3 items-center gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] bg-[#1dd1a1]/5 border border-[#1dd1a1]/20 px-4 py-2 rounded-[4px]">
                  100% Periciado — Pronto para Entrega
                </span>
                <h1 className="text-xl md:text-xl font-black tracking-tighter uppercase font-impact">{vehicle.brand} {vehicle.title}</h1>
@@ -185,7 +185,7 @@ function VehicleDetail() {
           {/* Right Column: Pricing & Contact */}
           <div className="lg:col-span-4 h-fit sticky top-32 space-y-8">
              <div className="bg-[#14181C] border border-[#1dd1a1]/30 rounded-[4px] p-10 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-[4px]" />
                 
                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#576574] mb-4 block">Oferta de Investimento</span>
                 <div className="text-xl font-black text-[#1dd1a1] tracking-tighter mb-10 drop-shadow-[0_0_10px_rgba(29,209,161,0.2)]">

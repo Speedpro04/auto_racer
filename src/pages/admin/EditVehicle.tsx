@@ -226,7 +226,7 @@ function AdminEditVehicle() {
                   <button
                     type="button"
                     onClick={() => handleDeleteMedia(media.id)}
-                    className="absolute top-2 right-2 bg-[#576574] text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition"
+                    className="absolute top-2 right-2 bg-[#576574] text-white p-1 rounded-[4px] opacity-0 group-hover:opacity-100 transition"
                   >
                     <X className="w-4 h-4" />
                   </button>

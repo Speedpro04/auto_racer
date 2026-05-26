@@ -99,7 +99,7 @@ function AdminStoreProfile() {
   if (fetching) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="w-10 h-10 border-4 border-[#1dd1a1]/20 border-t-[#1dd1a1] rounded-full animate-spin" />
+        <div className="w-10 h-10 border-4 border-[#1dd1a1]/20 border-t-[#1dd1a1] rounded-[4px] animate-spin" />
       </div>
     )
   }
@@ -155,7 +155,7 @@ function AdminStoreProfile() {
               />
               <label
                 htmlFor="logo-upload"
-                className="absolute -bottom-3 -right-3 w-12 h-12 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:text-gray-800 hover:scale-110 transition active:scale-95"
+                className="absolute -bottom-3 -right-3 w-12 h-12 bg-[#1dd1a1] text-black rounded-[4px] flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:text-gray-800 hover:scale-110 transition active:scale-95"
               >
                 <Upload className="w-5 h-5" />
               </label>

@@ -61,8 +61,8 @@ function AdminRegister() {
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden py-20">
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/5 blur-[120px] rounded-full" />
+        <div className="absolute top-[10%] left-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-[4px]" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px]" />
       </div>
 
       <a 
@@ -79,7 +79,7 @@ function AdminRegister() {
           animate={{ opacity: 1, y: 0 }}
           className="relative bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
         >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-[4px] pointer-events-none" />
 
           <div className="mb-10 text-center md:text-left">
             <h2 className="text-3xl font-black font-impact italic text-white uppercase tracking-tighter mb-2">Seja um Parceiro</h2>
@@ -212,7 +212,7 @@ function AdminRegister() {
               className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
             >
               {loading ? (
-                <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-[4px] animate-spin" />
               ) : (
                 <>
                   <CheckCircle2 className="w-5 h-5" />

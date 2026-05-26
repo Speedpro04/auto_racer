@@ -114,12 +114,12 @@ export default function AdminReports() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Visitas Card */}
         <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#00d2d3]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#00d2d3]/20" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#00d2d3]/5 -mr-16 -mt-16 rounded-[4px] blur-2xl transition-all group-hover:bg-[#00d2d3]/20" />
           <div className="flex items-center justify-between mb-6">
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Eye className="w-5 h-5 text-[#00d2d3]" />
             </div>
-            <span className="text-[10px] font-black text-[#00d2d3] bg-[#00d2d3]/10 px-3 py-1 rounded-full uppercase tracking-widest">+24%</span>
+            <span className="text-[10px] font-black text-[#00d2d3] bg-[#00d2d3]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+24%</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Total de Visitas</p>
           <h3 className="text-3xl font-black text-white">3,020</h3>
@@ -127,12 +127,12 @@ export default function AdminReports() {
 
         {/* Leads Card */}
         <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#1dd1a1]/20" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-[4px] blur-2xl transition-all group-hover:bg-[#1dd1a1]/20" />
           <div className="flex items-center justify-between mb-6">
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Flame className="w-5 h-5 text-[#1dd1a1]" />
             </div>
-            <span className="text-[10px] font-black text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1 rounded-full uppercase tracking-widest">+12%</span>
+            <span className="text-[10px] font-black text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+12%</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Leads Gerados (WhatsApp)</p>
           <h3 className="text-3xl font-black text-white">377</h3>
@@ -140,12 +140,12 @@ export default function AdminReports() {
 
         {/* Cadastros Card */}
         <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff9f43]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#ff9f43]/20" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff9f43]/5 -mr-16 -mt-16 rounded-[4px] blur-2xl transition-all group-hover:bg-[#ff9f43]/20" />
           <div className="flex items-center justify-between mb-6">
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Users className="w-5 h-5 text-[#ff9f43]" />
             </div>
-            <span className="text-[10px] font-black text-[#ff9f43] bg-[#ff9f43]/10 px-3 py-1 rounded-full uppercase tracking-widest">+5%</span>
+            <span className="text-[10px] font-black text-[#ff9f43] bg-[#ff9f43]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+5%</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Novos Cadastros</p>
           <h3 className="text-3xl font-black text-white">136</h3>
@@ -153,12 +153,12 @@ export default function AdminReports() {
 
         {/* Conversão Card */}
         <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#5f27cd]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#5f27cd]/20" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#5f27cd]/5 -mr-16 -mt-16 rounded-[4px] blur-2xl transition-all group-hover:bg-[#5f27cd]/20" />
           <div className="flex items-center justify-between mb-6">
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <TrendingUp className="w-5 h-5 text-[#5f27cd]" />
             </div>
-            <span className="text-[10px] font-black text-[#5f27cd] bg-[#5f27cd]/10 px-3 py-1 rounded-full uppercase tracking-widest">Estável</span>
+            <span className="text-[10px] font-black text-[#5f27cd] bg-[#5f27cd]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">Estável</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Taxa de Conversão Média</p>
           <h3 className="text-3xl font-black text-white">12.4%</h3>
@@ -177,15 +177,15 @@ export default function AdminReports() {
             </div>
             <div className="flex gap-4">
                <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-full bg-[#00d2d3] shadow-[0_0_10px_#00d2d3]"></div>
+                 <div className="w-3 h-3 rounded-[4px] bg-[#00d2d3] shadow-[0_0_10px_#00d2d3]"></div>
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Visitas</span>
                </div>
                <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-full bg-[#1dd1a1] text-black shadow-[0_0_10px_#1dd1a1]"></div>
+                 <div className="w-3 h-3 rounded-[4px] bg-[#1dd1a1] text-black shadow-[0_0_10px_#1dd1a1]"></div>
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Leads</span>
                </div>
                <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-full bg-[#ff9f43] shadow-[0_0_10px_#ff9f43]"></div>
+                 <div className="w-3 h-3 rounded-[4px] bg-[#ff9f43] shadow-[0_0_10px_#ff9f43]"></div>
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Cadastros</span>
                </div>
             </div>

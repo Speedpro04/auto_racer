@@ -39,7 +39,7 @@ function Home() {
       
       {/* Modern Slim Search Section Just Below Menu */}
       <section className="relative pt-[135px] px-6 z-30 mb-8 max-w-[550px] mx-auto">
-        <div className="w-full flex flex-col md:flex-row items-center gap-2 p-1.5 rounded-full bg-[#0A0D10]/80 border border-white/10 backdrop-blur-md shadow-lg">
+        <div className="w-full flex flex-col md:flex-row items-center gap-2 p-1.5 rounded-[4px] bg-[#0A0D10]/80 border border-white/10 backdrop-blur-md shadow-lg">
            <div className="flex-1 w-full relative group">
              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#555] group-focus-within:text-[#1dd1a1] transition-colors" />
              <input 
@@ -49,7 +49,7 @@ function Home() {
                style={{ boxShadow: 'none' }}
              />
            </div>
-           <button className="w-full md:w-auto px-6 py-2.5 bg-[#1dd1a1] text-black font-black uppercase tracking-widest text-[10px] rounded-full hover:bg-[#00f3ff] hover:text-[#555] transition-all">
+           <button className="w-full md:w-auto px-6 py-2.5 bg-[#1dd1a1] text-black font-black uppercase tracking-widest text-[10px] rounded-[4px] hover:bg-[#00f3ff] hover:text-[#555] transition-all">
               Buscar
             </button>
         </div>
@@ -72,13 +72,13 @@ function Home() {
       {/* Dynamic Hero Section with Luxury Flare */}
       <section className="relative pt-12 md:pt-20 pb-32 px-4 overflow-hidden">
         {/* Animated Background Elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1140px] h-[800px] bg-[#1dd1a1]/5 blur-[120px] rounded-full" />
-        <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#1dd1a1]/10 blur-[100px] rounded-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1140px] h-[800px] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px]" />
+        <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#1dd1a1]/10 blur-[100px] rounded-[4px]" />
         
         <div className="max-w-[1140px] mx-auto relative z-10">
           <div className="text-center mb-12 flex flex-col items-center justify-center">
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] mb-8 animate-pulse shadow-[0_0_20px_rgba(29,209,161,0.1)]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] mb-8 animate-pulse shadow-[0_0_20px_rgba(29,209,161,0.1)]">
               <Sparkles className="w-3" />
               Experiência Automotiva de Elite 2026
             </div>
@@ -110,7 +110,7 @@ function Home() {
             className="group relative max-w-[950px] mx-auto h-[400px] md:h-[500px] rounded-[4px] overflow-hidden border border-[#1dd1a1] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
           >
              {/* Badge Urgência */}
-             <div className="absolute top-6 left-6 z-20 bg-red-500/90 backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
+             <div className="absolute top-6 left-6 z-20 bg-red-500/90 backdrop-blur-md px-5 py-2.5 rounded-[4px] flex items-center gap-2 shadow-lg animate-pulse">
                <span className="text-lg">🔥</span>
                <span className="text-white text-[10px] font-black uppercase tracking-widest">Últimas 3 Unidades</span>
              </div>
@@ -183,7 +183,7 @@ function Home() {
       <section className="max-w-[1140px] mx-auto px-6 mb-[60px] space-y-40">
         <div className="text-center mb-20 relative">
 <h2 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase mb-6 italic">Carros Seminovos à Venda: <span className="text-[#1dd1a1]">Curadoria de Alta Performance</span></h2>
-            <div className="w-24 h-1.5 bg-[#1dd1a1] text-black mx-auto rounded-full mb-6" />
+            <div className="w-24 h-1.5 bg-[#1dd1a1] text-black mx-auto rounded-[4px] mb-6" />
             <p className="font-['Architects_Daughter'] text-2xl md:text-xl text-white opacity-60">Você merece o próximo nível.</p>
             <p className="text-[#576574] text-sm mt-4">Explore nossa curadoria de carros seminovos, importados e usados com laudo cautelar e garantia estendida. Veículos de alta performance com financiamento facilitado.</p>
          </div>
@@ -218,7 +218,7 @@ function Home() {
                 </div>
              </div>
              <div className="flex-1 space-y-6 mt-0 md:mt-[50px]">
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-[#1dd1a1] bg-[#1dd1a1]/5 px-5 py-2 rounded-full border border-[#1dd1a1]/10">100% Periciado e Aprovado</span>
+                <span className="inline-block mb-3 text-[10px] font-black uppercase tracking-[0.5em] text-[#1dd1a1] bg-[#1dd1a1]/5 px-5 py-2 rounded-[4px] border border-[#1dd1a1]/10">100% Periciado e Aprovado</span>
                 <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase leading-[0.9] italic">Veículo Premium Disponível</h3>
                 <p className="font-['Architects_Daughter'] text-2xl text-[#1dd1a1] opacity-90 leading-relaxed max-w-xl">
                    "Cansado da insegurança ao trocar de carro? Aqui, cada motor V8 é certificado para você acelerar sem medo."
@@ -271,11 +271,11 @@ function Home() {
       {/* Persuasive Call to Action / Guarantees */}
       <section className="max-w-[1140px] mx-auto px-6 mb-40">
          <div className="relative w-full rounded-[4px] overflow-hidden bg-gradient-to-br from-[#0B0E14] to-[#0A0D10] border border-[#1dd1a1]/30 p-10 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] group">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1dd1a1]/5 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1dd1a1]/5 blur-[100px] rounded-[4px] translate-x-1/2 -translate-y-1/2 group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000 pointer-events-none" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                <div className="flex-1 space-y-6">
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20">
+                  <span className="inline-flex mb-3 items-center gap-2 px-4 py-2 rounded-[4px] bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20">
                      <ShieldCheck className="w-4 h-4" /> Vantagens Exclusivas Auto Racer
                   </span>
                   <h2 className="text-xl md:text-xl font-black font-impact tracking-tighter uppercase italic leading-[1] text-white">
@@ -287,13 +287,13 @@ function Home() {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 pt-4">
                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#1dd1a1]">
+                        <div className="w-10 h-10 rounded-[4px] bg-white/5 flex items-center justify-center text-[#1dd1a1]">
                            <Car className="w-4 h-4" />
                         </div>
                         <h3 className="text-[10px] font-black uppercase tracking-widest text-white">Super Avaliação do Seu Usado</h3>
                      </div>
                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#1dd1a1]">
+                        <div className="w-10 h-10 rounded-[4px] bg-white/5 flex items-center justify-center text-[#1dd1a1]">
                            <Shield className="w-4 h-4" />
                         </div>
                         <h3 className="text-[10px] font-black uppercase tracking-widest text-white">100% Periciados e Garantidos</h3>
@@ -346,11 +346,11 @@ function Home() {
           <div className="bg-[#0A0D10] rounded-[4px] p-10 md:p-20 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10" />
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-full" />
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-[4px]" />
             
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="inline-block px-4 py-2 bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6 border border-[#1dd1a1]/20">
+                <span className="inline-block px-4 py-2 bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-[0.3em] rounded-[4px] mb-6 border border-[#1dd1a1]/20">
                   Oportunidade para Lojistas Elite
                 </span>
                 <h2 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase italic leading-[0.9] mb-8">
@@ -374,7 +374,7 @@ function Home() {
                 </div>
               </div>
               <div className="relative hidden lg:block">
-                <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-full" />
+                <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-[4px]" />
                 <div className="rounded-[4px] border border-white/10 shadow-2xl relative z-10 h-[400px] w-full bg-[radial-gradient(circle_at_20%_20%,rgba(29,209,161,0.25),transparent_42%),linear-gradient(135deg,#141921_0%,#0d1117_55%,#090b0f_100%)] p-10 flex items-end">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/80">Espaço reservado para showroom real da loja parceira</p>
                 </div>
@@ -417,10 +417,10 @@ function Home() {
       <section className="max-w-[1140px] mx-auto px-6 pb-40">
         <div className="relative w-full rounded-[4px] overflow-hidden bg-gradient-to-r from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-12 md:p-24 text-center shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] group">
           {/* Decorative background glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-full group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px] group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000" />
           
           <div className="relative z-10 flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-[#1dd1a1]/10 text-[#1dd1a1] text-[10px] font-black uppercase tracking-widest border border-[#1dd1a1]/20 mb-10">
               <Zap className="w-3" />
               Agilidade e Sigilo Absoluto
             </div>

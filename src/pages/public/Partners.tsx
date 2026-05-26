@@ -6,15 +6,15 @@ function Partners() {
   return (
     <div className="text-white font-sans w-full overflow-hidden relative min-h-screen bg-[#050505]">
       {/* Decoração Global */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1140px] h-[800px] bg-[#1dd1a1]/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#1dd1a1]/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1140px] h-[800px] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px] pointer-events-none" />
+      <div className="absolute -top-48 -right-48 w-96 h-96 bg-[#1dd1a1]/10 blur-[100px] rounded-[4px] pointer-events-none" />
 
       {/* Modern Slim Search Section Just Below Menu - keeping consistent spacing */}
       <div className="pt-[135px]" />
 
       <section className="relative px-4 pb-20 z-10 max-w-[1140px] mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] mb-8 shadow-[0_0_20px_rgba(29,209,161,0.1)]">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] mb-8 shadow-[0_0_20px_rgba(29,209,161,0.1)]">
             <Sparkles className="w-3" />
             Venda Mais com Auto Racer
           </div>
@@ -38,14 +38,14 @@ function Partners() {
             animate={{ opacity: 1, y: 0 }}
             className="group relative bg-[#0A0D10] rounded-[4px] overflow-hidden border border-white/10 hover:border-[#1dd1a1]/50 transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.15)] p-10 flex flex-col h-full"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[80px] rounded-full group-hover:bg-[#1dd1a1]/10 transition-colors pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[80px] rounded-[4px] group-hover:bg-[#1dd1a1]/10 transition-colors pointer-events-none" />
             
             <div className="relative z-10 flex-1">
               <h3 className="text-2xl font-black font-impact italic uppercase tracking-widest text-white mb-2">Plano Parceiro</h3>
               <p className="text-[#576574] text-xs font-bold uppercase tracking-[0.2em] mb-8">Vitrine Premium no Vale</p>
               
               <div className="mb-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1dd1a1]/10 border border-[#1dd1a1]/20">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-[#1dd1a1]/10 border border-[#1dd1a1]/20">
                   <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#1dd1a1]">🎉 15 dias grátis</span>
                 </div>
               </div>
@@ -87,12 +87,12 @@ function Partners() {
             transition={{ delay: 0.1 }}
             className="group relative bg-gradient-to-br from-[#0f1418] to-[#0a0d10] rounded-[4px] overflow-hidden border border-[#1dd1a1]/30 hover:border-[#1dd1a1] transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] p-10 flex flex-col h-full"
           >
-            <div className="absolute top-4 right-4 bg-[#1dd1a1]/20 border border-[#1dd1a1]/30 px-3 py-1 rounded-full flex items-center gap-2">
+            <div className="absolute top-4 right-4 bg-[#1dd1a1]/20 border border-[#1dd1a1]/30 px-3 py-1 rounded-[4px] flex items-center gap-2">
               <Star className="w-3 h-3 text-[#1dd1a1] fill-[#1dd1a1]" />
               <span className="text-[8px] font-black uppercase tracking-[0.2em] text-[#1dd1a1]">Premium</span>
             </div>
 
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1dd1a1]/10 blur-[100px] rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1dd1a1]/10 blur-[100px] rounded-[4px] group-hover:bg-[#1dd1a1]/20 transition-colors pointer-events-none" />
             
             <div className="relative z-10 flex-1">
               <h3 className="text-2xl font-black font-impact italic uppercase tracking-widest text-white mb-2">App Exclusivo</h3>

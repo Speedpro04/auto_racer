@@ -91,7 +91,7 @@ function StorePage() {
       <div className="max-w-[1140px] mx-auto px-6 relative z-10 -mt-20">
         {/* Store Profile Card */}
         <div className="bg-[#14181C] rounded-[4px] p-10 border border-white/5 shadow-2xl flex flex-col md:flex-row gap-10 items-center md:items-start mb-16 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-[4px]" />
           
           <div className="w-40 h-40 rounded-[4px] bg-[#000000] border border-white/10 p-4 flex-shrink-0 flex items-center justify-center shadow-2xl relative z-10 hover:border-[#1dd1a1]/50 transition-colors">
             {store.logo_url ? (
@@ -276,7 +276,7 @@ function VehicleCard({ vehicle, store }: { vehicle: VehicleWithMedia, store?: St
           <h3 className="text-2xl font-black mb-2 truncate group-hover:text-[#1dd1a1] transition-colors uppercase tracking-tighter font-impact">{vehicle.title}</h3>
           <div className="flex items-center gap-3">
             <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.brand}</span>
-            <div className="w-1 h-1 rounded-full bg-[#576574]" />
+            <div className="w-1 h-1 rounded-[4px] bg-[#576574]" />
             <span className="text-[10px] font-black uppercase text-[#576574] tracking-widest">{vehicle.year}</span>
           </div>
         </div>

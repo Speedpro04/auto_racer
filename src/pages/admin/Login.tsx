@@ -112,8 +112,8 @@ function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/5 blur-[120px] rounded-full" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-[4px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#1dd1a1]/5 blur-[120px] rounded-[4px]" />
       </div>
 
       <a 
@@ -133,7 +133,7 @@ function AdminLogin() {
           <div className="text-center mb-10">
             <div className="flex justify-center mb-6">
               <div className="relative group">
-                <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-xl rounded-[4px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img 
                   src="/logo-auto-principal.png" 
                   alt="Auto Racer" 
@@ -198,7 +198,7 @@ function AdminLogin() {
               className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-[#2979ff] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_10px_20px_-5px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
             >
               {loading ? (
-                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-[4px] animate-spin" />
               ) : (
                 <>
                   <LogIn className="w-5 h-5" />
@@ -259,7 +259,7 @@ function AdminLogin() {
               className="relative w-full max-w-xl bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-[4px] pointer-events-none" />
               
               <button 
                 onClick={() => setIsRegisterOpen(false)}
@@ -271,7 +271,7 @@ function AdminLogin() {
               {registerSuccess ? (
                 <div className="text-center py-10 space-y-6">
                   <div className="flex justify-center">
-                    <div className="w-20 h-20 bg-[#1dd1a1]/20 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-[#1dd1a1]/20 rounded-[4px] flex items-center justify-center">
                       <CheckCircle2 className="w-10 h-10 text-[#1dd1a1]" />
                     </div>
                   </div>
@@ -405,7 +405,7 @@ function AdminLogin() {
                       className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
                     >
                       {loading ? (
-                        <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                        <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-[4px] animate-spin" />
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
@@ -440,7 +440,7 @@ function AdminLogin() {
               className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-[4px] pointer-events-none" />
               
               <button 
                 onClick={() => setIsForgotPassOpen(false)}
@@ -452,7 +452,7 @@ function AdminLogin() {
               {forgotSuccess ? (
                 <div className="text-center py-6 space-y-6">
                   <div className="flex justify-center">
-                    <div className="w-20 h-20 bg-[#1dd1a1]/20 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-[#1dd1a1]/20 rounded-[4px] flex items-center justify-center">
                       <CheckCircle2 className="w-10 h-10 text-[#1dd1a1]" />
                     </div>
                   </div>
@@ -493,7 +493,7 @@ function AdminLogin() {
                       className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
                     >
                       {loading ? (
-                        <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                        <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-[4px] animate-spin" />
                       ) : (
                         <>
                           <Send className="w-5 h-5" />

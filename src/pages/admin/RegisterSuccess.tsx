@@ -64,8 +64,8 @@ function RegisterSuccess() {
     <div className="min-h-screen flex items-center justify-center bg-[#050505] px-4 font-sans relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[10%] left-[20%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
+        <div className="absolute top-[10%] left-[20%] w-[40%] h-[40%] bg-[#1dd1a1]/10 blur-[120px] rounded-[4px]" />
+        <div className="absolute bottom-[10%] right-[10%] w-[30%] h-[30%] bg-[#1dd1a1]/5 blur-[100px] rounded-[4px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-lg">
@@ -88,8 +88,8 @@ function RegisterSuccess() {
             transition={{ type: 'spring', duration: 0.6 }}
             className="bg-[#0a0a0a] border border-[#1dd1a1]/30 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] text-center overflow-hidden relative"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#1dd1a1]/5 blur-[60px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-[4px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#1dd1a1]/5 blur-[60px] rounded-[4px] pointer-events-none" />
 
             <div className="relative z-10 space-y-8">
               {/* Trophy icon */}
@@ -99,7 +99,7 @@ function RegisterSuccess() {
                 transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
                 className="flex justify-center"
               >
-                <div className="w-24 h-24 bg-[#1dd1a1]/20 rounded-full flex items-center justify-center border-2 border-[#1dd1a1]/30">
+                <div className="w-24 h-24 bg-[#1dd1a1]/20 rounded-[4px] flex items-center justify-center border-2 border-[#1dd1a1]/30">
                   <Trophy className="w-12 h-12 text-[#1dd1a1]" />
                 </div>
               </motion.div>
@@ -141,7 +141,7 @@ function RegisterSuccess() {
                   "Comece a vender!"
                 ].map((step, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-[#1dd1a1]/20 rounded-full flex items-center justify-center shrink-0">
+                    <div className="w-6 h-6 bg-[#1dd1a1]/20 rounded-[4px] flex items-center justify-center shrink-0">
                       <CheckCircle2 className="w-3 h-3 text-[#1dd1a1]" />
                     </div>
                     <span className="text-sm text-white font-medium">{step}</span>
@@ -180,7 +180,7 @@ function RegisterSuccess() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-[#0a0a0a] border border-white/10 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center space-y-6"
           >
-            <div className="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 bg-yellow-500/20 rounded-[4px] flex items-center justify-center mx-auto">
               <Loader2 className="w-10 h-10 text-yellow-400" />
             </div>
             <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter">Pagamento em Processamento</h2>

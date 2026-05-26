@@ -28,7 +28,7 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6 text-center">
           <div className="max-w-md w-full space-y-6 bg-[#111] p-10 rounded-[4px] border border-red-500/20">
-            <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 bg-red-500/20 rounded-[4px] flex items-center justify-center mx-auto">
               <span className="text-4xl">⚠️</span>
             </div>
             <h1 className="text-2xl font-black text-white uppercase tracking-tighter">Ops! Algo deu errado.</h1>

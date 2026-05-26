@@ -110,7 +110,7 @@ function AdminNewVehicle() {
         
         {/* Step 1: Media Upload System */}
         <section className="bg-[#2d3436] rounded-[4px] border border-[#1dd1a1]/20 p-10 shadow-2xl overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-[4px]" />
           
           <div className="flex items-center gap-4 mb-10">
              <div className="p-3 bg-[#1dd1a1] text-black rounded-[4px]"><Camera className="w-6 h-6" /></div>
@@ -220,7 +220,7 @@ function AdminNewVehicle() {
            <button
             type="submit"
             disabled={loading}
-            className="flex items-center gap-4 bg-[#1dd1a1] text-black px-12 py-6 rounded-full font-black uppercase tracking-[0.2em] shadow-[0_20px_60px_rgba(29,209,161,0.4)] hover:scale-105 active:scale-95 transition-all duration-500 disabled:opacity-50"
+            className="flex items-center gap-4 bg-[#1dd1a1] text-black px-12 py-6 rounded-[4px] font-black uppercase tracking-[0.2em] shadow-[0_20px_60px_rgba(29,209,161,0.4)] hover:scale-105 active:scale-95 transition-all duration-500 disabled:opacity-50"
            >
             {loading ? 'PUBLICANDO...' : (
               <>

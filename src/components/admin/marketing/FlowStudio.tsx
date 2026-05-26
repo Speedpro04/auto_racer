@@ -321,7 +321,7 @@ export default function FlowStudio() {
                 <button
                   key={c.hex}
                   onClick={() => setBrushColor(c.hex)}
-                  className={`w-6 h-6 rounded-full border-2 transition-all hover:scale-110 ${brushColor === c.hex ? 'border-white scale-110 shadow-lg' : 'border-transparent'}`}
+                  className={`w-6 h-6 rounded-[4px] border-2 transition-all hover:scale-110 ${brushColor === c.hex ? 'border-white scale-110 shadow-lg' : 'border-transparent'}`}
                   style={{ backgroundColor: c.hex }}
                   title={c.label}
                 />
@@ -385,7 +385,7 @@ export default function FlowStudio() {
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                    className="w-16 h-16 rounded-full border-2 border-purple-500/30 border-t-purple-500 mb-4"
+                    className="w-16 h-16 rounded-[4px] border-2 border-purple-500/30 border-t-purple-500 mb-4"
                   />
                   <p className="text-white font-bold text-[15px]">Processando edição com IA...</p>
                   <p className="text-[#576574] text-[12px] mt-1">Aplicando alterações via Flow Studio</p>
@@ -400,7 +400,7 @@ export default function FlowStudio() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-[#1dd1a1]/20 border border-[#1dd1a1]/30 rounded-full px-4 py-2"
+                  className="absolute top-4 right-4 z-20 flex items-center gap-2 bg-[#1dd1a1]/20 border border-[#1dd1a1]/30 rounded-[4px] px-4 py-2"
                 >
                   <Sparkles className="w-4 h-4 text-[#1dd1a1]" />
                   <span className="text-[12px] font-bold text-[#1dd1a1]">Edição aplicada com sucesso!</span>
