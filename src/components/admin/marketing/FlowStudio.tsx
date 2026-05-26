@@ -288,27 +288,27 @@ export default function FlowStudio() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#2d3436] px-4 py-2.5"
+            className="flex items-center justify-between rounded-[4px] border border-white/10 bg-[#2d3436] px-4 py-2.5"
           >
             <div className="flex items-center gap-1.5">
               {/* Tool buttons */}
               <button
                 onClick={() => setTool('select')}
-                className={`p-2.5 rounded-xl transition-all ${tool === 'select' ? 'bg-white/15 text-white' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
+                className={`p-2.5 rounded-[4px] transition-all ${tool === 'select' ? 'bg-white/15 text-white' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
                 title="Selecionar"
               >
                 <MousePointer2 className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setTool('brush')}
-                className={`p-2.5 rounded-xl transition-all ${tool === 'brush' ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
+                className={`p-2.5 rounded-[4px] transition-all ${tool === 'brush' ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
                 title="Pincel"
               >
                 <Pencil className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setTool('eraser')}
-                className={`p-2.5 rounded-xl transition-all ${tool === 'eraser' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
+                className={`p-2.5 rounded-[4px] transition-all ${tool === 'eraser' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'text-[#576574] hover:text-white hover:bg-white/5'}`}
                 title="Borracha"
               >
                 <Eraser className="w-4 h-4" />
@@ -348,7 +348,7 @@ export default function FlowStudio() {
             <div className="flex items-center gap-2">
               <button
                 onClick={clearCanvas}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-bold text-[#576574] hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-[4px] text-[11px] font-bold text-[#576574] hover:text-white hover:bg-white/5 transition-all uppercase tracking-wider"
               >
                 <RotateCcw className="w-3.5 h-3.5" /> Limpar
               </button>
@@ -360,7 +360,7 @@ export default function FlowStudio() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             ref={containerRef}
-            className="relative rounded-3xl border border-white/10 bg-[#1a1a2e] overflow-hidden shadow-2xl"
+            className="relative rounded-[4px] border border-white/10 bg-[#1a1a2e] overflow-hidden shadow-2xl"
             style={{ aspectRatio: '16/9' }}
           >
             <canvas
@@ -416,7 +416,7 @@ export default function FlowStudio() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="rounded-3xl border border-white/10 bg-[#2d3436] p-5"
+            className="rounded-[4px] border border-white/10 bg-[#2d3436] p-5"
           >
             <div className="flex items-center gap-2 mb-3">
               <Wand2 className="w-4 h-4 text-purple-400" />
@@ -426,13 +426,13 @@ export default function FlowStudio() {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Descreva o que deseja alterar na área marcada... Ex: 'Trocar o fundo por um showroom de vidro com iluminação quente'"
-              className="w-full h-28 rounded-2xl border border-white/10 bg-black/30 p-3 text-[14px] text-white placeholder:text-[#444] resize-none focus:outline-none focus:border-purple-500/50 transition-colors"
+              className="w-full h-28 rounded-[4px] border border-white/10 bg-black/30 p-3 text-[14px] text-white placeholder:text-[#444] resize-none focus:outline-none focus:border-purple-500/50 transition-colors"
             />
 
             <button
               onClick={handleGenerate}
               disabled={generating || (!prompt.trim() && !selectedPreset)}
-              className="w-full mt-3 flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black text-[12px] uppercase tracking-wider py-3.5 hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_10px_30px_rgba(139,92,246,0.25)]"
+              className="w-full mt-3 flex items-center justify-center gap-2 rounded-[4px] bg-gradient-to-r from-purple-600 to-blue-600 text-white font-black text-[12px] uppercase tracking-wider py-3.5 hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_10px_30px_rgba(139,92,246,0.25)]"
             >
               {generating ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -448,7 +448,7 @@ export default function FlowStudio() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="rounded-3xl border border-white/10 bg-[#2d3436] p-5"
+            className="rounded-[4px] border border-white/10 bg-[#2d3436] p-5"
           >
             <div className="flex items-center gap-2 mb-3">
               <Layers className="w-4 h-4 text-blue-400" />
@@ -462,7 +462,7 @@ export default function FlowStudio() {
                     setSelectedPreset(bg.id)
                     setPrompt(bg.prompt)
                   }}
-                  className={`w-full text-left rounded-xl border p-3 transition-all text-[13px] ${
+                  className={`w-full text-left rounded-[4px] border p-3 transition-all text-[13px] ${
                     selectedPreset === bg.id
                       ? 'border-purple-500/50 bg-purple-500/10 text-white'
                       : 'border-white/5 bg-black/20 text-[#8395a7] hover:border-white/15 hover:text-white'
@@ -480,7 +480,7 @@ export default function FlowStudio() {
             <motion.button
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#1dd1a1] text-black font-black text-[12px] uppercase tracking-wider py-3.5 hover:bg-white hover:text-gray-800 transition-all shadow-[0_10px_30px_rgba(29,209,161,0.25)]"
+              className="w-full flex items-center justify-center gap-2 rounded-[4px] bg-[#1dd1a1] text-black font-black text-[12px] uppercase tracking-wider py-3.5 hover:bg-white hover:text-gray-800 transition-all shadow-[0_10px_30px_rgba(29,209,161,0.25)]"
             >
               <Download className="w-4 h-4" /> Baixar Imagem Editada
             </motion.button>

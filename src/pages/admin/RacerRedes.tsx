@@ -149,14 +149,14 @@ function RacerRedes() {
       className="space-y-6 pb-12"
     >
       {/* ── Hero Header ── */}
-      <div className="rounded-[35px] border border-white/5 bg-[#2d3436] p-8 relative overflow-hidden shadow-2xl">
+      <div className="rounded-[4px] border border-white/5 bg-[#2d3436] p-8 relative overflow-hidden shadow-2xl">
         <div className="absolute -top-20 -right-20 w-60 h-60 bg-purple-500/10 blur-[80px] rounded-full" />
         <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#1dd1a1]/10 blur-[80px] rounded-full" />
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 bg-gradient-to-br from-purple-500/20 to-[#1dd1a1]/20 rounded-xl border border-white/10">
+              <div className="p-2 bg-gradient-to-br from-purple-500/20 to-[#1dd1a1]/20 rounded-[4px] border border-white/10">
                 <Zap className="w-5 h-5 text-[#1dd1a1]" />
               </div>
               <p className="text-[10px] uppercase tracking-[0.4em] text-[#1dd1a1] font-black">Marketing Intelligence Hub</p>
@@ -178,7 +178,7 @@ function RacerRedes() {
       </div>
 
       {/* ── Tab Navigation ── */}
-      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[#2d3436] border border-white/5 shadow-xl">
+      <div className="flex items-center gap-2 p-1.5 rounded-[4px] bg-[#2d3436] border border-white/5 shadow-xl">
         {TABS.map((tab) => {
           const Icon = tab.icon
           const isActive = activeTab === tab.id
@@ -186,7 +186,7 @@ function RacerRedes() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-[14px] transition-all duration-300 text-[12px] font-black uppercase tracking-widest relative overflow-hidden ${
+              className={`flex-1 flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-[4px] transition-all duration-300 text-[12px] font-black uppercase tracking-widest relative overflow-hidden ${
                 isActive
                   ? 'text-white shadow-lg'
                   : 'text-[#576574] hover:text-white hover:bg-white/5'
@@ -210,7 +210,7 @@ function RacerRedes() {
 
       {/* ── Error Banner ── */}
       {error && activeTab === 'videos' && (
-        <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-[15px] text-red-200 flex items-center gap-2">
+        <div className="rounded-[4px] border border-red-500/30 bg-red-500/10 p-4 text-[15px] text-red-200 flex items-center gap-2">
           <AlertCircle className="w-4 h-4" /> {error}
         </div>
       )}
@@ -227,7 +227,7 @@ function RacerRedes() {
             transition={{ duration: 0.25 }}
             className="grid grid-cols-1 xl:grid-cols-3 gap-6"
           >
-            <div className="xl:col-span-1 rounded-2xl border border-white/10 bg-[#2d3436] p-5">
+            <div className="xl:col-span-1 rounded-[4px] border border-white/10 bg-[#2d3436] p-5">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-[19px] font-bold text-white">Template Comercial</h2>
                 <Sparkles className="w-4 h-4 text-[#1dd1a1]" />
@@ -237,7 +237,7 @@ function RacerRedes() {
                   <button
                     key={item.id}
                     onClick={() => setTemplateId(item.id)}
-                    className={`w-full text-left rounded-xl border p-3 transition-all ${
+                    className={`w-full text-left rounded-[4px] border p-3 transition-all ${
                       templateId === item.id
                         ? 'border-[#1dd1a1] bg-[#1dd1a1]/10'
                         : 'border-white/10 bg-black/20 hover:border-[#1dd1a1]/50'
@@ -248,7 +248,7 @@ function RacerRedes() {
                   </button>
                 ))}
               </div>
-              <div className="mt-4 rounded-xl border border-white/10 bg-black/25 p-3 text-[13px] text-[#b2bec3]">
+              <div className="mt-4 rounded-[4px] border border-white/10 bg-black/25 p-3 text-[13px] text-[#b2bec3]">
                 <p className="text-white font-bold mb-1">Legendas</p>
                 <div className="inline-flex items-center gap-2 rounded-full bg-[#1dd1a1]/20 px-3 py-1 text-[#1dd1a1] font-semibold">
                   <Subtitles className="w-3.5 h-3.5" /> Sempre Ativas
@@ -256,12 +256,12 @@ function RacerRedes() {
               </div>
             </div>
 
-            <div className="xl:col-span-2 rounded-2xl border border-white/10 bg-[#2d3436] p-5 space-y-4">
+            <div className="xl:col-span-2 rounded-[4px] border border-white/10 bg-[#2d3436] p-5 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-[19px] font-bold text-white">Descrição Inteligente + Geração</h2>
                 <button
                   onClick={loadVehicles}
-                  className="text-[13px] px-3 py-2 rounded-lg bg-[#1dd1a1] text-black font-bold hover:brightness-110 transition"
+                  className="text-[13px] px-3 py-2 rounded-[4px] bg-[#1dd1a1] text-black font-bold hover:brightness-110 transition"
                 >
                   {loadingVehicles ? 'Carregando...' : 'Atualizar Veículos'}
                 </button>
@@ -271,7 +271,7 @@ function RacerRedes() {
                 <select
                   value={vehicleId}
                   onChange={(e) => setVehicleId(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                 >
                   <option value="">Selecione um veículo</option>
                   {vehicles.map((v) => (
@@ -283,31 +283,31 @@ function RacerRedes() {
                 <input
                   value={targetAudience}
                   onChange={(e) => setTargetAudience(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                   placeholder="Público alvo"
                 />
                 <input
                   value={highlight}
                   onChange={(e) => setHighlight(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                   placeholder="Destaque principal"
                 />
                 <input
                   value={siteNome}
                   onChange={(e) => setSiteNome(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                   placeholder="Nome da loja"
                 />
                 <input
                   value={siteUrl}
                   onChange={(e) => setSiteUrl(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                   placeholder="URL do site"
                 />
                 <input
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
-                  className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
+                  className="rounded-[4px] border border-white/10 bg-black/20 px-3 py-2 text-[15px] text-white"
                   placeholder="WhatsApp"
                 />
               </div>
@@ -315,21 +315,21 @@ function RacerRedes() {
               <div className="flex flex-wrap gap-3">
                 <button
                   onClick={generateSmartDescription}
-                  className="inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 px-4 py-2 text-[15px] font-bold text-white transition"
+                  className="inline-flex items-center gap-2 rounded-[4px] bg-white/10 hover:bg-white/15 px-4 py-2 text-[15px] font-bold text-white transition"
                 >
                   <Sparkles className="w-4 h-4 text-[#1dd1a1]" /> Gerar descrição SPIN
                 </button>
                 <button
                   onClick={generateVideo}
                   disabled={generating || polling}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#1dd1a1] hover:brightness-110 px-4 py-2 text-[15px] font-black text-black transition disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-[4px] bg-[#1dd1a1] hover:brightness-110 px-4 py-2 text-[15px] font-black text-black transition disabled:opacity-60"
                 >
                   {(generating || polling) ? <Loader2 className="w-4 h-4 animate-spin" /> : <Video className="w-4 h-4" />}
                   Gerar vídeo automático
                 </button>
               </div>
 
-              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+              <div className="rounded-[4px] border border-white/10 bg-black/20 p-4">
                 <p className="text-[13px] uppercase tracking-widest text-[#b2bec3] mb-2">Prévia de Narração</p>
                 <p className="text-[15px] text-white leading-relaxed">
                   {smartDescription || `Template: ${selectedTemplate.name}. Clique em "Gerar descrição SPIN" para criar a copy.`}
@@ -337,7 +337,7 @@ function RacerRedes() {
               </div>
 
               {job && (
-                <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <div className="rounded-[4px] border border-white/10 bg-black/20 p-4">
                   <p className="text-[13px] uppercase tracking-widest text-[#b2bec3] mb-2">Status da Geração</p>
                   <div className="flex items-center gap-2 text-[15px] text-white">
                     {job.status === 'done' ? (

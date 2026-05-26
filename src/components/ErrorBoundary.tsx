@@ -27,7 +27,7 @@ class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6 text-center">
-          <div className="max-w-md w-full space-y-6 bg-[#111] p-10 rounded-[40px] border border-red-500/20">
+          <div className="max-w-md w-full space-y-6 bg-[#111] p-10 rounded-[4px] border border-red-500/20">
             <div className="w-20 h-20 bg-red-500/20 rounded-full flex items-center justify-center mx-auto">
               <span className="text-4xl">⚠️</span>
             </div>
@@ -35,12 +35,12 @@ class ErrorBoundary extends Component<Props, State> {
             <p className="text-[#8395a7] text-sm">
               Ocorreu um erro inesperado no sistema. Tente recarregar a página.
             </p>
-            <div className="p-4 bg-black/40 rounded-2xl text-left overflow-auto max-h-40">
+            <div className="p-4 bg-black/40 rounded-[4px] text-left overflow-auto max-h-40">
               <code className="text-xs text-red-400">{this.state.error?.toString()}</code>
             </div>
             <button
               onClick={() => window.location.reload()}
-              className="w-full py-4 bg-[#1dd1a1] text-black rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white hover:text-gray-800 transition-all"
+              className="w-full py-4 bg-[#1dd1a1] text-black rounded-[4px] font-black uppercase tracking-widest text-xs hover:bg-white hover:text-gray-800 transition-all"
             >
               Recarregar Sistema
             </button>

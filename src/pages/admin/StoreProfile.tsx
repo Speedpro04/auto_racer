@@ -112,22 +112,22 @@ function AdminStoreProfile() {
       </div>
 
       {error && (
-        <div className="text-[#576574] hover:bg-[#576574]/10 border border-[#576574]/20 bg-[#576574]/10 px-6 py-4 rounded-[12px] font-medium">
+        <div className="text-[#576574] hover:bg-[#576574]/10 border border-[#576574]/20 bg-[#576574]/10 px-6 py-4 rounded-[4px] font-medium">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-6 py-4 rounded-[12px] font-medium">
+        <div className="bg-green-500/10 border border-green-500/20 text-green-500 px-6 py-4 rounded-[4px] font-medium">
           {success}
         </div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-10">
         {/* Branding Section */}
-        <section className="bg-[#2d3436] rounded-[15px] border border-white/5 p-8 shadow-2xl">
+        <section className="bg-[#2d3436] rounded-[4px] border border-white/5 p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-[#1dd1a1]/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-[4px] bg-[#1dd1a1]/10 flex items-center justify-center">
               <Building2 className="w-5 h-5 text-[#1dd1a1]" />
             </div>
             <h3 className="text-lg font-bold text-white tracking-tight">Identidade da Marca</h3>
@@ -135,7 +135,7 @@ function AdminStoreProfile() {
 
           <div className="flex flex-col md:flex-row items-center gap-10">
             <div className="relative group">
-              <div className="w-40 h-40 bg-[#050505] rounded-[24px] border border-[#262626] group-hover:border-[#1dd1a1]/50 flex items-center justify-center overflow-hidden transition-all duration-300 shadow-inner">
+              <div className="w-40 h-40 bg-[#050505] rounded-[4px] border border-[#262626] group-hover:border-[#1dd1a1]/50 flex items-center justify-center overflow-hidden transition-all duration-300 shadow-inner">
                 {logoPreview || currentLogo ? (
                   <img
                     src={logoPreview || currentLogo}
@@ -172,7 +172,7 @@ function AdminStoreProfile() {
         </section>
 
         {/* Info Section */}
-        <section className="bg-[#2d3436] rounded-[15px] border border-white/5 p-8 shadow-2xl">
+        <section className="bg-[#2d3436] rounded-[4px] border border-white/5 p-8 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="md:col-span-2">
               <label className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#737373] mb-3">
@@ -183,7 +183,7 @@ function AdminStoreProfile() {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[12px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
+                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
                 required
               />
             </div>
@@ -197,7 +197,7 @@ function AdminStoreProfile() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[12px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
+                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
                 placeholder="5511999999999"
                 required
               />
@@ -213,7 +213,7 @@ function AdminStoreProfile() {
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[12px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
+                className="w-full bg-[#050505] text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1] outline-none transition font-semibold"
                 placeholder="Ex: São Paulo, SP"
               />
             </div>
@@ -225,7 +225,7 @@ function AdminStoreProfile() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#1dd1a1] text-[#0A0A0A] px-12 py-5 rounded-[12px] hover:bg-white hover:text-gray-800 transition font-black uppercase tracking-tighter text-sm shadow-xl shadow-[#D4AF3710] disabled:opacity-50"
+            className="w-full md:w-auto flex items-center justify-center gap-3 bg-[#1dd1a1] text-[#0A0A0A] px-12 py-5 rounded-[4px] hover:bg-white hover:text-gray-800 transition font-black uppercase tracking-tighter text-sm shadow-xl shadow-[#D4AF3710] disabled:opacity-50"
           >
             {loading ? 'Salvando...' : (
               <>

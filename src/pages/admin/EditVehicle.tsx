@@ -98,7 +98,7 @@ function AdminEditVehicle() {
       </div>
 
       {error && (
-        <div className="bg-[#576574]/10 border border-[#576574]/20 text-[#576574] px-4 py-3 rounded-lg mb-6">
+        <div className="bg-[#576574]/10 border border-[#576574]/20 text-[#576574] px-4 py-3 rounded-[4px] mb-6">
           {error}
         </div>
       )}
@@ -112,7 +112,7 @@ function AdminEditVehicle() {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="w-full bg-[#2d3436] text-white px-6 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1] transition font-bold"
+              className="w-full bg-[#2d3436] text-white px-6 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1] transition font-bold"
               required
             />
           </div>
@@ -123,7 +123,7 @@ function AdminEditVehicle() {
               name="type"
               value={formData.type}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
               required
             >
               <option value="carro">Carro</option>
@@ -138,7 +138,7 @@ function AdminEditVehicle() {
               name="brand"
               value={formData.brand}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
               required
             />
           </div>
@@ -150,7 +150,7 @@ function AdminEditVehicle() {
               name="year"
               value={formData.year}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
               required
             />
           </div>
@@ -162,7 +162,7 @@ function AdminEditVehicle() {
               name="km"
               value={formData.km}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
               required
             />
           </div>
@@ -174,7 +174,7 @@ function AdminEditVehicle() {
               name="price"
               value={formData.price}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
               required
             />
           </div>
@@ -185,7 +185,7 @@ function AdminEditVehicle() {
               name="status"
               value={formData.status}
               onChange={handleInputChange}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition"
             >
               <option value="available">Disponível</option>
               <option value="paused">Pausado</option>
@@ -200,7 +200,7 @@ function AdminEditVehicle() {
               value={formData.description}
               onChange={handleInputChange}
               rows={6}
-              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#1dd1a1] transition resize-none"
+              className="w-full bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#1dd1a1] transition resize-none"
             />
           </div>
         </div>
@@ -216,10 +216,10 @@ function AdminEditVehicle() {
                     <img
                       src={media.url}
                       alt="Media"
-                      className="w-full h-32 object-cover rounded-lg"
+                      className="w-full h-32 object-cover rounded-[4px]"
                     />
                   ) : (
-                    <div className="w-full h-32 bg-[#2A2A30] rounded-lg flex items-center justify-center">
+                    <div className="w-full h-32 bg-[#2A2A30] rounded-[4px] flex items-center justify-center">
                       <Car className="w-8 h-8 text-[#6B6B7B]" />
                     </div>
                   )}
@@ -240,13 +240,13 @@ function AdminEditVehicle() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-lg hover:bg-white hover:text-gray-800 transition disabled:opacity-50"
+            className="flex-1 bg-[#1dd1a1] text-[#0A0A0A] font-black uppercase tracking-widest px-6 py-3 rounded-[4px] hover:bg-white hover:text-gray-800 transition disabled:opacity-50"
           >
             {loading ? 'Salvando...' : 'Salvar Alterações'}
           </button>
           <Link
             to="/admin/veiculos"
-            className="px-6 py-3 bg-[#1A1A1F] text-white rounded-lg hover:bg-[#2A2A30] transition border border-[#2A2A30]"
+            className="px-6 py-3 bg-[#1A1A1F] text-white rounded-[4px] hover:bg-[#2A2A30] transition border border-[#2A2A30]"
           >
             Cancelar
           </Link>

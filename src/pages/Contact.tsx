@@ -44,10 +44,10 @@ function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             
             {/* Card 1: Geração de Vídeos */}
-            <div className="bg-[#14181C] p-8 rounded-[35px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#1dd1a1]/5 blur-[60px] rounded-full transition-colors group-hover:bg-[#1dd1a1]/15" />
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-[4px] bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Video className="w-7 h-7 text-[#1dd1a1]" />
                 </div>
                 <h3 className="text-xl font-black uppercase tracking-tighter mb-3 italic">Vídeos Automáticos</h3>
@@ -61,10 +61,10 @@ function Contact() {
             </div>
 
             {/* Card 2: Identidade Visual IA */}
-            <div className="bg-[#14181C] p-8 rounded-[35px] border border-white/5 hover:border-purple-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-purple-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/5 blur-[60px] rounded-full transition-colors group-hover:bg-purple-500/15" />
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-[4px] bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Palette className="w-7 h-7 text-purple-400" />
                 </div>
                 <h3 className="text-xl font-black uppercase tracking-tighter mb-3 italic">Brand DNA Inteligente</h3>
@@ -78,10 +78,10 @@ function Contact() {
             </div>
 
             {/* Card 3: Edição Visual IA */}
-            <div className="bg-[#14181C] p-8 rounded-[35px] border border-white/5 hover:border-blue-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#14181C] p-8 rounded-[4px] border border-white/5 hover:border-blue-500/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[60px] rounded-full transition-colors group-hover:bg-blue-500/15" />
               <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-[4px] bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Wand2 className="w-7 h-7 text-blue-400" />
                 </div>
                 <h3 className="text-xl font-black uppercase tracking-tighter mb-3 italic">Edição Visual com IA</h3>
@@ -98,7 +98,7 @@ function Contact() {
 
         {/* Frase de impacto */}
         <section className="mb-20 max-w-4xl mx-auto text-center">
-          <div className="relative rounded-[45px] bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 p-12 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] overflow-hidden">
+          <div className="relative rounded-[4px] bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 p-12 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
             <div className="relative z-10">
               <TrendingUp className="w-10 h-10 text-[#1dd1a1] mx-auto mb-6" />
@@ -116,7 +116,7 @@ function Contact() {
           
           {/* Coluna da Esquerda: Canais de Contato Direto */}
           <div className="space-y-8">
-            <div className="bg-[#14181C] p-10 rounded-[40px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#14181C] p-10 rounded-[4px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl transition-colors group-hover:bg-[#1dd1a1]/20" />
               <Phone className="w-8 h-8 text-[#1dd1a1] mb-6" />
               <h3 className="text-2xl font-black uppercase tracking-tighter mb-2 italic">Fale com um Especialista</h3>
@@ -131,7 +131,7 @@ function Contact() {
               </div>
             </div>
 
-            <div className="bg-[#14181C] p-10 rounded-[40px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
+            <div className="bg-[#14181C] p-10 rounded-[4px] border border-white/5 hover:border-[#1dd1a1]/30 transition-all duration-500 shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl transition-colors group-hover:bg-[#1dd1a1]/20" />
               <Mail className="w-8 h-8 text-[#1dd1a1] mb-6" />
               <h3 className="text-2xl font-black uppercase tracking-tighter mb-2 italic">E-mail Oficial</h3>
@@ -142,12 +142,12 @@ function Contact() {
             </div>
 
             <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white/5 p-8 rounded-[30px] border border-white/10 text-center flex flex-col justify-center items-center">
+              <div className="bg-white/5 p-8 rounded-[4px] border border-white/10 text-center flex flex-col justify-center items-center">
                 <ShieldCheck className="w-6 h-6 text-[#1dd1a1] mx-auto mb-4" />
                 <h4 className="text-[10px] uppercase font-black tracking-widest text-[#576574] mb-2">Cobertura</h4>
                 <p className="text-white font-bold">100% Digital<br/>Todo o Brasil</p>
               </div>
-              <div className="bg-white/5 p-8 rounded-[30px] border border-white/10 text-center flex flex-col justify-center items-center">
+              <div className="bg-white/5 p-8 rounded-[4px] border border-white/10 text-center flex flex-col justify-center items-center">
                 <MapPin className="w-6 h-6 text-[#1dd1a1] mx-auto mb-4" />
                 <h4 className="text-[10px] uppercase font-black tracking-widest text-[#576574] mb-2">Sede Corporativa</h4>
                 <p className="text-white font-bold text-sm">Pindamonhangaba<br/>São Paulo, BR</p>
@@ -156,7 +156,7 @@ function Contact() {
           </div>
 
           {/* Coluna da Direita: Card de Conversão para Lojistas */}
-          <div className="bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 rounded-[50px] p-12 relative shadow-[0_30px_60px_-15px_rgba(29,209,161,0.15)] h-full flex flex-col justify-center">
+          <div className="bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 rounded-[4px] p-12 relative shadow-[0_30px_60px_-15px_rgba(29,209,161,0.15)] h-full flex flex-col justify-center">
             
             <h2 className="text-xl lg:text-xl font-black font-impact tracking-tighter uppercase italic mb-6">
               Pare de Perder Vendas <br />por Falta de Conteúdo.
@@ -171,7 +171,7 @@ function Contact() {
 
             <Link 
               to="/parceiro"
-              className="group w-full flex items-center justify-center gap-4 py-8 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300"
+              className="group w-full flex items-center justify-center gap-4 py-8 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300"
             >
               <span className="group-hover:!text-[#1dd1a1]">QUERO TESTAR 10 DIAS GRÁTIS</span> <ArrowRight size={20} className="!text-[#1f2937] group-hover:!text-[#1dd1a1]" />
             </Link>

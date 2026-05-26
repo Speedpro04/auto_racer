@@ -30,11 +30,11 @@ function AdminHeader() {
 
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-4 border-r border-white/5 pr-6">
-             <button className="p-2.5 rounded-xl bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all relative">
+             <button className="p-2.5 rounded-[4px] bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all relative">
                 <Bell className="w-5 h-5" />
                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#1dd1a1] text-black rounded-full ring-2 ring-black" />
              </button>
-             <button className="p-2.5 rounded-xl bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">
+             <button className="p-2.5 rounded-[4px] bg-white/5 text-[#576574] hover:text-[#1dd1a1] hover:bg-white/10 transition-all">
                 <Activity className="w-5 h-5" />
              </button>
           </div>
@@ -48,7 +48,7 @@ function AdminHeader() {
                 Plano Enterprise
               </span>
             </div>
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#1dd1a1] to-[#10ac84] flex items-center justify-center text-black border border-white/10 shadow-lg group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 rounded-[4px] bg-gradient-to-br from-[#1dd1a1] to-[#10ac84] flex items-center justify-center text-black border border-white/10 shadow-lg group-hover:scale-110 transition-transform">
               <UserCircle className="w-6 h-6" />
             </div>
           </div>

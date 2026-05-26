@@ -67,7 +67,7 @@ function AdminLayout() {
               }))
               navigate('/checkout')
             }}
-            className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+            className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
           >
             <CreditCard className="w-5 h-5" />
             <span>Assinar Agora — R$ 89,00/mês</span>
@@ -89,7 +89,7 @@ function AdminLayout() {
 
         {/* Trial Banner — mostra quando faltam 5 dias ou menos */}
         {trialInfo && !trialInfo.expired && trialInfo.daysLeft <= 5 && !dismissedBanner && (
-          <div className="mx-8 mt-4 flex items-center justify-between gap-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-5 py-3">
+          <div className="mx-8 mt-4 flex items-center justify-between gap-4 rounded-[4px] border border-amber-500/30 bg-amber-500/10 px-5 py-3">
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-amber-400 shrink-0" />
               <p className="text-sm text-amber-200 font-bold">

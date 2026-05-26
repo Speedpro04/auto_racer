@@ -24,7 +24,7 @@ function AdminSidebar() {
              <img 
                src="/logo-auto-principal.png" 
                alt="Auto Racer" 
-               className="w-20 h-14 object-contain rounded-xl border border-white/10 relative z-10 shadow-2xl"
+               className="w-20 h-14 object-contain rounded-[4px] border border-white/10 relative z-10 shadow-2xl"
              />
           </div>
           <div>
@@ -46,7 +46,7 @@ function AdminSidebar() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-4 px-5 py-4 rounded-[20px] transition-all duration-300 text-[11px] font-black uppercase tracking-widest border border-transparent ${
+              className={`flex items-center gap-4 px-5 py-4 rounded-[4px] transition-all duration-300 text-[11px] font-black uppercase tracking-widest border border-transparent ${
                 isActive
                   ? 'bg-gradient-to-r from-[#1dd1a1] to-[#10ac84] text-black shadow-[0_10px_20px_-5px_rgba(29,209,161,0.3)]'
                   : 'text-[#444] hover:bg-white/5 hover:text-white hover:border-white/5'
@@ -60,7 +60,7 @@ function AdminSidebar() {
       </nav>
 
       <div className="p-8 border-t border-white/5">
-        <div className="bg-white/5 rounded-2xl p-6 mb-6 border border-white/5">
+        <div className="bg-white/5 rounded-[4px] p-6 mb-6 border border-white/5">
            <div className="flex items-center gap-3 mb-3">
               <ShieldAlert className="w-4 h-4 text-[#1dd1a1]" />
               <span className="text-[10px] font-black text-white uppercase tracking-widest">Proteção Ativa</span>
@@ -71,7 +71,7 @@ function AdminSidebar() {
         </div>
         <button
           onClick={logout}
-          className="flex items-center gap-4 px-5 py-4 w-full rounded-[20px] text-[#444] hover:bg-[#ff6b6b]/10 hover:text-[#ff6b6b] transition-all duration-300 text-[11px] font-black uppercase tracking-widest border border-transparent hover:border-[#ff6b6b]/20"
+          className="flex items-center gap-4 px-5 py-4 w-full rounded-[4px] text-[#444] hover:bg-[#ff6b6b]/10 hover:text-[#ff6b6b] transition-all duration-300 text-[11px] font-black uppercase tracking-widest border border-transparent hover:border-[#ff6b6b]/20"
         >
           <LogOut className="w-5 h-5" />
           <span>Encerrar Sessão</span>

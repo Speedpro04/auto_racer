@@ -42,16 +42,16 @@ function StoresList() {
           placeholder="Buscar por nome ou cidade..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full max-w-md bg-[#1A1A1F] text-white px-4 py-3 rounded-lg border border-[#2A2A30] focus:border-[#E84118] transition"
+          className="w-full max-w-md bg-[#1A1A1F] text-white px-4 py-3 rounded-[4px] border border-[#2A2A30] focus:border-[#E84118] transition"
         />
       </div>
 
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="bg-[#1A1A1F] rounded-xl p-6 animate-pulse">
-              <div className="h-12 bg-[#2A2A30] rounded mb-4"></div>
-              <div className="h-4 bg-[#2A2A30] rounded w-3/4"></div>
+            <div key={i} className="bg-[#1A1A1F] rounded-[4px] p-6 animate-pulse">
+              <div className="h-12 bg-[#2A2A30] rounded-[4px] mb-4"></div>
+              <div className="h-4 bg-[#2A2A30] rounded-[4px] w-3/4"></div>
             </div>
           ))}
         </div>
@@ -65,7 +65,7 @@ function StoresList() {
             <Link
               key={store.id}
               to={`/${store.slug}`}
-              className="bg-[#1A1A1F] rounded-xl p-6 border border-[#2A2A30] hover:border-[#E84118] transition group"
+              className="bg-[#1A1A1F] rounded-[4px] p-6 border border-[#2A2A30] hover:border-[#E84118] transition group"
             >
               {store.logo_url ? (
                 <img

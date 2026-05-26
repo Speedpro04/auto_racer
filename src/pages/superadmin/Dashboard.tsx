@@ -60,7 +60,7 @@ function SuperAdminDashboard() {
       <div className="border-b border-white/5 bg-[#111]">
         <div className="max-w-[1400px] mx-auto px-8 h-20 flex items-center justify-between">
            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-[#1dd1a1] text-black rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#1dd1a1] text-black rounded-[4px] flex items-center justify-center">
                  <ShieldCheck className="w-6 h-6 text-black" />
               </div>
               <div>
@@ -71,7 +71,7 @@ function SuperAdminDashboard() {
            
            <button 
              onClick={() => { localStorage.clear(); navigate('/login') }}
-             className="px-6 py-2.5 rounded-xl border border-white/10 text-[10px] font-black uppercase tracking-widest text-[#555] hover:text-[#1dd1a1] hover:border-[#1dd1a1]/30 transition-all"
+             className="px-6 py-2.5 rounded-[4px] border border-white/10 text-[10px] font-black uppercase tracking-widest text-[#555] hover:text-[#1dd1a1] hover:border-[#1dd1a1]/30 transition-all"
            >
              Logoff Global
            </button>
@@ -83,25 +83,25 @@ function SuperAdminDashboard() {
         className="max-w-[1400px] mx-auto px-8 py-12 space-y-12"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-           <div className="bg-[#111] p-8 rounded-[30px] border border-white/5 relative overflow-hidden group">
+           <div className="bg-[#111] p-8 rounded-[4px] border border-white/5 relative overflow-hidden group">
               <Building2 className="w-8 h-8 text-[#1dd1a1] mb-6" />
               <p className="text-[10px] text-[#555] font-black uppercase tracking-[0.3em] mb-2">Lojas (Inquilinos)</p>
               <h3 className="text-xl font-black text-white tracking-tighter">{stats?.total_stores || 0}</h3>
            </div>
            
-           <div className="bg-[#111] p-8 rounded-[30px] border border-white/5 relative overflow-hidden group">
+           <div className="bg-[#111] p-8 rounded-[4px] border border-white/5 relative overflow-hidden group">
               <Car className="w-8 h-8 text-white mb-6" />
               <p className="text-[10px] text-[#555] font-black uppercase tracking-[0.3em] mb-2">Total de Veículos na Rede</p>
               <h3 className="text-xl font-black text-white tracking-tighter">{stats?.total_vehicles || 0}</h3>
            </div>
            
-           <div className="bg-[#111] p-8 rounded-[30px] border border-white/5 relative overflow-hidden group">
+           <div className="bg-[#111] p-8 rounded-[4px] border border-white/5 relative overflow-hidden group">
               <Users className="w-8 h-8 text-white mb-6" />
               <p className="text-[10px] text-[#555] font-black uppercase tracking-[0.3em] mb-2">Leads Capturados (Rede)</p>
               <h3 className="text-xl font-black text-white tracking-tighter">{stats?.total_leads || 0}</h3>
            </div>
 
-           <div className="bg-gradient-to-br from-[#1dd1a1]/20 to-[#111] p-8 rounded-[30px] border border-[#1dd1a1]/30 relative overflow-hidden">
+           <div className="bg-gradient-to-br from-[#1dd1a1]/20 to-[#111] p-8 rounded-[4px] border border-[#1dd1a1]/30 relative overflow-hidden">
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/20 blur-3xl rounded-full" />
               <DollarSign className="w-8 h-8 text-[#1dd1a1] mb-6 relative z-10" />
               <p className="text-[10px] text-[#1dd1a1] font-black uppercase tracking-[0.3em] mb-2 relative z-10">MRR Estimado</p>
@@ -114,12 +114,12 @@ function SuperAdminDashboard() {
         <div>
            <div className="flex items-center justify-between mb-8">
               <h2 className="text-xl font-black text-white uppercase tracking-tighter font-impact italic">Clientes SaaS (Lojistas)</h2>
-              <button className="px-6 py-3 bg-white/5 text-[#1dd1a1] border border-[#1dd1a1]/20 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#1dd1a1] hover:text-gray-800 transition-all">
+              <button className="px-6 py-3 bg-white/5 text-[#1dd1a1] border border-[#1dd1a1]/20 rounded-[4px] font-black text-[10px] uppercase tracking-widest hover:bg-[#1dd1a1] hover:text-gray-800 transition-all">
                 + Novo Lojista
               </button>
            </div>
            
-           <div className="bg-[#111] border border-white/5 rounded-[40px] overflow-hidden shadow-2xl">
+           <div className="bg-[#111] border border-white/5 rounded-[4px] overflow-hidden shadow-2xl">
               <table className="w-full text-left border-collapse">
                  <thead>
                     <tr className="border-b border-white/5 bg-[#1a1a1a]">
@@ -135,7 +135,7 @@ function SuperAdminDashboard() {
                        <tr key={store.id} className="hover:bg-white/[0.02] transition-colors">
                           <td className="px-8 py-6">
                              <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-[4px] bg-black border border-white/10 flex items-center justify-center">
                                    <Building2 className="w-5 h-5 text-[#333]" />
                                 </div>
                                 <div>
@@ -156,11 +156,11 @@ function SuperAdminDashboard() {
                           </td>
                           <td className="px-8 py-6 text-center">
                              {store.active ? (
-                                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-500/10 text-green-500 border border-green-500/20 text-[10px] font-black uppercase tracking-widest">
+                                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-green-500/10 text-green-500 border border-green-500/20 text-[10px] font-black uppercase tracking-widest">
                                    <Activity className="w-3 h-3" /> ATIVO
                                 </span>
                              ) : (
-                                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-500/10 text-red-500 border border-red-500/20 text-[10px] font-black uppercase tracking-widest">
+                                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-red-500/10 text-red-500 border border-red-500/20 text-[10px] font-black uppercase tracking-widest">
                                    <Power className="w-3 h-3" /> BLOQUEADO
                                 </span>
                              )}
@@ -168,7 +168,7 @@ function SuperAdminDashboard() {
                           <td className="px-8 py-6 text-right">
                              <button
                                onClick={() => toggleStoreStatus(store.id, store.active)}
-                               className={`px-4 py-2 border rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${
+                               className={`px-4 py-2 border rounded-[4px] text-[10px] font-black uppercase tracking-widest transition-all ${
                                  store.active 
                                  ? 'border-red-500/30 text-red-500 hover:bg-red-500/10' 
                                  : 'border-[#1dd1a1]/30 text-[#1dd1a1] hover:bg-[#1dd1a1]/10'

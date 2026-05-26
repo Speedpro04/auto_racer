@@ -118,7 +118,7 @@ function AdminLogin() {
 
       <a 
         href="/" 
-        className="absolute top-8 left-8 z-50 p-4 border border-white/5 bg-white/5 rounded-2xl text-[#444] hover:text-[#1dd1a1] hover:bg-white/10 hover:border-[#1dd1a1]/20 transition-all group flex items-center gap-3"
+        className="absolute top-8 left-8 z-50 p-4 border border-white/5 bg-white/5 rounded-[4px] text-[#444] hover:text-[#1dd1a1] hover:bg-white/10 hover:border-[#1dd1a1]/20 transition-all group flex items-center gap-3"
       >
         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         <span className="text-[10px] font-black uppercase tracking-[0.2em] hidden sm:block">Sair do Painel</span>
@@ -128,7 +128,7 @@ function AdminLogin() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative z-50 bg-[#111111]/80 backdrop-blur-3xl rounded-[30px] p-10 border border-white/5 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
+          className="relative z-50 bg-[#111111]/80 backdrop-blur-3xl rounded-[4px] p-10 border border-white/5 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
         >
           <div className="text-center mb-10">
             <div className="flex justify-center mb-6">
@@ -137,7 +137,7 @@ function AdminLogin() {
                 <img 
                   src="/logo-auto-principal.png" 
                   alt="Auto Racer" 
-                  className="w-[156px] h-[124px] object-contain rounded-2xl relative z-10 border border-white/10 shadow-2xl"
+                  className="w-[156px] h-[124px] object-contain rounded-[4px] relative z-10 border border-white/10 shadow-2xl"
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ function AdminLogin() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && !isRegisterOpen && !isForgotPassOpen && (
-              <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
+              <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-[4px] text-xs font-bold uppercase tracking-wider text-center">
                 {error}
               </div>
             )}
@@ -163,7 +163,7 @@ function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-black/50 text-white px-5 py-4 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#333] font-medium"
+                className="w-full bg-black/50 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#333] font-medium"
                 placeholder="seu@acesso.com"
                 required
               />
@@ -178,7 +178,7 @@ function AdminLogin() {
                   type={showLoginPass ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-black/50 text-white px-5 py-4 pr-12 rounded-xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#333] font-medium tracking-widest"
+                  className="w-full bg-black/50 text-white px-5 py-4 pr-12 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#333] font-medium tracking-widest"
                   placeholder="••••••••"
                   required
                 />
@@ -195,7 +195,7 @@ function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-[#2979ff] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_10px_20px_-5px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
+              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-[#2979ff] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_10px_20px_-5px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
@@ -256,7 +256,7 @@ function AdminLogin() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-xl bg-[#0a0a0a] border border-white/10 rounded-[40px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+              className="relative w-full max-w-xl bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
@@ -287,7 +287,7 @@ function AdminLogin() {
 
                   <form onSubmit={handleRegister} className="space-y-8 relative z-[105]">
                     {error && isRegisterOpen && (
-                      <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
+                      <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-[4px] text-xs font-bold uppercase tracking-wider text-center">
                         {error}
                       </div>
                     )}
@@ -302,7 +302,7 @@ function AdminLogin() {
                           type="text"
                           value={regData.name}
                           onChange={(e) => setRegData({...regData, name: e.target.value})}
-                          className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                          className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                           placeholder="Ex: João Silva"
                         />
                       </div>
@@ -315,7 +315,7 @@ function AdminLogin() {
                           type="email"
                           value={regData.email}
                           onChange={(e) => setRegData({...regData, email: e.target.value})}
-                          className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                          className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                           placeholder="joao@loja.com"
                         />
                       </div>
@@ -331,7 +331,7 @@ function AdminLogin() {
                           type="text"
                           value={regData.storeName}
                           onChange={(e) => setRegData({...regData, storeName: e.target.value})}
-                          className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                          className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                           placeholder="Ex: Luxury Motors"
                         />
                       </div>
@@ -344,7 +344,7 @@ function AdminLogin() {
                           type="text"
                           value={regData.phone}
                           onChange={(e) => setRegData({...regData, phone: e.target.value})}
-                          className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                          className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                           placeholder="(00) 00000-0000"
                         />
                       </div>
@@ -361,7 +361,7 @@ function AdminLogin() {
                             type={showRegPass ? 'text' : 'password'}
                             value={regData.password}
                             onChange={(e) => setRegData({...regData, password: e.target.value})}
-                            className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
+                            className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
                             placeholder="••••••••"
                             minLength={8}
                           />
@@ -384,7 +384,7 @@ function AdminLogin() {
                             type={showRegConfirm ? 'text' : 'password'}
                             value={regData.confirmPassword}
                             onChange={(e) => setRegData({...regData, confirmPassword: e.target.value})}
-                            className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
+                            className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
                             placeholder="••••••••"
                             minLength={8}
                           />
@@ -402,7 +402,7 @@ function AdminLogin() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
+                      className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
                     >
                       {loading ? (
                         <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
@@ -437,7 +437,7 @@ function AdminLogin() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-[40px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+              className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
@@ -468,7 +468,7 @@ function AdminLogin() {
 
                   <form onSubmit={handleForgotPassword} className="space-y-6 relative z-[105]">
                     {error && isForgotPassOpen && (
-                      <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
+                      <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-[4px] text-xs font-bold uppercase tracking-wider text-center">
                         {error}
                       </div>
                     )}
@@ -482,7 +482,7 @@ function AdminLogin() {
                         type="email"
                         value={forgotEmail}
                         onChange={(e) => setForgotEmail(e.target.value)}
-                        className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                        className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                         placeholder="seu@acesso.com"
                       />
                     </div>
@@ -490,7 +490,7 @@ function AdminLogin() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
+                      className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-4"
                     >
                       {loading ? (
                         <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />

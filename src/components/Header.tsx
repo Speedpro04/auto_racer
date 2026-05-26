@@ -28,7 +28,7 @@ function Header() {
             <img 
               src="/logo-auto-principal.png" 
               alt="Auto Racer" 
-              className="w-[86px] h-[70px] object-contain rounded-xl shadow-[0_0_20px_rgba(29,209,161,0.2)]" 
+              className="w-[86px] h-[70px] object-contain rounded-[4px] shadow-[0_0_20px_rgba(29,209,161,0.2)]" 
             />
             <span className="text-xl md:text-2xl font-black text-white tracking-[0.2em] font-['Architects_Daughter'] uppercase">
               AUTO <span className="text-[#1dd1a1]">RACER</span>
@@ -61,7 +61,7 @@ function Header() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="md:hidden p-3 text-white hover:bg-white/5 rounded-xl transition"
+            className="md:hidden p-3 text-white hover:bg-white/5 rounded-[4px] transition"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X /> : <Menu />}
@@ -76,7 +76,7 @@ function Header() {
              <Link to="/catalogo" className="text-lg font-bold text-white uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Catálogo Premium</Link>
              <Link to="/sobre-nos" className="text-lg font-bold text-white uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Nossa História</Link>
              <Link to="/contato" className="text-lg font-bold text-[#1dd1a1] uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Consultoria Elite (Contato)</Link>
-             <Link to="/login" className="px-6 py-4 bg-[#1dd1a1] text-black text-center rounded-2xl font-black uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Portal Adm</Link>
+             <Link to="/login" className="px-6 py-4 bg-[#1dd1a1] text-black text-center rounded-[4px] font-black uppercase tracking-widest" onClick={() => setMobileMenuOpen(false)}>Portal Adm</Link>
           </div>
         </div>
       )}

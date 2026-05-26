@@ -67,7 +67,7 @@ function AdminRegister() {
 
       <a 
         href="/parceiro" 
-        className="absolute top-8 left-8 z-50 p-4 border border-white/5 bg-white/5 rounded-2xl text-[#444] hover:text-[#1dd1a1] hover:bg-white/10 hover:border-[#1dd1a1]/20 transition-all group flex items-center gap-3"
+        className="absolute top-8 left-8 z-50 p-4 border border-white/5 bg-white/5 rounded-[4px] text-[#444] hover:text-[#1dd1a1] hover:bg-white/10 hover:border-[#1dd1a1]/20 transition-all group flex items-center gap-3"
       >
         <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         <span className="text-[10px] font-black uppercase tracking-[0.2em] hidden sm:block">Voltar aos Planos</span>
@@ -77,7 +77,7 @@ function AdminRegister() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative bg-[#0a0a0a] border border-white/10 rounded-[40px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
+          className="relative bg-[#0a0a0a] border border-white/10 rounded-[4px] p-8 md:p-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full pointer-events-none" />
 
@@ -87,14 +87,14 @@ function AdminRegister() {
           </div>
 
           {/* Badge de acesso gratuito temporário */}
-          <div className="mb-8 flex items-center justify-center gap-3 bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 rounded-2xl px-5 py-3">
+          <div className="mb-8 flex items-center justify-center gap-3 bg-[#1dd1a1]/10 border border-[#1dd1a1]/20 rounded-[4px] px-5 py-3">
             <CheckCircle2 className="w-5 h-5 text-[#1dd1a1]" />
             <span className="text-sm font-black text-[#1dd1a1] uppercase tracking-widest">10 Dias Grátis — Sem Cartão</span>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-8 relative z-10">
             {error && (
-              <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-center">
+              <div className="text-[#ff6b6b] border border-[#ff6b6b]/20 bg-[#ff6b6b]/5 px-4 py-3 rounded-[4px] text-xs font-bold uppercase tracking-wider text-center">
                 {error}
               </div>
             )}
@@ -109,7 +109,7 @@ function AdminRegister() {
                   type="text"
                   value={regData.name}
                   onChange={(e) => setRegData({...regData, name: e.target.value})}
-                  className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                  className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                   placeholder="Ex: João Silva"
                 />
               </div>
@@ -122,7 +122,7 @@ function AdminRegister() {
                   type="email"
                   value={regData.email}
                   onChange={(e) => setRegData({...regData, email: e.target.value})}
-                  className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                  className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                   placeholder="joao@loja.com"
                 />
               </div>
@@ -138,7 +138,7 @@ function AdminRegister() {
                   type="text"
                   value={regData.storeName}
                   onChange={(e) => setRegData({...regData, storeName: e.target.value})}
-                  className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                  className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                   placeholder="Ex: Luxury Motors"
                 />
               </div>
@@ -151,7 +151,7 @@ function AdminRegister() {
                   type="text"
                   value={regData.phone}
                   onChange={(e) => setRegData({...regData, phone: e.target.value})}
-                  className="w-full bg-black/60 text-white px-5 py-4 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
+                  className="w-full bg-black/60 text-white px-5 py-4 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm"
                   placeholder="(00) 00000-0000"
                 />
               </div>
@@ -168,7 +168,7 @@ function AdminRegister() {
                     type={showRegPass ? 'text' : 'password'}
                     value={regData.password}
                     onChange={(e) => setRegData({...regData, password: e.target.value})}
-                    className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
+                    className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
                     placeholder="••••••••"
                     minLength={8}
                   />
@@ -191,7 +191,7 @@ function AdminRegister() {
                     type={showRegConfirm ? 'text' : 'password'}
                     value={regData.confirmPassword}
                     onChange={(e) => setRegData({...regData, confirmPassword: e.target.value})}
-                    className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-2xl border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
+                    className="w-full bg-black/60 text-white px-5 py-4 pr-12 rounded-[4px] border border-white/5 focus:border-[#1dd1a1]/50 focus:bg-black outline-none transition-all placeholder:text-[#222] font-semibold text-sm tracking-widest"
                     placeholder="••••••••"
                     minLength={8}
                   />
@@ -209,7 +209,7 @@ function AdminRegister() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
+              className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50 mt-6"
             >
               {loading ? (
                 <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />

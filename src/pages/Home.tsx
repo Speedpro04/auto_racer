@@ -107,7 +107,7 @@ function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group relative max-w-[950px] mx-auto h-[400px] md:h-[500px] rounded-[50px] overflow-hidden border border-[#1dd1a1] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
+            className="group relative max-w-[950px] mx-auto h-[400px] md:h-[500px] rounded-[4px] overflow-hidden border border-[#1dd1a1] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]"
           >
              {/* Badge Urgência */}
              <div className="absolute top-6 left-6 z-20 bg-red-500/90 backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
@@ -158,14 +158,14 @@ function Home() {
             className="max-w-[950px] mx-auto mt-10 flex flex-col md:flex-row md:items-start justify-between gap-8 text-left"
           >
              <div>
-                <h2 className="inline-block px-4 py-2 bg-[#1dd1a1] text-black text-[10px] font-black uppercase tracking-widest rounded-xl mb-4">Destaque do Mês</h2>
+                <h2 className="inline-block px-4 py-2 bg-[#1dd1a1] text-black text-[10px] font-black uppercase tracking-widest rounded-[4px] mb-4">Destaque do Mês</h2>
                 <h3 className="text-xl md:text-[50px] font-black font-impact tracking-tighter uppercase mb-4 italic">{spotlightVehicles[0]?.title || "Veículo Premium em Destaque"}</h3>
                 <p className="font-['Architects_Daughter'] text-2xl text-[#1dd1a1] mb-2">"Venha conferir esse maravilhoso carro!"</p>
              </div>
              <div className="flex flex-col gap-4 min-w-[200px] items-start md:items-end">
                 <span className="text-xl font-black text-white tracking-widest">{spotlightVehicles[0] ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(spotlightVehicles[0].price) : "R$ 1.850.000"}</span>
                  <div className="relative">
-                    <Link to={spotlightVehicles[0] ? `/veiculo/${spotlightVehicles[0].slug || spotlightVehicles[0].id}` : "#"} className="flex items-center justify-center gap-2 px-8 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-xs tracking-widest rounded-[20px] hover:bg-white hover:!text-[#1dd1a1] transition-all group/btn relative z-10 w-full md:w-auto text-center">
+                    <Link to={spotlightVehicles[0] ? `/veiculo/${spotlightVehicles[0].slug || spotlightVehicles[0].id}` : "#"} className="flex items-center justify-center gap-2 px-8 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-xs tracking-widest rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] transition-all group/btn relative z-10 w-full md:w-auto text-center">
                        Falar com Especialista <Play className="w-4 h-4" />
                     </Link>
                     <span className="absolute -bottom-8 right-0 text-[#1dd1a1] font-['Architects_Daughter'] text-sm md:text-base opacity-80 whitespace-nowrap rotate-[-3deg]">
@@ -196,7 +196,7 @@ function Home() {
           <div key={vehicle.id} className={`flex flex-col ${idx % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-start gap-20 group`}>
              <div className="relative shrink-0 w-full md:w-[500px] mt-[70px]">
                 <div className="absolute -inset-4 bg-gradient-to-tr from-[#1dd1a1]/20 to-transparent blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="relative h-[320px] w-full rounded-[45px] overflow-hidden border border-[#1dd1a1] shadow-2xl">
+                <div className="relative h-[320px] w-full rounded-[4px] overflow-hidden border border-[#1dd1a1] shadow-2xl">
                    {vehicle.media?.[0]?.url ? (
                      <img
                       src={vehicle.media?.[0]?.url}
@@ -237,14 +237,14 @@ function Home() {
                    </div>
                 </div>
                 <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                   <Link to={`/veiculo/${vehicle.slug || vehicle.id}`} className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-[20px] hover:bg-white/10 transition-all duration-300 group/btn font-black uppercase tracking-widest text-[10px]">
+                   <Link to={`/veiculo/${vehicle.slug || vehicle.id}`} className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-[4px] hover:bg-white/10 transition-all duration-300 group/btn font-black uppercase tracking-widest text-[10px]">
                       VER DETALHES
                    </Link>
                    <a 
                     href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} na Auto Racer e gostaria de negociar.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] !text-[#1f2937] rounded-[20px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-[10px] text-center"
+                    className="flex-1 inline-flex items-center justify-center gap-4 px-8 py-4 bg-[#1dd1a1] !text-[#1f2937] rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all duration-300 shadow-[0_15px_30px_-5px_rgba(29,209,161,0.3)] group/btn font-black uppercase tracking-widest text-[10px] text-center"
                    >
                       NEGOCIAR AGORA <Phone className="w-4 h-4" />
                    </a>
@@ -270,7 +270,7 @@ function Home() {
 
       {/* Persuasive Call to Action / Guarantees */}
       <section className="max-w-[1140px] mx-auto px-6 mb-40">
-         <div className="relative w-full rounded-[45px] overflow-hidden bg-gradient-to-br from-[#0B0E14] to-[#0A0D10] border border-[#1dd1a1]/30 p-10 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] group">
+         <div className="relative w-full rounded-[4px] overflow-hidden bg-gradient-to-br from-[#0B0E14] to-[#0A0D10] border border-[#1dd1a1]/30 p-10 md:p-16 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] group">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1dd1a1]/5 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000 pointer-events-none" />
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
@@ -302,7 +302,7 @@ function Home() {
                </div>
                
                <div className="w-full md:w-auto relative">
-                  <button onClick={() => setIsSimulatorOpen(true)} className="inline-flex items-center justify-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] group/btn w-full relative z-10">
+                  <button onClick={() => setIsSimulatorOpen(true)} className="inline-flex items-center justify-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] group/btn w-full relative z-10">
                      <div className="flex flex-col items-center text-center">
                         <h2 className="font-black uppercase tracking-widest text-sm mb-1">Aprovação Elite em Minutos</h2>
                         <h3 className="font-black text-[10px] opacity-80 tracking-[0.2em] transition-colors uppercase">O carro dos seus sonhos sem burocracia.</h3>
@@ -327,7 +327,7 @@ function Home() {
              { label: "Certificação Elite", value: "100%", icon: ShieldCheck }
            ].map((stat, i) => (
              <div key={i} className="space-y-4">
-                <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-[#1dd1a1]">
+                <div className="w-16 h-16 bg-white/5 border border-white/10 rounded-[4px] flex items-center justify-center mx-auto mb-6 text-[#1dd1a1]">
                    <stat.icon size={28} />
                 </div>
                 <p className="text-xl font-black text-white font-impact">{stat.value}</p>
@@ -342,8 +342,8 @@ function Home() {
 
       {/* Partner Section for Lojistas */}
       <section className="max-w-[1140px] mx-auto px-6 py-20">
-        <div className="relative p-1 bg-gradient-to-r from-transparent via-[#1dd1a1]/50 to-transparent rounded-[50px]">
-          <div className="bg-[#0A0D10] rounded-[49px] p-10 md:p-20 relative overflow-hidden">
+        <div className="relative p-1 bg-gradient-to-r from-transparent via-[#1dd1a1]/50 to-transparent rounded-[4px]">
+          <div className="bg-[#0A0D10] rounded-[4px] p-10 md:p-20 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid.svg')] opacity-10" />
             <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-full" />
@@ -363,11 +363,11 @@ function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
                     to="/contato?ref=parceiro" 
-                    className="px-10 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-[14px] tracking-widest rounded-2xl hover:bg-white hover:!text-[#1dd1a1] transition-all text-center"
+                    className="px-10 py-5 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase text-[14px] tracking-widest rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] transition-all text-center"
                   >
                     Quero Ser um Parceiro
                   </Link>
-                  <div className="flex items-center gap-4 px-6 py-5 border border-white/10 rounded-2xl bg-white/5">
+                  <div className="flex items-center gap-4 px-6 py-5 border border-white/10 rounded-[4px] bg-white/5">
                     <Zap className="w-5 h-5 text-[#1dd1a1]" />
                     <span className="text-[13px] font-black uppercase tracking-widest text-white">AJUDAMOS VOCE A VENDER SEUS CARROS.</span>
                   </div>
@@ -375,10 +375,10 @@ function Home() {
               </div>
               <div className="relative hidden lg:block">
                 <div className="absolute inset-0 bg-[#1dd1a1]/20 blur-[100px] rounded-full" />
-                <div className="rounded-[40px] border border-white/10 shadow-2xl relative z-10 h-[400px] w-full bg-[radial-gradient(circle_at_20%_20%,rgba(29,209,161,0.25),transparent_42%),linear-gradient(135deg,#141921_0%,#0d1117_55%,#090b0f_100%)] p-10 flex items-end">
+                <div className="rounded-[4px] border border-white/10 shadow-2xl relative z-10 h-[400px] w-full bg-[radial-gradient(circle_at_20%_20%,rgba(29,209,161,0.25),transparent_42%),linear-gradient(135deg,#141921_0%,#0d1117_55%,#090b0f_100%)] p-10 flex items-end">
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/80">Espaço reservado para showroom real da loja parceira</p>
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] text-black p-8 rounded-[30px] shadow-2xl z-20 rotate-[-3deg]">
+                <div className="absolute -bottom-6 -left-6 bg-[#1dd1a1] text-black p-8 rounded-[4px] shadow-2xl z-20 rotate-[-3deg]">
                   <p className="text-black font-['Architects_Daughter'] font-bold text-4xl tracking-tight leading-[0.95]">
                     + de 50 lojas parceiras
                   </p>
@@ -401,9 +401,9 @@ function Home() {
             <Link 
               key={store.id} 
               to={`/${store.slug}`} 
-              className="group p-8 rounded-[32px] bg-[#0A0D10] border border-white/5 hover:border-[#1dd1a1] hover:bg-[#111] transition-all duration-500 text-center shadow-lg hover:-translate-y-2"
+              className="group p-8 rounded-[4px] bg-[#0A0D10] border border-white/5 hover:border-[#1dd1a1] hover:bg-[#111] transition-all duration-500 text-center shadow-lg hover:-translate-y-2"
             >
-              <div className="w-20 h-20 mx-auto rounded-2xl bg-[#050505] border border-white/5 flex items-center justify-center mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-500">
+              <div className="w-20 h-20 mx-auto rounded-[4px] bg-[#050505] border border-white/5 flex items-center justify-center mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-500">
                 {store.logo_url ? <img src={store.logo_url} className="w-full h-full object-contain p-2" /> : <Car className="w-10 h-10 text-[#222]" />}
               </div>
               <h3 className="font-bold text-lg mb-2 group-hover:text-[#1dd1a1] transition-colors uppercase font-impact tracking-widest">{store.name}</h3>
@@ -415,7 +415,7 @@ function Home() {
 
       {/* Premium Conversion CTA Section */}
       <section className="max-w-[1140px] mx-auto px-6 pb-40">
-        <div className="relative w-full rounded-[50px] overflow-hidden bg-gradient-to-r from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-12 md:p-24 text-center shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] group">
+        <div className="relative w-full rounded-[4px] overflow-hidden bg-gradient-to-r from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-12 md:p-24 text-center shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] group">
           {/* Decorative background glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-full group-hover:bg-[#1dd1a1]/10 transition-colors duration-1000" />
           
@@ -438,7 +438,7 @@ function Home() {
               href="https://wa.me/5512978138934?text=Olá! Gostaria de uma consultoria premium da Auto Racer."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 px-12 py-[18px] bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[30px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300 active:scale-95 group/btn"
+              className="flex items-center gap-4 px-12 py-[18px] bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest text-sm rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(29,209,161,0.3)] transition-all duration-300 active:scale-95 group/btn"
             >
               CONVERSAR AGORA <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
             </a>

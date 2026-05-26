@@ -41,7 +41,7 @@ function AboutUs() {
 
       {/* SPIN Content - O Problema e a Solução */}
       <div className="max-w-[1140px] mx-auto px-6 relative z-10 mt-[-50px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mb-32 bg-[#14181C]/90 backdrop-blur-md p-10 md:p-16 rounded-[50px] border border-white/5 shadow-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 mb-32 bg-[#14181C]/90 backdrop-blur-md p-10 md:p-16 rounded-[4px] border border-white/5 shadow-2xl">
           <div className="space-y-8">
             <h3 className="text-xl font-black font-impact tracking-tighter uppercase italic leading-[1.1]">
               Encontrar o carro ideal <br /><span className="text-[#1dd1a1]">era cansativo.</span>
@@ -71,19 +71,19 @@ function AboutUs() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-32">
-          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[30px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
+          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Tudo em um lugar"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Vitrine Digital</h4>
             <p className="text-[#576574] text-sm font-bold uppercase tracking-widest leading-relaxed">Filtre, compare e encontre seu próximo veículo sem sair de casa, navegando pelo estoque de múltiplas lojas.</p>
           </div>
-          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[30px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
+          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Zero barreira"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Contato Direto</h4>
             <p className="text-[#576574] text-sm font-bold uppercase tracking-widest leading-relaxed">A Auto Racer não interfere na venda. Ao escolher um modelo, você clica e fala direto com a loja dona do veículo.</p>
           </div>
-          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[30px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
+          <div className="bg-gradient-to-b from-[#14181C] to-[#0B0E14] p-10 rounded-[4px] border border-[#1dd1a1]/20 hover:border-[#1dd1a1] transition-all group overflow-hidden relative">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#1dd1a1]/5 blur-3xl rounded-full group-hover:bg-[#1dd1a1]/20 transition-colors" />
             <h4 className="font-['Architects_Daughter'] text-xl md:text-xl text-[#1dd1a1] mb-6 rotate-[-5deg]">"Foco no usuário"</h4>
             <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 text-white">Tecnologia</h4>
@@ -92,7 +92,7 @@ function AboutUs() {
         </div>
 
         {/* CTA Section */}
-        <div className="relative rounded-[50px] overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-16 md:p-24 text-center shadow-[0_0_100px_rgba(29,209,161,0.05)]">
+        <div className="relative rounded-[4px] overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/30 p-16 md:p-24 text-center shadow-[0_0_100px_rgba(29,209,161,0.05)]">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#1dd1a1]/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
           
           <div className="relative z-10 max-w-3xl mx-auto">
@@ -106,7 +106,7 @@ function AboutUs() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
                 to="/catalogo"
-                className="group px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
+                className="group px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)] flex items-center justify-center gap-3"
               >
                 <span className="group-hover:!text-[#1dd1a1]">Acessar Catálogo Agora</span> <ArrowRight size={20} className="!text-[#1f2937] group-hover:!text-[#1dd1a1]" />
               </Link>

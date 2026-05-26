@@ -73,7 +73,7 @@ function RegisterSuccess() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#0a0a0a] border border-white/10 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center"
+            className="bg-[#0a0a0a] border border-white/10 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center"
           >
             <Loader2 className="w-14 h-14 text-[#1dd1a1] animate-spin mx-auto mb-6" />
             <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter mb-3">Preparando seu painel...</h2>
@@ -86,7 +86,7 @@ function RegisterSuccess() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', duration: 0.6 }}
-            className="bg-[#0a0a0a] border border-[#1dd1a1]/30 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] text-center overflow-hidden relative"
+            className="bg-[#0a0a0a] border border-[#1dd1a1]/30 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(29,209,161,0.15)] text-center overflow-hidden relative"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/10 blur-[80px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#1dd1a1]/5 blur-[60px] rounded-full pointer-events-none" />
@@ -131,7 +131,7 @@ function RegisterSuccess() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-left space-y-4"
+                className="bg-white/5 border border-white/10 rounded-[4px] p-6 text-left space-y-4"
               >
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#1dd1a1] mb-2">Próximos Passos</p>
                 {[
@@ -157,7 +157,7 @@ function RegisterSuccess() {
               >
                 <button
                   onClick={() => navigate('/login')}
-                  className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+                  className="w-full flex items-center justify-center gap-4 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
                 >
                   <Zap className="w-5 h-5" />
                   <span>Acessar Meu Painel</span>
@@ -178,7 +178,7 @@ function RegisterSuccess() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#0a0a0a] border border-white/10 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center space-y-6"
+            className="bg-[#0a0a0a] border border-white/10 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center space-y-6"
           >
             <div className="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto">
               <Loader2 className="w-10 h-10 text-yellow-400" />
@@ -187,7 +187,7 @@ function RegisterSuccess() {
             <p className="text-[#737373] text-sm font-medium">Seu pagamento ainda está sendo processado de forma segura pelo Stripe. Assim que for confirmado, sua conta será ativada automaticamente e você receberá um email.</p>
             <button
               onClick={() => window.location.reload()}
-              className="w-full flex items-center justify-center gap-3 bg-white/10 text-white px-6 py-4 rounded-2xl hover:bg-white/20 transition-all font-black uppercase text-xs tracking-[0.2em]"
+              className="w-full flex items-center justify-center gap-3 bg-white/10 text-white px-6 py-4 rounded-[4px] hover:bg-white/20 transition-all font-black uppercase text-xs tracking-[0.2em]"
             >
               Verificar Novamente
             </button>
@@ -198,13 +198,13 @@ function RegisterSuccess() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#0a0a0a] border border-[#ff6b6b]/20 rounded-[40px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center space-y-6"
+            className="bg-[#0a0a0a] border border-[#ff6b6b]/20 rounded-[4px] p-10 md:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] text-center space-y-6"
           >
             <h2 className="text-2xl font-black font-impact italic text-white uppercase tracking-tighter">Erro na Verificação</h2>
             <p className="text-[#737373] text-sm font-medium">Não conseguimos verificar seu pagamento. Entre em contato com nosso suporte.</p>
             <button
               onClick={() => navigate('/parceiro')}
-              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-4 rounded-2xl hover:bg-white hover:text-gray-800 transition-all font-black uppercase text-xs tracking-[0.2em]"
+              className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-4 rounded-[4px] hover:bg-white hover:text-gray-800 transition-all font-black uppercase text-xs tracking-[0.2em]"
             >
               Voltar aos Planos
             </button>

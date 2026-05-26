@@ -54,7 +54,7 @@ export default function AdminReports() {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-[#1a1e20] border border-white/10 p-4 rounded-xl shadow-2xl">
+        <div className="bg-[#1a1e20] border border-white/10 p-4 rounded-[4px] shadow-2xl">
           <p className="text-white font-bold mb-2">Dia {label}</p>
           {payload.map((entry: any, index: number) => (
             <p key={index} style={{ color: entry.color }} className="text-sm font-semibold flex justify-between gap-4">
@@ -88,12 +88,12 @@ export default function AdminReports() {
         </div>
         
         <div className="flex items-center gap-4">
-          <div className="flex bg-[#2d3436] rounded-xl p-1 border border-white/5">
+          <div className="flex bg-[#2d3436] rounded-[4px] p-1 border border-white/5">
             {['7D', '15D', '30D', '90D'].map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
-                className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${
+                className={`px-4 py-2 rounded-[4px] text-[10px] font-black uppercase tracking-widest transition-all ${
                   timeRange === range 
                     ? 'bg-[#1dd1a1] text-black shadow-lg shadow-[#1dd1a1]/20' 
                     : 'text-[#a0a0a0] hover:text-white'
@@ -103,7 +103,7 @@ export default function AdminReports() {
               </button>
             ))}
           </div>
-          <button className="flex items-center gap-2 bg-[#2d3436] text-white px-6 py-3 rounded-xl border border-white/5 hover:bg-[#3d4547] transition-all font-black uppercase tracking-widest text-[10px]">
+          <button className="flex items-center gap-2 bg-[#2d3436] text-white px-6 py-3 rounded-[4px] border border-white/5 hover:bg-[#3d4547] transition-all font-black uppercase tracking-widest text-[10px]">
             <Download className="w-4 h-4 text-[#ff9f43]" />
             Exportar XLS
           </button>
@@ -113,10 +113,10 @@ export default function AdminReports() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Visitas Card */}
-        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[30px] border border-white/5 shadow-2xl relative overflow-hidden group">
+        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#00d2d3]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#00d2d3]/20" />
           <div className="flex items-center justify-between mb-6">
-            <div className="p-3 bg-black/40 rounded-xl border border-white/5">
+            <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Eye className="w-5 h-5 text-[#00d2d3]" />
             </div>
             <span className="text-[10px] font-black text-[#00d2d3] bg-[#00d2d3]/10 px-3 py-1 rounded-full uppercase tracking-widest">+24%</span>
@@ -126,10 +126,10 @@ export default function AdminReports() {
         </motion.div>
 
         {/* Leads Card */}
-        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[30px] border border-white/5 shadow-2xl relative overflow-hidden group">
+        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#1dd1a1]/20" />
           <div className="flex items-center justify-between mb-6">
-            <div className="p-3 bg-black/40 rounded-xl border border-white/5">
+            <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Flame className="w-5 h-5 text-[#1dd1a1]" />
             </div>
             <span className="text-[10px] font-black text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1 rounded-full uppercase tracking-widest">+12%</span>
@@ -139,10 +139,10 @@ export default function AdminReports() {
         </motion.div>
 
         {/* Cadastros Card */}
-        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[30px] border border-white/5 shadow-2xl relative overflow-hidden group">
+        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff9f43]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#ff9f43]/20" />
           <div className="flex items-center justify-between mb-6">
-            <div className="p-3 bg-black/40 rounded-xl border border-white/5">
+            <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Users className="w-5 h-5 text-[#ff9f43]" />
             </div>
             <span className="text-[10px] font-black text-[#ff9f43] bg-[#ff9f43]/10 px-3 py-1 rounded-full uppercase tracking-widest">+5%</span>
@@ -152,10 +152,10 @@ export default function AdminReports() {
         </motion.div>
 
         {/* Conversão Card */}
-        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[30px] border border-white/5 shadow-2xl relative overflow-hidden group">
+        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#5f27cd]/5 -mr-16 -mt-16 rounded-full blur-2xl transition-all group-hover:bg-[#5f27cd]/20" />
           <div className="flex items-center justify-between mb-6">
-            <div className="p-3 bg-black/40 rounded-xl border border-white/5">
+            <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <TrendingUp className="w-5 h-5 text-[#5f27cd]" />
             </div>
             <span className="text-[10px] font-black text-[#5f27cd] bg-[#5f27cd]/10 px-3 py-1 rounded-full uppercase tracking-widest">Estável</span>
@@ -169,7 +169,7 @@ export default function AdminReports() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Traffic Area Chart (Span 2) */}
-        <motion.div variants={itemVariants} className="lg:col-span-2 bg-[#2d3436] p-8 rounded-[40px] border border-white/5 shadow-2xl">
+        <motion.div variants={itemVariants} className="lg:col-span-2 bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl">
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-xl font-black uppercase tracking-tighter text-white font-impact italic">Funil de Tração</h2>
@@ -221,7 +221,7 @@ export default function AdminReports() {
         </motion.div>
 
         {/* Lead Distribution Bar Chart */}
-        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[40px] border border-white/5 shadow-2xl flex flex-col">
+        <motion.div variants={itemVariants} className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl flex flex-col">
            <div className="mb-8">
               <h2 className="text-xl font-black uppercase tracking-tighter text-white font-impact italic">Leads por Categoria</h2>
               <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-widest mt-1">Interesse do público</p>
@@ -242,7 +242,7 @@ export default function AdminReports() {
       </div>
 
       {/* Top Vehicles Table */}
-      <motion.div variants={itemVariants} className="bg-[#2d3436] rounded-[40px] border border-white/5 shadow-2xl overflow-hidden">
+      <motion.div variants={itemVariants} className="bg-[#2d3436] rounded-[4px] border border-white/5 shadow-2xl overflow-hidden">
         <div className="p-8 border-b border-white/5 flex items-center justify-between bg-black/20">
           <div>
             <h2 className="text-xl font-black uppercase tracking-tighter text-white font-impact italic flex items-center gap-3">
@@ -266,7 +266,7 @@ export default function AdminReports() {
                 {topVehicles.map((vehicle, index) => (
                   <tr key={vehicle.id} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
                     <td className="p-4 font-bold text-white flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-md bg-black/40 flex items-center justify-center text-[10px] font-black text-[#8395a7]">
+                      <span className="w-6 h-6 rounded-[4px] bg-black/40 flex items-center justify-center text-[10px] font-black text-[#8395a7]">
                         {index + 1}
                       </span>
                       {vehicle.name}

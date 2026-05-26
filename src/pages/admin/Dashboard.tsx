@@ -73,14 +73,14 @@ function AdminDashboard() {
         <div className="flex items-center gap-4">
           <Link
             to="/admin/second-brain"
-            className="flex items-center gap-2 bg-[#171717] border border-white/10 text-white px-6 py-4 rounded-2xl hover:bg-black transition-all duration-300 font-black uppercase tracking-widest text-[10px]"
+            className="flex items-center gap-2 bg-[#171717] border border-white/10 text-white px-6 py-4 rounded-[4px] hover:bg-black transition-all duration-300 font-black uppercase tracking-widest text-[10px]"
           >
             <BrainCircuit className="w-4 h-4 text-[#1dd1a1]" />
             Brain Explorer
           </Link>
           <Link
             to="/admin/veiculos/novo"
-            className="flex items-center gap-2 bg-[#1dd1a1] text-black px-8 py-4 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 font-black uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(29,209,161,0.2)]"
+            className="flex items-center gap-2 bg-[#1dd1a1] text-black px-8 py-4 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-105 active:scale-95 transition-all duration-300 font-black uppercase tracking-widest text-[10px] shadow-[0_10px_30px_rgba(29,209,161,0.2)]"
           >
             <Plus className="w-5 h-5" />
             Inserir Máquina
@@ -94,11 +94,11 @@ function AdminDashboard() {
           <motion.div 
             key={i} 
             variants={itemVariants}
-            className="bg-[#2d3436] p-8 rounded-[35px] border border-white/5 shadow-2xl relative group overflow-hidden"
+            className="bg-[#2d3436] p-8 rounded-[4px] border border-white/5 shadow-2xl relative group overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-[#1dd1a1]/5 -mr-16 -mt-16 rounded-full blur-3xl group-hover:bg-[#1dd1a1]/15 transition-all duration-500" />
             <div className="flex items-center justify-between mb-8">
-              <div className="p-4 bg-black rounded-2xl border border-white/10 group-hover:border-[#1dd1a1]/50 transition-all duration-500">
+              <div className="p-4 bg-black rounded-[4px] border border-white/10 group-hover:border-[#1dd1a1]/50 transition-all duration-500">
                 <stat.icon className="w-6 h-6" style={{ color: stat.color }} />
               </div>
               <div className="text-[9px] font-black uppercase tracking-widest text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1.5 rounded-full">
@@ -123,7 +123,7 @@ function AdminDashboard() {
         {/* Recent Activity Mini-List */}
         <motion.div 
           variants={itemVariants}
-          className="lg:col-span-2 bg-[#2d3436] rounded-[40px] border border-white/5 overflow-hidden shadow-2xl"
+          className="lg:col-span-2 bg-[#2d3436] rounded-[4px] border border-white/5 overflow-hidden shadow-2xl"
         >
           <div className="p-10 border-b border-white/5 flex items-center justify-between bg-black/40">
             <div>
@@ -139,11 +139,11 @@ function AdminDashboard() {
               <div className="p-20 text-center text-[#333] font-black uppercase tracking-[0.3em] text-[10px]">Aguardando dados do motor...</div>
             ) : (
               recentVehicles.map((vehicle) => (
-                <div key={vehicle.id} className="p-6 rounded-[25px] flex items-center justify-between hover:bg-white/[0.03] transition-all group border border-transparent hover:border-white/5">
+                <div key={vehicle.id} className="p-6 rounded-[4px] flex items-center justify-between hover:bg-white/[0.03] transition-all group border border-transparent hover:border-white/5">
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 bg-black rounded-2xl border border-white/10 overflow-hidden flex items-center justify-center p-1 group-hover:border-[#1dd1a1]/30 transition-all">
+                    <div className="w-16 h-16 bg-black rounded-[4px] border border-white/10 overflow-hidden flex items-center justify-center p-1 group-hover:border-[#1dd1a1]/30 transition-all">
                       {vehicle.media?.[0]?.url ? (
-                        <img src={vehicle.media[0].url} className="w-full h-full object-cover rounded-xl" />
+                        <img src={vehicle.media[0].url} className="w-full h-full object-cover rounded-[4px]" />
                       ) : (
                         <Car className="w-8 h-8 text-[#1a1a1a]" />
                       )}
@@ -176,21 +176,21 @@ function AdminDashboard() {
           variants={itemVariants}
           className="space-y-6"
         >
-          <div className="bg-[#1dd1a1] rounded-[40px] p-10 flex flex-col justify-between text-black shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] relative overflow-hidden h-[400px]">
+          <div className="bg-[#1dd1a1] rounded-[4px] p-10 flex flex-col justify-between text-black shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] relative overflow-hidden h-[400px]">
              <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/20 blur-3xl rounded-full" />
              <div className="relative z-10">
-               <div className="w-12 h-12 bg-black rounded-2xl flex items-center justify-center mb-10 shadow-xl">
+               <div className="w-12 h-12 bg-black rounded-[4px] flex items-center justify-center mb-10 shadow-xl">
                  <Activity className="w-6 h-6 text-[#1dd1a1]" />
                </div>
                <h2 className="text-xl font-black uppercase tracking-tighter leading-[0.9] mb-6 font-impact italic">POLARS <br />ENGINE <br />ACTIVE</h2>
                <p className="font-bold text-xs leading-relaxed opacity-80 uppercase tracking-tight">O motor de processamento está analisando 452 eventos de tráfego. Conversão projetada em alta.</p>
              </div>
-             <button className="relative z-10 w-full py-6 bg-black text-white rounded-[24px] text-[10px] font-black uppercase tracking-[0.4em] text-center hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl">
+             <button className="relative z-10 w-full py-6 bg-black text-white rounded-[4px] text-[10px] font-black uppercase tracking-[0.4em] text-center hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl">
                 Relatório Full
              </button>
           </div>
 
-          <div className="bg-white/5 border border-white/10 rounded-[40px] p-10 group hover:border-[#1dd1a1]/30 transition-all">
+          <div className="bg-white/5 border border-white/10 rounded-[4px] p-10 group hover:border-[#1dd1a1]/30 transition-all">
              <div className="flex items-center gap-4 mb-6">
                 <BrainCircuit className="w-8 h-8 text-[#1dd1a1]" />
                 <h3 className="text-lg font-black text-white uppercase tracking-tight font-impact italic italic">Brain Sync</h3>

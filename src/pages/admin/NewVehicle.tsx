@@ -109,23 +109,23 @@ function AdminNewVehicle() {
       <form onSubmit={handleSubmit} className="space-y-10">
         
         {/* Step 1: Media Upload System */}
-        <section className="bg-[#2d3436] rounded-[40px] border border-[#1dd1a1]/20 p-10 shadow-2xl overflow-hidden relative">
+        <section className="bg-[#2d3436] rounded-[4px] border border-[#1dd1a1]/20 p-10 shadow-2xl overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[100px] rounded-full" />
           
           <div className="flex items-center gap-4 mb-10">
-             <div className="p-3 bg-[#1dd1a1] text-black rounded-2xl"><Camera className="w-6 h-6" /></div>
+             <div className="p-3 bg-[#1dd1a1] text-black rounded-[4px]"><Camera className="w-6 h-6" /></div>
              <h2 className="text-2xl font-black uppercase tracking-tighter font-impact text-white">Galeria de Alta Fidelidade</h2>
           </div>
 
           <div
             {...getRootProps()}
-            className={`relative border-2 border-dashed rounded-[32px] p-16 text-center transition-all duration-500 cursor-pointer group ${
+            className={`relative border-2 border-dashed rounded-[4px] p-16 text-center transition-all duration-500 cursor-pointer group ${
               isDragActive ? 'border-[#1dd1a1] bg-[#1dd1a1]/5' : 'border-[#576574]/30 hover:border-[#1dd1a1]/50 bg-black/20'
             }`}
           >
             <input {...getInputProps()} />
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-black rounded-3xl border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl">
+              <div className="w-20 h-20 bg-black rounded-[4px] border border-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl">
                  <Upload className={`w-8 h-8 ${isDragActive ? 'text-[#1dd1a1] animate-bounce' : 'text-[#333]'}`} />
               </div>
               <p className="text-white font-black uppercase tracking-widest text-xs mb-2">Arraste as imagens aqui</p>
@@ -136,18 +136,18 @@ function AdminNewVehicle() {
           {images.length > 0 && (
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-10">
               {images.map((img, idx) => (
-                <div key={idx} className="relative aspect-square rounded-2xl overflow-hidden group border border-white/10 hover:border-[#1dd1a1]/50 transition-colors shadow-lg">
+                <div key={idx} className="relative aspect-square rounded-[4px] overflow-hidden group border border-white/10 hover:border-[#1dd1a1]/50 transition-colors shadow-lg">
                   <img src={img.preview} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                      <button
                       type="button"
                       onClick={() => removeImage(idx)}
-                      className="p-3 bg-[#576574] text-white rounded-xl hover:scale-110 transition"
+                      className="p-3 bg-[#576574] text-white rounded-[4px] hover:scale-110 transition"
                     >
                       <X className="w-5 h-5" />
                     </button>
                   </div>
-                  {idx === 0 && <span className="absolute top-3 left-3 px-2 py-1 bg-[#1dd1a1] text-black text-[8px] font-black uppercase tracking-widest rounded-md">Principal</span>}
+                  {idx === 0 && <span className="absolute top-3 left-3 px-2 py-1 bg-[#1dd1a1] text-black text-[8px] font-black uppercase tracking-widest rounded-[4px]">Principal</span>}
                 </div>
               ))}
             </div>
@@ -155,9 +155,9 @@ function AdminNewVehicle() {
         </section>
 
         {/* Step 2: Details */}
-        <section className="bg-[#2d3436] rounded-[40px] border border-white/5 p-10 shadow-2xl space-y-12">
+        <section className="bg-[#2d3436] rounded-[4px] border border-white/5 p-10 shadow-2xl space-y-12">
            <div className="flex items-center gap-4">
-             <div className="p-3 bg-white/5 border border-white/10 rounded-2xl text-[#1dd1a1]"><Info className="w-6 h-6" /></div>
+             <div className="p-3 bg-white/5 border border-white/10 rounded-[4px] text-[#1dd1a1]"><Info className="w-6 h-6" /></div>
              <h2 className="text-2xl font-black uppercase tracking-tighter font-impact text-white">Especificações Técnicas</h2>
            </div>
 
@@ -166,7 +166,7 @@ function AdminNewVehicle() {
                 <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3 group-focus-within:text-[#1dd1a1] transition-colors">Título do Anúncio</label>
                 <input 
                   type="text" name="title" value={formData.title} onChange={handleInputChange} required
-                  className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold placeholder:text-[#222]"
+                  className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold placeholder:text-[#222]"
                   placeholder="Ex: PORSCHE 911 GT3 RS"
                 />
               </div>
@@ -174,31 +174,31 @@ function AdminNewVehicle() {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Marca</label>
-                  <input type="text" name="brand" value={formData.brand} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                  <input type="text" name="brand" value={formData.brand} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Ano</label>
-                  <input type="text" name="year" value={formData.year} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                  <input type="text" name="year" value={formData.year} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Quilometragem</label>
-                  <input type="number" name="km" value={formData.km} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
+                  <input type="number" name="km" value={formData.km} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3 group-focus-within:text-[#1dd1a1]">Preço de Venda</label>
                   <div className="relative">
                     <span className="absolute left-5 top-1/2 -translate-y-1/2 font-black text-[#1dd1a1]">R$</span>
-                    <input type="number" name="price" value={formData.price} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 pl-12 pr-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-black text-xl tracking-tight" />
+                    <input type="number" name="price" value={formData.price} onChange={handleInputChange} required className="w-full bg-black/60 border border-white/5 py-5 pl-12 pr-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-black text-xl tracking-tight" />
                   </div>
                 </div>
               </div>
 
               <div>
                 <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Tipo</label>
-                <select name="type" value={formData.type} onChange={handleInputChange} className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-2xl text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold appearance-none">
+                <select name="type" value={formData.type} onChange={handleInputChange} className="w-full bg-black/60 border border-white/5 py-5 px-6 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-bold appearance-none">
                   <option value="carro">Luxury Car</option>
                   <option value="moto">Super Bike</option>
                 </select>
@@ -209,7 +209,7 @@ function AdminNewVehicle() {
               <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#576574] mb-3">Narrativa de Venda / Descrição</label>
               <textarea 
                 name="description" value={formData.description} onChange={handleInputChange} rows={6}
-                className="w-full bg-black/60 border border-white/5 py-6 px-8 rounded-[32px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-medium leading-relaxed"
+                className="w-full bg-black/60 border border-white/5 py-6 px-8 rounded-[4px] text-white outline-none focus:border-[#1dd1a1]/50 transition-all font-medium leading-relaxed"
                 placeholder="Descreva a história e os diferenciais deste veículo..."
               />
            </div>

@@ -36,7 +36,7 @@ function Partners() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="group relative bg-[#0A0D10] rounded-[40px] overflow-hidden border border-white/10 hover:border-[#1dd1a1]/50 transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.15)] p-10 flex flex-col h-full"
+            className="group relative bg-[#0A0D10] rounded-[4px] overflow-hidden border border-white/10 hover:border-[#1dd1a1]/50 transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.15)] p-10 flex flex-col h-full"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#1dd1a1]/5 blur-[80px] rounded-full group-hover:bg-[#1dd1a1]/10 transition-colors pointer-events-none" />
             
@@ -74,7 +74,7 @@ function Partners() {
 
             <Link 
               to="/cadastro"
-              className="relative z-10 w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
+              className="relative z-10 w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-5 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)]"
             >
               Começar Agora <ArrowRight className="w-4 h-4" />
             </Link>
@@ -85,7 +85,7 @@ function Partners() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="group relative bg-gradient-to-br from-[#0f1418] to-[#0a0d10] rounded-[40px] overflow-hidden border border-[#1dd1a1]/30 hover:border-[#1dd1a1] transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] p-10 flex flex-col h-full"
+            className="group relative bg-gradient-to-br from-[#0f1418] to-[#0a0d10] rounded-[4px] overflow-hidden border border-[#1dd1a1]/30 hover:border-[#1dd1a1] transition-all duration-500 shadow-[0_30px_60px_-15px_rgba(29,209,161,0.1)] hover:shadow-[0_30px_60px_-15px_rgba(29,209,161,0.3)] p-10 flex flex-col h-full"
           >
             <div className="absolute top-4 right-4 bg-[#1dd1a1]/20 border border-[#1dd1a1]/30 px-3 py-1 rounded-full flex items-center gap-2">
               <Star className="w-3 h-3 text-[#1dd1a1] fill-[#1dd1a1]" />
@@ -124,7 +124,7 @@ function Partners() {
               href="https://wa.me/5512978138934?text=Olá! Tenho interesse em desenvolver um App Exclusivo (White Label) para minha concessionária com a Auto Racer."
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 w-full flex items-center justify-center gap-3 bg-transparent border-2 border-[#1dd1a1] text-[#1dd1a1] px-6 py-5 rounded-2xl hover:bg-[#1dd1a1] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em]"
+              className="relative z-10 w-full flex items-center justify-center gap-3 bg-transparent border-2 border-[#1dd1a1] text-[#1dd1a1] px-6 py-5 rounded-[4px] hover:bg-[#1dd1a1] hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em]"
             >
               Falar com Especialista <Zap className="w-4 h-4" />
             </a>

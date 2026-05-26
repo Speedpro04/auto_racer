@@ -88,7 +88,7 @@ function Checkout() {
               <p className="text-[#8395a7] font-medium">Cadastre seu cartão e ganhe <span className="text-[#1dd1a1] font-bold">15 dias grátis</span> para testar o sistema completo.</p>
             </div>
 
-            <div className="bg-[#111111] border border-white/5 rounded-3xl p-8 relative overflow-hidden group">
+            <div className="bg-[#111111] border border-white/5 rounded-[4px] p-8 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Zap className="w-20 h-20 text-[#1dd1a1]" />
               </div>
@@ -116,7 +116,7 @@ function Checkout() {
               </ul>
             </div>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5">
+            <div className="flex items-center gap-4 p-4 rounded-[4px] bg-white/5 border border-white/5">
               <ShieldCheck className="w-8 h-8 text-[#1dd1a1]" />
               <div className="text-[10px] text-[#576574] font-bold uppercase tracking-widest leading-relaxed">
                 Pagamento processado via <span className="text-white">Stripe</span>. 
@@ -131,7 +131,7 @@ function Checkout() {
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col justify-center"
           >
-            <div className="bg-gradient-to-br from-[#1dd1a1]/10 to-transparent border border-[#1dd1a1]/20 rounded-[40px] p-10 text-center">
+            <div className="bg-gradient-to-br from-[#1dd1a1]/10 to-transparent border border-[#1dd1a1]/20 rounded-[4px] p-10 text-center">
               <div className="w-20 h-20 bg-[#1dd1a1] text-black rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_40px_rgba(29,209,161,0.3)]">
                 <CreditCard className="w-10 h-10 text-black" />
               </div>
@@ -145,7 +145,7 @@ function Checkout() {
               </p>
 
               {error && (
-                <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider">
+                <div className="mb-6 p-4 rounded-[4px] bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider">
                   {error}
                 </div>
               )}
@@ -153,7 +153,7 @@ function Checkout() {
               <button
                 onClick={handlePayment}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-6 rounded-2xl hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-3 bg-[#1dd1a1] text-black px-6 py-6 rounded-[4px] hover:bg-white hover:text-gray-800 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-black uppercase text-xs tracking-[0.2em] shadow-[0_20px_40px_rgba(29,209,161,0.3)] disabled:opacity-50"
               >
                 {loading ? (
                   <Loader2 className="w-6 h-6 animate-spin" />

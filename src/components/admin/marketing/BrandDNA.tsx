@@ -113,10 +113,10 @@ export default function BrandDNA() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl border border-white/10 bg-[#2d3436] p-6"
+        className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6"
       >
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2.5 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl border border-purple-500/30">
+          <div className="p-2.5 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-[4px] border border-purple-500/30">
             <Globe className="w-5 h-5 text-purple-400" />
           </div>
           <div>
@@ -133,14 +133,14 @@ export default function BrandDNA() {
               value={url}
               onChange={(e) => setSiteUrl(e.target.value)}
               placeholder="https://minhaloja.com.br"
-              className="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-white/10 bg-black/30 text-white text-[15px] placeholder:text-[#444] focus:outline-none focus:border-purple-500/50 transition-colors"
+              className="w-full pl-11 pr-4 py-3.5 rounded-[4px] border border-white/10 bg-black/30 text-white text-[15px] placeholder:text-[#444] focus:outline-none focus:border-purple-500/50 transition-colors"
               onKeyDown={(e) => e.key === 'Enter' && analyze()}
             />
           </div>
           {profile ? (
             <button
               onClick={reset}
-              className="flex items-center gap-2 px-5 rounded-2xl bg-white/10 text-white font-bold text-[13px] hover:bg-white/15 transition-all"
+              className="flex items-center gap-2 px-5 rounded-[4px] bg-white/10 text-white font-bold text-[13px] hover:bg-white/15 transition-all"
             >
               <RotateCcw className="w-4 h-4" /> Nova Análise
             </button>
@@ -148,7 +148,7 @@ export default function BrandDNA() {
             <button
               onClick={analyze}
               disabled={analyzing || !url.trim()}
-              className="flex items-center gap-2 px-6 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-white font-black text-[13px] uppercase tracking-wider hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_8px_25px_rgba(139,92,246,0.3)]"
+              className="flex items-center gap-2 px-6 rounded-[4px] bg-gradient-to-r from-purple-500 to-blue-500 text-white font-black text-[13px] uppercase tracking-wider hover:brightness-110 transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_8px_25px_rgba(139,92,246,0.3)]"
             >
               {analyzing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
               {analyzing ? 'Analisando...' : 'Extrair DNA'}
@@ -196,7 +196,7 @@ export default function BrandDNA() {
             className="space-y-6"
           >
             {/* Color Palette */}
-            <div className="rounded-3xl border border-white/10 bg-[#2d3436] p-6 overflow-hidden relative">
+            <div className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6 overflow-hidden relative">
               <div className="absolute top-0 right-0 w-60 h-60 bg-purple-500/5 blur-[80px] rounded-full" />
               <div className="flex items-center gap-3 mb-5 relative z-10">
                 <Palette className="w-5 h-5 text-purple-400" />
@@ -210,10 +210,10 @@ export default function BrandDNA() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.1 }}
                     onClick={() => copyColor(color.hex)}
-                    className="group rounded-2xl border border-white/10 bg-black/20 p-4 text-left hover:border-purple-500/40 transition-all relative overflow-hidden"
+                    className="group rounded-[4px] border border-white/10 bg-black/20 p-4 text-left hover:border-purple-500/40 transition-all relative overflow-hidden"
                   >
                     <div
-                      className="w-full aspect-square rounded-xl mb-3 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                      className="w-full aspect-square rounded-[4px] mb-3 shadow-lg group-hover:scale-105 transition-transform duration-300"
                       style={{ backgroundColor: color.hex }}
                     />
                     <p className="text-[13px] font-bold text-white truncate">{color.name}</p>
@@ -236,19 +236,19 @@ export default function BrandDNA() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="rounded-3xl border border-white/10 bg-[#2d3436] p-6"
+                className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6"
               >
                 <div className="flex items-center gap-3 mb-5">
                   <Type className="w-5 h-5 text-blue-400" />
                   <h3 className="text-[17px] font-bold text-white">Tipografia</h3>
                 </div>
                 <div className="space-y-4">
-                  <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div className="rounded-[4px] border border-white/10 bg-black/20 p-4">
                     <p className="text-[10px] font-black text-[#576574] uppercase tracking-[0.3em] mb-2">Heading Font</p>
                     <p className="text-[28px] font-black text-white leading-none">{profile.typography.primary}</p>
                     <p className="text-[11px] text-purple-400 font-bold mt-1">{profile.typography.style}</p>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div className="rounded-[4px] border border-white/10 bg-black/20 p-4">
                     <p className="text-[10px] font-black text-[#576574] uppercase tracking-[0.3em] mb-2">Body Font</p>
                     <p className="text-[22px] font-bold text-white leading-none">{profile.typography.secondary}</p>
                     <p className="text-[13px] text-[#8395a7] mt-2 leading-relaxed">
@@ -263,20 +263,20 @@ export default function BrandDNA() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="rounded-3xl border border-white/10 bg-[#2d3436] p-6"
+                className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6"
               >
                 <div className="flex items-center gap-3 mb-5">
                   <MessageSquare className="w-5 h-5 text-amber-400" />
                   <h3 className="text-[17px] font-bold text-white">Tom de Voz</h3>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="rounded-[4px] border border-white/10 bg-black/20 p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-3xl">{profile.tone.emoji}</span>
                     <span className="text-[19px] font-black text-white">{profile.tone.label}</span>
                   </div>
                   <p className="text-[14px] text-[#8395a7] leading-relaxed">{profile.tone.description}</p>
                 </div>
-                <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
+                <div className="mt-4 rounded-[4px] border border-white/10 bg-black/20 p-5">
                   <p className="text-[10px] font-black text-[#576574] uppercase tracking-[0.3em] mb-3">Tagline Sugerida</p>
                   <p className="text-[16px] font-bold text-white italic leading-snug">"{profile.tagline}"</p>
                   <button
@@ -299,7 +299,7 @@ export default function BrandDNA() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="rounded-3xl border border-white/10 bg-[#2d3436] p-6"
+              className="rounded-[4px] border border-white/10 bg-[#2d3436] p-6"
             >
               <div className="flex items-center gap-3 mb-4">
                 <Eye className="w-5 h-5 text-[#1dd1a1]" />
@@ -318,7 +318,7 @@ export default function BrandDNA() {
                   </motion.span>
                 ))}
               </div>
-              <div className="mt-5 p-4 rounded-2xl bg-[#1dd1a1]/10 border border-[#1dd1a1]/20">
+              <div className="mt-5 p-4 rounded-[4px] bg-[#1dd1a1]/10 border border-[#1dd1a1]/20">
                 <p className="text-[12px] text-[#1dd1a1] font-bold flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4" />
                   Brand DNA salvo — será usado automaticamente nos vídeos e copies gerados pelo Racer Redes.

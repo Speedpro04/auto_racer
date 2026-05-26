@@ -96,7 +96,7 @@ function Catalog() {
               placeholder="Encontre sua máquina: Porsche, BMW, Ferrari..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-[#14181C] border border-white/5 rounded-[25px] py-6 pl-16 pr-6 text-white text-lg focus:border-[#1dd1a1]/50 outline-none transition-all shadow-2xl"
+              className="w-full bg-[#14181C] border border-white/5 rounded-[4px] py-6 pl-16 pr-6 text-white text-lg focus:border-[#1dd1a1]/50 outline-none transition-all shadow-2xl"
             />
           </div>
         </section>
@@ -107,7 +107,7 @@ function Catalog() {
             <>
               {/* Mid-scroll SPIN Banner de Objeção */}
               {index === 3 && (
-                <div className="bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 rounded-[40px] p-10 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
+                <div className="bg-gradient-to-br from-[#0d1117] to-[#14181C] border border-[#1dd1a1]/20 rounded-[4px] p-10 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
                   <div className="absolute top-0 left-0 w-[400px] h-[300px] bg-[#1dd1a1]/5 blur-[120px] rounded-full" />
                   <div className="flex-1 relative z-10">
                     <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#1dd1a1] block mb-4">Transparência Total</span>
@@ -129,7 +129,7 @@ function Catalog() {
                 key={vehicle.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="group bg-[#14181C] rounded-[40px] border border-white/5 hover:border-[#1dd1a1]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 flex flex-col lg:flex-row shadow-2xl w-full"
+                className="group bg-[#14181C] rounded-[4px] border border-white/5 hover:border-[#1dd1a1]/50 overflow-hidden transition-all duration-700 hover:-translate-y-2 flex flex-col lg:flex-row shadow-2xl w-full"
               >
                 {/* Imagem do carro (Ocupa a largura no celular, e metade no desktop) */}
                 <Link to={`/veiculo/${vehicle.slug}`} className="relative h-[300px] lg:h-[450px] lg:w-1/2 overflow-hidden flex-shrink-0 cursor-pointer block">
@@ -145,10 +145,10 @@ function Catalog() {
                     </div>
                   )}
                   <div className="absolute top-6 left-6 flex gap-2 flex-col">
-                    <span className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-xl text-[10px] font-black tracking-widest uppercase border border-white/10">
+                    <span className="px-4 py-2 bg-black/60 backdrop-blur-md rounded-[4px] text-[10px] font-black tracking-widest uppercase border border-white/10">
                       {vehicle.brand}
                     </span>
-                    <span className="px-4 py-2 bg-[#1dd1a1] text-black rounded-xl text-[10px] font-black tracking-widest uppercase shadow-[0_0_15px_rgba(29,209,161,0.5)]">
+                    <span className="px-4 py-2 bg-[#1dd1a1] text-black rounded-[4px] text-[10px] font-black tracking-widest uppercase shadow-[0_0_15px_rgba(29,209,161,0.5)]">
                       100% Periciado
                     </span>
                   </div>
@@ -170,7 +170,7 @@ function Catalog() {
                     </p>
                   </div>
 
-                  <div className="text-sm font-bold text-[#8395a7] uppercase tracking-widest bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                  <div className="text-sm font-bold text-[#8395a7] uppercase tracking-widest bg-white/5 p-4 rounded-[4px] border border-white/5 text-center">
                     Dados completos sob consulta com especialista
                   </div>
 
@@ -178,7 +178,7 @@ function Catalog() {
                     {/* Botão para ler a descrição (Abre o Pop-Up super amigável no celular) */}
                     <button 
                       onClick={() => setSelectedDescVehicle(vehicle)}
-                      className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-white"
+                      className="flex-1 py-5 bg-white/5 border border-white/10 rounded-[4px] text-[11px] font-black uppercase tracking-widest hover:bg-white/10 transition-all flex items-center justify-center gap-2 text-white"
                     >
                       <Info size={16} /> Ler Descrição
                     </button>
@@ -186,7 +186,7 @@ function Catalog() {
                     {/* Botão Principal de Conversão */}
                     <Link 
                       to={`/veiculo/${vehicle.slug}`}
-                      className="flex-1 py-5 bg-white/5 border border-white/10 rounded-2xl text-[11px] font-black uppercase tracking-widest text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/btn"
+                      className="flex-1 py-5 bg-white/5 border border-white/10 rounded-[4px] text-[11px] font-black uppercase tracking-widest text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/btn"
                     >
                       Ver Detalhes <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
@@ -196,7 +196,7 @@ function Catalog() {
                       href={`https://wa.me/${vehicle.stores?.phone || vehicle.store?.phone || '5511999999999'}?text=Olá! Vi o ${vehicle.title} no catálogo da Auto Racer e gostaria de negociar.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/cta flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-2xl text-[11px] font-black uppercase tracking-widest !text-[#1f2937] hover:bg-white hover:!text-[#1dd1a1] transition-all flex items-center justify-center text-center shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
+                      className="group/cta flex-1 py-5 bg-[#1dd1a1] border border-[#1dd1a1] rounded-[4px] text-[11px] font-black uppercase tracking-widest !text-[#1f2937] hover:bg-white hover:!text-[#1dd1a1] transition-all flex items-center justify-center text-center shadow-[0_0_20px_rgba(29,209,161,0.2)] hover:-translate-y-1"
                     >
                       <span className="w-full text-center leading-none">Negociar Agora</span>
                     </a>
@@ -208,7 +208,7 @@ function Catalog() {
         </div>
 
         {filteredVehicles.length === 0 && (
-          <div className="text-center py-40 border border-white/5 rounded-[40px] bg-white/5 relative mt-10">
+          <div className="text-center py-40 border border-white/5 rounded-[4px] bg-white/5 relative mt-10">
             <Car size={64} className="mx-auto text-[#222] mb-6" />
             <h2 className="text-2xl font-black uppercase text-[#576574] mb-4">Nenhum veículo encontrado</h2>
             <p className="font-['Architects_Daughter'] text-xl text-[#1dd1a1] opacity-60">"Logo teremos exatamente o que você procura."</p>
@@ -217,7 +217,7 @@ function Catalog() {
 
         {/* CTA Fundo de Página (SPIN) */}
         {filteredVehicles.length > 0 && (
-          <div className="mt-20 relative rounded-[45px] overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#0B0E14] border border-[#1dd1a1]/20 p-12 md:p-16 text-center">
+          <div className="mt-20 relative rounded-[4px] overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#0B0E14] border border-[#1dd1a1]/20 p-12 md:p-16 text-center">
             <div className="absolute inset-0 bg-[#1dd1a1]/3 blur-[200px]" />
             <div className="relative z-10">
               <p className="font-['Architects_Daughter'] text-2xl md:text-xl text-[#1dd1a1] opacity-80 mb-6 rotate-[-1deg]">
@@ -229,7 +229,7 @@ function Catalog() {
               </h2>
               <Link
                 to="/parceiro"
-                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[25px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
+                className="inline-flex items-center gap-4 px-10 py-6 bg-[#1dd1a1] !text-[#1f2937] font-black uppercase tracking-widest rounded-[4px] hover:bg-white hover:!text-[#1dd1a1] hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_-10px_rgba(29,209,161,0.4)]"
               >
                 Conhecer Planos de Parceiro <ArrowRight size={20} />
               </Link>
@@ -254,7 +254,7 @@ function Catalog() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: "100%", opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="relative w-full sm:max-w-2xl bg-[#0B0E14] border border-[#1dd1a1]/30 rounded-t-[40px] sm:rounded-[40px] p-8 sm:p-12 shadow-[0_0_50px_rgba(29,209,161,0.15)] flex flex-col max-h-[90vh] overflow-hidden"
+              className="relative w-full sm:max-w-2xl bg-[#0B0E14] border border-[#1dd1a1]/30 rounded-t-[4px] sm:rounded-[40px] p-8 sm:p-12 shadow-[0_0_50px_rgba(29,209,161,0.15)] flex flex-col max-h-[90vh] overflow-hidden"
             >
               {/* Header do PopUp */}
               <div className="flex justify-between items-center mb-8 pb-6 border-b border-white/10 shrink-0">
@@ -273,7 +273,7 @@ function Catalog() {
               {/* Corpo da Descrição (Scrollavel) */}
               <div className="overflow-y-auto pr-2 custom-scrollbar space-y-6 text-[#A0AEC0] font-medium leading-relaxed text-lg pb-6">
                 <p className="whitespace-pre-line">{selectedDescVehicle.description}</p>
-                <div className="bg-[#14181C] p-6 rounded-2xl border border-white/5">
+                <div className="bg-[#14181C] p-6 rounded-[4px] border border-white/5">
                    <p className="font-['Architects_Daughter'] text-xl text-[#1dd1a1] opacity-90 rotate-[-1deg]">
                       "A exclusividade não aceita garantias medianas. Este modelo passou pelo nosso crivo mais severo."
                    </p>
@@ -284,7 +284,7 @@ function Catalog() {
               <div className="pt-6 shrink-0 mt-auto border-t border-white/10">
                 <Link 
                   to={`/veiculo/${selectedDescVehicle.slug}`}
-                  className="w-full py-5 bg-[#1dd1a1] !text-[#1f2937] rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
+                  className="w-full py-5 bg-[#1dd1a1] !text-[#1f2937] rounded-[4px] font-black uppercase tracking-widest text-sm hover:bg-white hover:!text-[#1dd1a1] hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(29,209,161,0.3)]"
                 >
                   Continuar Negociação <ArrowRight size={18} />
                 </Link>
