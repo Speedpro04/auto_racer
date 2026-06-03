@@ -25,7 +25,7 @@ function VehicleDetail() {
           
           const canonical = document.querySelector('link[rel="canonical"]');
           if (canonical) {
-            canonical.setAttribute('href', `https://auto.axoshub.com/veiculo/${slug}`);
+            canonical.setAttribute('href', `https://autoracer.shop/veiculo/${slug}`);
           }
 
           let existingJsonLd = document.querySelector('script[data-type="vehicle-jsonld"]');

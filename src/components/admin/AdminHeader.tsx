@@ -1,13 +1,21 @@
 import { useAuth } from '../../hooks/useAuth'
-import { Bell, Search, Activity, UserCircle } from 'lucide-react'
+import { Bell, Search, Activity, UserCircle, Menu } from 'lucide-react'
 
-function AdminHeader() {
+function AdminHeader({ onMenuClick = () => {} }: { onMenuClick?: () => void }) {
   const { user } = useAuth()
 
   return (
-    <header className="bg-[#d2dae2] border-b-2 border-[#2d3436] px-10 py-5 sticky top-0 z-40">
+    <header className="bg-[#d2dae2] border-b-2 border-[#2d3436] px-4 sm:px-6 lg:px-10 py-5 sticky top-0 z-40">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-10">
+        <div className="flex items-center gap-4 lg:gap-10">
+          {/* Botão de menu (apenas mobile) */}
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden p-2.5 rounded-[4px] bg-[#2d3436] text-white hover:bg-black transition-all"
+            aria-label="Abrir menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
           <div className="hidden lg:flex items-center gap-4">
              <div className="flex items-center gap-2 px-3 py-1.5 rounded-[4px] bg-white/5 border border-white/5">
                 <div className="w-1.5 h-1.5 rounded-[4px] bg-[#1dd1a1] text-black animate-pulse" />

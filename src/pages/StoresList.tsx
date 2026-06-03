@@ -2,12 +2,18 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Car, MapPin } from 'lucide-react'
 import api from '../lib/api'
+import { useSeo } from '../lib/useSeo'
 import { Store } from '../types'
 
 function StoresList() {
   const [stores, setStores] = useState<Store[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+
+  useSeo({
+    title: 'Lojas Parceiras | Concessionárias e Revendas Premium - Auto Racer',
+    description: 'Conheça as concessionárias e revendas parceiras da Auto Racer. Estoque verificado de carros seminovos, importados e motos com garantia e perícia em todo o Vale do Paraíba.',
+  })
 
   useEffect(() => {
     const fetchStores = async () => {

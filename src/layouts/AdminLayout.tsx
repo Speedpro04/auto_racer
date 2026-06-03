@@ -9,6 +9,7 @@ function AdminLayout() {
   const { user, store, loading } = useAuth()
   const navigate = useNavigate()
   const [dismissedBanner, setDismissedBanner] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const trialInfo = useMemo(() => {
     if (!store?.trial_ends_at) return null
@@ -83,13 +84,13 @@ function AdminLayout() {
 
   return (
     <div className="min-h-screen flex bg-[#d2dae2]">
-      <AdminSidebar />
-      <div className="flex-1 flex flex-col">
-        <AdminHeader />
+      <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="flex-1 flex flex-col min-w-0">
+        <AdminHeader onMenuClick={() => setSidebarOpen(true)} />
 
         {/* Trial Banner — mostra quando faltam 5 dias ou menos */}
         {trialInfo && !trialInfo.expired && trialInfo.daysLeft <= 5 && !dismissedBanner && (
-          <div className="mx-8 mt-4 flex items-center justify-between gap-4 rounded-[4px] border border-amber-500/30 bg-amber-500/10 px-5 py-3">
+          <div className="mx-4 sm:mx-6 lg:mx-8 mt-4 flex items-center justify-between gap-4 rounded-[4px] border border-amber-500/30 bg-amber-500/10 px-5 py-3">
             <div className="flex items-center gap-3">
               <Clock className="w-5 h-5 text-amber-400 shrink-0" />
               <p className="text-sm text-amber-200 font-bold">
@@ -120,7 +121,7 @@ function AdminLayout() {
           </div>
         )}
 
-        <main className="flex-1 p-8 overflow-x-hidden">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden">
           <div className="max-w-[1140px] mx-auto w-full">
             <Outlet />
           </div>

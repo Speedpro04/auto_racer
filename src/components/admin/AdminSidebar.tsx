@@ -11,12 +11,18 @@ const menuItems = [
   { icon: Settings, label: 'Perfil Store', path: '/admin/loja' },
 ]
 
-function AdminSidebar() {
+function AdminSidebar({ open = false, onClose = () => {} }: { open?: boolean; onClose?: () => void }) {
   const location = useLocation()
   const { logout } = useAuth()
 
   return (
-    <aside className="w-72 bg-[#2d3436] border-r border-white/5 min-h-screen flex flex-col sticky top-0 z-50">
+    <>
+      {/* Backdrop (apenas mobile, quando aberto) */}
+      <div
+        className={`fixed inset-0 bg-black/60 z-40 lg:hidden transition-opacity ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={onClose}
+      />
+    <aside className={`w-72 bg-[#2d3436] border-r border-white/5 min-h-screen flex flex-col z-50 fixed inset-y-0 left-0 transform transition-transform duration-300 lg:static lg:translate-x-0 ${open ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="p-10 border-b border-white/5">
         <Link to="/admin" className="flex flex-col gap-4">
           <div className="relative group">
@@ -46,6 +52,7 @@ function AdminSidebar() {
             <Link
               key={item.path}
               to={item.path}
+              onClick={onClose}
               className={`flex items-center gap-4 px-5 py-4 rounded-[4px] transition-all duration-300 text-[11px] font-black uppercase tracking-widest border border-transparent ${
                 isActive
                   ? 'bg-gradient-to-r from-[#1dd1a1] to-[#10ac84] text-black shadow-[0_10px_20px_-5px_rgba(29,209,161,0.3)]'
@@ -78,6 +85,7 @@ function AdminSidebar() {
         </button>
       </div>
     </aside>
+    </>
   )
 }
 

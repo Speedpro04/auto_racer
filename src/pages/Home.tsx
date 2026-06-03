@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Car, Search, ArrowRight, ShieldCheck, Zap, Star, Play, Shield, Sparkles, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import api from '../lib/api'
+import { useSeo } from '../lib/useSeo'
 import { VehicleWithMedia, Store } from '../types'
 import FinancingCalculator from '../components/FinancingCalculator'
 
@@ -10,6 +11,11 @@ function Home() {
   const [recentVehicles, setRecentVehicles] = useState<VehicleWithMedia[]>([])
   const [stores, setStores] = useState<Store[]>([])
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false)
+
+  useSeo({
+    title: 'Auto Racer | Vitrine Premium de Carros e Motos no Vale do Paraíba',
+    description: 'Encontre carros seminovos, importados e motos de elite nos melhores lojistas do Vale do Paraíba. Perícia, garantia e financiamento facilitado. Anuncie sua loja na Auto Racer.',
+  })
 
   useEffect(() => {
     const fetchData = async () => {

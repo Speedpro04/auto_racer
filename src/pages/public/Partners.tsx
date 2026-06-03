@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Star, Shield, Zap, Sparkles } from 'lucide-react'
+import { useSeo } from '../../lib/useSeo'
 
 function Partners() {
+  useSeo({
+    title: 'Seja um Lojista Parceiro Auto Racer | Venda Mais Veículos',
+    description: 'Exponha seu estoque para milhares de compradores qualificados. Vitrine premium, página própria da loja, geração de vídeos com IA e 15 dias grátis. Vire parceiro Auto Racer.',
+  })
   return (
     <div className="text-white font-sans w-full overflow-hidden relative min-h-screen bg-[#050505]">
       {/* Decoração Global */}
