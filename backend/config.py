@@ -1,3 +1,4 @@
+from pydantic import Field, AliasChoices
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 from pathlib import Path
@@ -5,10 +6,17 @@ from pathlib import Path
 
 class Settings(BaseSettings):
     SUPABASE_URL: str
-    SUPABASE_SERVICE_KEY: str
-    SUPABASE_ANON_KEY: str
+    # Aceita tanto os nomes internos quanto os nomes oficiais do painel Supabase.
+    SUPABASE_SERVICE_KEY: str = Field(
+        validation_alias=AliasChoices("SUPABASE_SERVICE_KEY", "SUPABASE_SERVICE_ROLE")
+    )
+    SUPABASE_ANON_KEY: str = Field(
+        validation_alias=AliasChoices("SUPABASE_ANON_KEY", "SUPABASE_ANON_PUBLIC")
+    )
+    JWT_SECRET: str = Field(
+        validation_alias=AliasChoices("JWT_SECRET", "SUPABASE_JWT_SECRET")
+    )
     BASE_DOMAIN: str = "autoracer.shop"
-    JWT_SECRET: str
     ENVIRONMENT: str = "development"
     PAGBANK_TOKEN: str = ""
     PAGBANK_API_URL: str = "https://sandbox.api.pagseguro.com"

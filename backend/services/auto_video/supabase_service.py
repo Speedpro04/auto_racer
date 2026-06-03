@@ -3,7 +3,7 @@ import httpx
 from typing import Optional
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_KEY") or os.getenv("SUPABASE_SERVICE_ROLE")
 
 HEADERS = {
     "apikey": SUPABASE_KEY,
