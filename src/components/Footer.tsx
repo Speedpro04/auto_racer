@@ -25,7 +25,16 @@ function Footer() {
       <div className="max-w-[1140px] mx-auto mt-12 border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center sm:items-start gap-2">
             <p className="text-[#333] text-[9px] font-black uppercase tracking-[0.5em]">© 2026 Auto Racer — Intelligence System</p>
-            <p className="text-[#555] text-[9px] font-black uppercase tracking-[0.3em]">Desenvolvido por <a href="https://axoshub.com" target="_blank" rel="noopener noreferrer" className="text-[#1dd1a1] hover:text-white transition-colors">AxosHub</a></p>
+            <a
+              href="https://axoshub.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 group"
+              aria-label="Desenvolvido por AxosHub — visite axoshub.com"
+            >
+              <span className="text-[#555] text-[9px] font-black uppercase tracking-[0.3em] group-hover:text-[#1dd1a1] transition-colors">Desenvolvido por</span>
+              <img src="/logo-axoshub.png" alt="AxosHub" className="h-5 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
+            </a>
           </div>
          <div className="text-[#333] text-[9px] font-black uppercase tracking-[0.3em] flex gap-4">
             <a href="#" className="hover:text-[#1dd1a1]">Privacidade</a>
