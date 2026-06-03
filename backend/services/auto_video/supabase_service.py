@@ -11,6 +11,33 @@ HEADERS = {
     "Content-Type": "application/json",
 }
 
+# Headers para upload binário no Storage (sem Content-Type JSON)
+STORAGE_AUTH = {
+    "apikey": SUPABASE_KEY,
+    "Authorization": f"Bearer {SUPABASE_KEY}",
+}
+
+STORAGE_BUCKET = "autoracer_media"
+
+
+async def upload_video(local_path: str, store_id: str, job_id: str) -> str:
+    """Sobe o MP4 renderizado para o Supabase Storage e retorna a URL pública.
+    Torna o vídeo durável (sobrevive a restart) e acessível entre workers."""
+    object_path = f"{store_id}/videos/{job_id}.mp4"
+
+    with open(local_path, "rb") as fh:
+        content = fh.read()
+
+    async with httpx.AsyncClient(timeout=120) as client:
+        res = await client.post(
+            f"{SUPABASE_URL}/storage/v1/object/{STORAGE_BUCKET}/{object_path}",
+            headers={**STORAGE_AUTH, "Content-Type": "video/mp4", "x-upsert": "true"},
+            content=content,
+        )
+        res.raise_for_status()
+
+    return f"{SUPABASE_URL}/storage/v1/object/public/{STORAGE_BUCKET}/{object_path}"
+
 
 async def list_vehicles(store_id: str) -> list[dict]:
     """Retorna lista de veículos ativos da loja com thumbnail."""

@@ -18,8 +18,8 @@ function SuperAdminDashboard() {
     const fetchSuperData = async () => {
       try {
         const [statsRes, storesRes] = await Promise.all([
-          api.get('/api/superadmin/stats'),
-          api.get('/api/superadmin/stores')
+          api.get('/superadmin/stats'),
+          api.get('/superadmin/stores')
         ])
         setStats(statsRes.data)
         setStores(storesRes.data)
@@ -37,7 +37,7 @@ function SuperAdminDashboard() {
     if (!confirm(`Deseja realmente ${currentStatus ? 'desativar' : 'ativar'} esta base logista?`)) return
 
     try {
-      await api.patch(`/api/superadmin/stores/${storeId}/status`, { active: !currentStatus })
+      await api.patch(`/superadmin/stores/${storeId}/status`, { active: !currentStatus })
       // Atualiza a lista localmente
       setStores(prev => prev.map(store => store.id === storeId ? { ...store, active: !currentStatus } : store))
     } catch (error) {
@@ -145,7 +145,7 @@ function SuperAdminDashboard() {
                              </div>
                           </td>
                           <td className="px-8 py-6 text-[#1dd1a1] font-bold text-sm">
-                             {store.slug}.solaraauto.com.br
+                             {store.slug}.autoracer.shop
                           </td>
                           <td className="px-8 py-6 text-center">
                              <div className="inline-flex items-center justify-center gap-4">

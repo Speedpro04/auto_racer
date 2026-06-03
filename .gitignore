@@ -13,6 +13,8 @@ node_modules/
 # Misc
 .DS_Store
 .env
+.env.*
+!.env.example
 .env.local
 .env.development.local
 .env.test.local
@@ -39,4 +41,17 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Scratch / temporários
+scratch/
+dev.log
+diff.txt
+replace_full.cjs
+replace_radius.cjs
 

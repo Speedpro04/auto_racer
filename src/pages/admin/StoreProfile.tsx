@@ -5,7 +5,7 @@ import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../hooks/useAuth'
 
 function AdminStoreProfile() {
-  const { user } = useAuth()
+  const { store } = useAuth()
   const [loading, setLoading] = useState(false)
   const [fetching, setFetching] = useState(true)
   const [formData, setFormData] = useState({
@@ -65,9 +65,9 @@ function AdminStoreProfile() {
     try {
       let logoUrl = currentLogo
 
-      if (logoFile && user?.store_id) {
+      if (logoFile && store?.id) {
         const fileExt = logoFile.name.split('.').pop()
-        const fileName = `${user.store_id}/logo.${fileExt}`
+        const fileName = `${store.id}/logo.${fileExt}`
 
         const { error: uploadError } = await supabase.storage
           .from('autoracer_media')

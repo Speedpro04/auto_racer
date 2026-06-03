@@ -14,6 +14,8 @@ class Settings(BaseSettings):
     PAGBANK_API_URL: str = "https://sandbox.api.pagseguro.com"
     STRIPE_SECRET_KEY: str = ""
     STRIPE_WEBHOOK_SECRET: str = ""
+    # E-mails autorizados como super admin (separados por vírgula)
+    SUPERADMIN_EMAILS: str = ""
 
     class Config:
         env_file = str(Path(__file__).resolve().parent / ".env")

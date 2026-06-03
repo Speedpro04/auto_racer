@@ -4,6 +4,14 @@
         reverse_proxy localhost:8000
     }
 
+    # 1b) Health check e arquivos servidos pelo backend
+    handle /health {
+        reverse_proxy localhost:8000
+    }
+    handle /outputs/* {
+        reverse_proxy localhost:8000
+    }
+
     # 2) Frontend SPA
     root * /app/dist
     handle {

@@ -83,8 +83,8 @@ async def render_video(
     bullets = copy.get("destaque", [])
     legendas = copy.get("legendas", [])
 
-    preco_fmt = _format_preco(vehicle.get("preco", ""))
-    marca_modelo = f"{vehicle.get('marca', '')} {vehicle.get('modelo', '')} {vehicle.get('ano', '')}".strip()
+    preco_fmt = _format_preco(vehicle.get("price", ""))
+    marca_modelo = f"{vehicle.get('brand', '')} {vehicle.get('title', '')} {vehicle.get('year', '')}".strip()
 
     vf = _build_filtergraph(
         n_fotos=n_fotos,
@@ -142,7 +142,13 @@ async def render_video(
 
 def _format_preco(preco) -> str:
     try:
-        v = float(str(preco).replace(".", "").replace(",", "."))
+        if isinstance(preco, (int, float)):
+            v = float(preco)
+        else:
+            s = str(preco).strip().replace("R$", "").replace(" ", "")
+            if "," in s:  # formato BR "89.000,00"
+                s = s.replace(".", "").replace(",", ".")
+            v = float(s)
         return f"R$ {v:,.0f}".replace(",", ".")
     except Exception:
         return f"R$ {preco}"

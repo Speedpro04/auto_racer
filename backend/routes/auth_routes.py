@@ -71,8 +71,10 @@ async def login(request: LoginRequest):
             "store": store
         }
 
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=str(e))
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=401, detail="Credenciais inválidas")
 
 @router.post("/register")
 async def register(request: RegisterRequest):

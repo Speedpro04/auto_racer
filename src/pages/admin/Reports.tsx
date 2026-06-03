@@ -1,41 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  LineChart, Line, AreaChart, Area, BarChart, Bar, 
-  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
+import {
+  AreaChart, Area, BarChart, Bar,
+  XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts'
-import { 
-  TrendingUp, Users, Eye, Target, Calendar, Download, 
-  ChevronDown, Flame 
-} from 'lucide-react'
+import { TrendingUp, Users, Eye, Target, Download, Flame } from 'lucide-react'
+import api from '../../lib/api'
 
-// Mock Data para o Dashboard
-const trafficData = [
-  { day: '01', visitas: 120, leads: 12, cadastros: 4 },
-  { day: '05', visitas: 250, leads: 25, cadastros: 8 },
-  { day: '10', visitas: 380, leads: 40, cadastros: 15 },
-  { day: '15', visitas: 310, leads: 35, cadastros: 12 },
-  { day: '20', visitas: 490, leads: 60, cadastros: 22 },
-  { day: '25', visitas: 620, leads: 85, cadastros: 30 },
-  { day: '30', visitas: 850, leads: 120, cadastros: 45 },
-]
-
-const vehicleTypeData = [
-  { name: 'SUV Luxo', leads: 45 },
-  { name: 'Esportivos', leads: 30 },
-  { name: 'Sedans', leads: 20 },
-  { name: 'Motos Alta CC', leads: 15 },
-]
-
-const topVehicles = [
-  { id: 1, name: 'Porsche 911 GT3 RS', visits: 1245, leads: 42, conversion: '3.3%' },
-  { id: 2, name: 'BMW M3 Competition', visits: 980, leads: 35, conversion: '3.5%' },
-  { id: 3, name: 'Land Rover Defender', visits: 850, leads: 28, conversion: '3.2%' },
-  { id: 4, name: 'Ducati Panigale V4', visits: 620, leads: 15, conversion: '2.4%' },
-]
+interface TopVehicle { id: string; name: string; visits: number; leads: number; conversion: string }
 
 export default function AdminReports() {
   const [timeRange, setTimeRange] = useState('30D')
+  const [summary, setSummary] = useState({ total_views: 0, total_leads: 0, active_vehicles: 0, conversion: 0 })
+  const [trafficData, setTrafficData] = useState<any[]>([])
+  const [vehicleTypeData, setVehicleTypeData] = useState<any[]>([])
+  const [topVehicles, setTopVehicles] = useState<TopVehicle[]>([])
+
+  useEffect(() => {
+    const fetchReports = async () => {
+      try {
+        const { data } = await api.get('/admin/reports', { params: { period: timeRange } })
+        setSummary(data.summary)
+        setTrafficData(data.traffic)
+        setVehicleTypeData(data.leads_by_type)
+        setTopVehicles(data.top_vehicles)
+      } catch (error) {
+        console.error('Erro ao carregar relatórios:', error)
+      }
+    }
+    fetchReports()
+  }, [timeRange])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,10 +113,10 @@ export default function AdminReports() {
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Eye className="w-5 h-5 text-[#00d2d3]" />
             </div>
-            <span className="text-[10px] font-black text-[#00d2d3] bg-[#00d2d3]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+24%</span>
+            <span className="text-[10px] font-black text-[#00d2d3] bg-[#00d2d3]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">{timeRange}</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Total de Visitas</p>
-          <h3 className="text-3xl font-black text-white">3,020</h3>
+          <h3 className="text-3xl font-black text-white">{summary.total_views.toLocaleString('pt-BR')}</h3>
         </motion.div>
 
         {/* Leads Card */}
@@ -132,10 +126,10 @@ export default function AdminReports() {
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Flame className="w-5 h-5 text-[#1dd1a1]" />
             </div>
-            <span className="text-[10px] font-black text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+12%</span>
+            <span className="text-[10px] font-black text-[#1dd1a1] bg-[#1dd1a1]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">{timeRange}</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Leads Gerados (WhatsApp)</p>
-          <h3 className="text-3xl font-black text-white">377</h3>
+          <h3 className="text-3xl font-black text-white">{summary.total_leads.toLocaleString('pt-BR')}</h3>
         </motion.div>
 
         {/* Cadastros Card */}
@@ -145,10 +139,10 @@ export default function AdminReports() {
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <Users className="w-5 h-5 text-[#ff9f43]" />
             </div>
-            <span className="text-[10px] font-black text-[#ff9f43] bg-[#ff9f43]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">+5%</span>
+            <span className="text-[10px] font-black text-[#ff9f43] bg-[#ff9f43]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">Ativos</span>
           </div>
-          <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Novos Cadastros</p>
-          <h3 className="text-3xl font-black text-white">136</h3>
+          <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Veículos Ativos</p>
+          <h3 className="text-3xl font-black text-white">{summary.active_vehicles}</h3>
         </motion.div>
 
         {/* Conversão Card */}
@@ -158,10 +152,10 @@ export default function AdminReports() {
             <div className="p-3 bg-black/40 rounded-[4px] border border-white/5">
               <TrendingUp className="w-5 h-5 text-[#5f27cd]" />
             </div>
-            <span className="text-[10px] font-black text-[#5f27cd] bg-[#5f27cd]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">Estável</span>
+            <span className="text-[10px] font-black text-[#5f27cd] bg-[#5f27cd]/10 px-3 py-1 rounded-[4px] uppercase tracking-widest">{timeRange}</span>
           </div>
           <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-[0.2em] mb-1">Taxa de Conversão Média</p>
-          <h3 className="text-3xl font-black text-white">12.4%</h3>
+          <h3 className="text-3xl font-black text-white">{summary.conversion}%</h3>
         </motion.div>
       </div>
 
@@ -173,7 +167,7 @@ export default function AdminReports() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-xl font-black uppercase tracking-tighter text-white font-impact italic">Funil de Tração</h2>
-              <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-widest mt-1">Visitas vs Leads vs Cadastros</p>
+              <p className="text-[10px] text-[#8395a7] font-black uppercase tracking-widest mt-1">Visitas vs Leads</p>
             </div>
             <div className="flex gap-4">
                <div className="flex items-center gap-2">
@@ -183,10 +177,6 @@ export default function AdminReports() {
                <div className="flex items-center gap-2">
                  <div className="w-3 h-3 rounded-[4px] bg-[#1dd1a1] text-black shadow-[0_0_10px_#1dd1a1]"></div>
                  <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Leads</span>
-               </div>
-               <div className="flex items-center gap-2">
-                 <div className="w-3 h-3 rounded-[4px] bg-[#ff9f43] shadow-[0_0_10px_#ff9f43]"></div>
-                 <span className="text-[9px] text-[#8395a7] font-black uppercase tracking-widest">Cadastros</span>
                </div>
             </div>
           </div>
@@ -214,7 +204,6 @@ export default function AdminReports() {
                 <Tooltip content={<CustomTooltip />} />
                 <Area type="monotone" dataKey="visitas" stroke="#00d2d3" strokeWidth={3} fillOpacity={1} fill="url(#colorVisitas)" />
                 <Area type="monotone" dataKey="leads" stroke="#1dd1a1" strokeWidth={3} fillOpacity={1} fill="url(#colorLeads)" />
-                <Area type="monotone" dataKey="cadastros" stroke="#ff9f43" strokeWidth={3} fillOpacity={1} fill="url(#colorCadastros)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>

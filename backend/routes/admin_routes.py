@@ -1,10 +1,18 @@
-from fastapi import APIRouter, HTTPException, Request, UploadFile, File
+from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
 from pydantic import BaseModel
 from typing import Optional
 from database import supabase
+from auth import get_current_store_id
 import os
 
 router = APIRouter()
+
+# Limites de upload
+MAX_UPLOAD_BYTES = 50 * 1024 * 1024  # 50 MB
+ALLOWED_UPLOAD_TYPES = {
+    "image/jpeg", "image/png", "image/webp", "image/gif",
+    "video/mp4", "video/quicktime",
+}
 
 
 # ============================================
@@ -55,23 +63,26 @@ class StoreUpdate(BaseModel):
 # ============================================
 
 @router.get("/dashboard")
-async def get_dashboard(request: Request):
-    """Resumo da loja: veículos, views, contatos"""
-    store_id = request.state.store_id
+async def get_dashboard(store_id: str = Depends(get_current_store_id)):
+    """Resumo da loja: veículos, valor em estoque, ticket médio, leads e views"""
 
     # Total de veículos
     vehicles_response = supabase.table("vehicles").select("id", count="exact").eq("store_id", store_id).execute()
     total_vehicles = vehicles_response.count
 
-    # Veículos disponíveis
-    available_response = supabase.table("vehicles").select("id", count="exact").eq("store_id", store_id).eq("status", "available").execute()
-    available_vehicles = available_response.count
+    # Veículos disponíveis (com preços para valor em estoque e ticket médio)
+    available_response = supabase.table("vehicles").select("price").eq("store_id", store_id).eq("status", "available").execute()
+    available_data = available_response.data or []
+    available_vehicles = len(available_data)
+    prices = [float(v["price"]) for v in available_data if v.get("price") is not None]
+    total_portfolio_value = sum(prices)
+    average_price = (total_portfolio_value / len(prices)) if prices else 0
 
     # Total de views
     views_response = supabase.table("vehicle_views").select("id", count="exact").eq("store_id", store_id).execute()
     total_views = views_response.count
 
-    # Total de contatos
+    # Total de contatos (= leads de WhatsApp)
     contacts_response = supabase.table("vehicle_contacts").select("id", count="exact").eq("store_id", store_id).execute()
     total_contacts = contacts_response.count
 
@@ -79,7 +90,83 @@ async def get_dashboard(request: Request):
         "total_vehicles": total_vehicles,
         "available_vehicles": available_vehicles,
         "total_views": total_views,
-        "total_contacts": total_contacts
+        "total_contacts": total_contacts,
+        "total_leads": total_contacts,
+        "total_portfolio_value": total_portfolio_value,
+        "average_price": average_price,
+    }
+
+
+@router.get("/reports")
+async def get_reports(period: str = "30D", store_id: str = Depends(get_current_store_id)):
+    """Analytics reais da loja para a tela de Relatórios."""
+    from datetime import datetime, timedelta, timezone
+    from collections import defaultdict
+
+    days_map = {"7D": 7, "15D": 15, "30D": 30, "90D": 90}
+    days = days_map.get(period, 30)
+    start_iso = (datetime.now(timezone.utc) - timedelta(days=days)).isoformat()
+
+    views = (supabase.table("vehicle_views").select("vehicle_id, viewed_at")
+             .eq("store_id", store_id).gte("viewed_at", start_iso).execute().data) or []
+    contacts = (supabase.table("vehicle_contacts").select("vehicle_id, contacted_at")
+                .eq("store_id", store_id).gte("contacted_at", start_iso).execute().data) or []
+    vehicles = (supabase.table("vehicles").select("id, title, type, status")
+                .eq("store_id", store_id).execute().data) or []
+
+    vehicle_by_id = {v["id"]: v for v in vehicles}
+
+    # Série diária: visitas e leads por dia
+    day_views, day_leads = defaultdict(int), defaultdict(int)
+    for v in views:
+        day_views[(v.get("viewed_at") or "")[:10]] += 1
+    for c in contacts:
+        day_leads[(c.get("contacted_at") or "")[:10]] += 1
+    all_days = sorted(d for d in set(list(day_views) + list(day_leads)) if d)
+    traffic = [{"day": d[5:], "visitas": day_views.get(d, 0), "leads": day_leads.get(d, 0)} for d in all_days]
+
+    total_views = len(views)
+    total_leads = len(contacts)
+    conversion = round(total_leads / total_views * 100, 1) if total_views else 0
+    active_vehicles = sum(1 for v in vehicles if v.get("status") == "available")
+
+    # Leads por categoria de veículo
+    label_map = {"carro": "Carros", "moto": "Motos"}
+    type_leads = defaultdict(int)
+    for c in contacts:
+        veh = vehicle_by_id.get(c["vehicle_id"])
+        type_leads[veh["type"] if veh else "outros"] += 1
+    leads_by_type = [{"name": label_map.get(k, k.title()), "leads": v}
+                     for k, v in sorted(type_leads.items(), key=lambda x: -x[1])]
+
+    # Top 4 veículos por visitas
+    veh_views, veh_leads = defaultdict(int), defaultdict(int)
+    for v in views:
+        veh_views[v["vehicle_id"]] += 1
+    for c in contacts:
+        veh_leads[c["vehicle_id"]] += 1
+    top_ids = sorted(vehicle_by_id, key=lambda vid: -veh_views.get(vid, 0))[:4]
+    top_vehicles = []
+    for vid in top_ids:
+        vis, lds = veh_views.get(vid, 0), veh_leads.get(vid, 0)
+        top_vehicles.append({
+            "id": vid,
+            "name": vehicle_by_id[vid]["title"],
+            "visits": vis,
+            "leads": lds,
+            "conversion": f"{round(lds / vis * 100, 1)}%" if vis else "0%",
+        })
+
+    return {
+        "summary": {
+            "total_views": total_views,
+            "total_leads": total_leads,
+            "active_vehicles": active_vehicles,
+            "conversion": conversion,
+        },
+        "traffic": traffic,
+        "leads_by_type": leads_by_type,
+        "top_vehicles": top_vehicles,
     }
 
 
@@ -88,9 +175,8 @@ async def get_dashboard(request: Request):
 # ============================================
 
 @router.get("/vehicles")
-async def list_admin_vehicles(request: Request):
+async def list_admin_vehicles(store_id: str = Depends(get_current_store_id)):
     """Lista todos os veículos da loja (admin)"""
-    store_id = request.state.store_id
 
     response = supabase.table("vehicles").select(
         "id, store_id, slug, title, type, brand, year, km, price, description, status, created_at"
@@ -109,9 +195,8 @@ async def list_admin_vehicles(request: Request):
 
 
 @router.get("/vehicles/{vehicle_id}")
-async def get_admin_vehicle(request: Request, vehicle_id: str):
+async def get_admin_vehicle(vehicle_id: str, store_id: str = Depends(get_current_store_id)):
     """Detalhes de um veículo (admin)"""
-    store_id = request.state.store_id
 
     response = supabase.table("vehicles").select(
         "id, store_id, slug, title, type, brand, year, km, price, description, status, created_at"
@@ -133,10 +218,8 @@ async def get_admin_vehicle(request: Request, vehicle_id: str):
 
 
 @router.post("/vehicles")
-async def create_vehicle(request: Request, vehicle: VehicleCreate):
+async def create_vehicle(vehicle: VehicleCreate, store_id: str = Depends(get_current_store_id)):
     """Cadastrar novo veículo"""
-    store_id = request.state.store_id
-
     # Validar se store_id corresponde
     if vehicle.store_id != store_id:
         raise HTTPException(status_code=403, detail="Loja inválida")
@@ -171,9 +254,8 @@ async def create_vehicle(request: Request, vehicle: VehicleCreate):
 
 
 @router.put("/vehicles/{vehicle_id}")
-async def update_vehicle(request: Request, vehicle_id: str, vehicle: VehicleUpdate):
+async def update_vehicle(vehicle_id: str, vehicle: VehicleUpdate, store_id: str = Depends(get_current_store_id)):
     """Editar veículo"""
-    store_id = request.state.store_id
 
     # Verificar se veículo existe e pertence à loja
     existing = supabase.table("vehicles").select("id").eq("id", vehicle_id).eq("store_id", store_id).execute()
@@ -191,9 +273,8 @@ async def update_vehicle(request: Request, vehicle_id: str, vehicle: VehicleUpda
 
 
 @router.delete("/vehicles/{vehicle_id}")
-async def delete_vehicle(request: Request, vehicle_id: str):
+async def delete_vehicle(vehicle_id: str, store_id: str = Depends(get_current_store_id)):
     """Remover veículo"""
-    store_id = request.state.store_id
 
     # Verificar se veículo existe e pertence à loja
     existing = supabase.table("vehicles").select("id").eq("id", vehicle_id).eq("store_id", store_id).execute()
@@ -206,12 +287,18 @@ async def delete_vehicle(request: Request, vehicle_id: str):
 
 
 @router.post("/upload")
-async def upload_file(request: Request, file: UploadFile = File(...)):
+async def upload_file(file: UploadFile = File(...), store_id: str = Depends(get_current_store_id)):
     """Upload de arquivo para o Supabase Storage"""
-    store_id = request.state.store_id
-    
+
     # Ler conteúdo do arquivo
     file_content = await file.read()
+
+    # Validação de tamanho e tipo
+    if len(file_content) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="Arquivo muito grande (máx 50MB)")
+    if file.content_type not in ALLOWED_UPLOAD_TYPES:
+        raise HTTPException(status_code=415, detail="Tipo de arquivo não permitido")
+
     file_ext = os.path.splitext(file.filename)[1]
     
     # Gerar path único: stores/{store_id}/{uuid}{ext}
@@ -240,9 +327,8 @@ async def upload_file(request: Request, file: UploadFile = File(...)):
 # ============================================
 
 @router.post("/vehicles/{vehicle_id}/media")
-async def upload_media(request: Request, vehicle_id: str, media: MediaCreate):
+async def upload_media(vehicle_id: str, media: MediaCreate, store_id: str = Depends(get_current_store_id)):
     """Adicionar mídia a um veículo"""
-    store_id = request.state.store_id
 
     # Verificar se veículo existe
     vehicle = supabase.table("vehicles").select("id").eq("id", vehicle_id).eq("store_id", store_id).execute()
@@ -262,9 +348,8 @@ async def upload_media(request: Request, vehicle_id: str, media: MediaCreate):
 
 
 @router.delete("/media/{media_id}")
-async def delete_media(request: Request, media_id: str):
+async def delete_media(media_id: str, store_id: str = Depends(get_current_store_id)):
     """Remover mídia"""
-    store_id = request.state.store_id
 
     # Verificar se mídia existe e pertence à loja
     existing = supabase.table("vehicle_media").select("id, url").eq("id", media_id).eq("store_id", store_id).execute()
@@ -289,9 +374,8 @@ async def delete_media(request: Request, media_id: str):
 # ============================================
 
 @router.get("/store")
-async def get_store_profile(request: Request):
+async def get_store_profile(store_id: str = Depends(get_current_store_id)):
     """Obter dados da loja (admin)"""
-    store_id = request.state.store_id
 
     response = supabase.table("stores").select(
         "id, slug, name, logo_url, phone, city, plan, active, created_at"
@@ -304,9 +388,8 @@ async def get_store_profile(request: Request):
 
 
 @router.put("/store")
-async def update_store_profile(request: Request, store: StoreUpdate):
+async def update_store_profile(store: StoreUpdate, store_id: str = Depends(get_current_store_id)):
     """Atualizar dados e logo da loja"""
-    store_id = request.state.store_id
 
     update_data = store.model_dump(exclude_none=True)
     if not update_data:

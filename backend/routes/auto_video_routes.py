@@ -1,12 +1,14 @@
-from fastapi import APIRouter, HTTPException, BackgroundTasks, Request
+from fastapi import APIRouter, HTTPException, BackgroundTasks, Depends
 from pydantic import BaseModel
 from typing import Optional
 import uuid
 
-from services.auto_video.supabase_service import get_vehicle_with_photos, list_vehicles
+from auth import get_current_store_id
+from services.auto_video.supabase_service import get_vehicle_with_photos, list_vehicles, upload_video
 from services.auto_video.copy_service import generate_spin_copy
 from services.auto_video.tts_service import generate_tts
 from services.auto_video.video_service import render_video
+from services.auto_video import job_store
 
 router = APIRouter()
 
@@ -26,18 +28,10 @@ class VideoStatusResponse(BaseModel):
     error: Optional[str] = None
 
 
-# Armazenamento simples em memória (MVP). Em produção, migrar para Redis.
-jobs: dict[str, dict] = {}
-
-
 @router.post("/generate", response_model=VideoStatusResponse)
-async def generate_video(req: VideoRequest, background_tasks: BackgroundTasks, request: Request):
-    store_id = request.state.store_id
-    if not store_id:
-        raise HTTPException(status_code=400, detail="Loja não identificada para geração de vídeo")
-
+async def generate_video(req: VideoRequest, background_tasks: BackgroundTasks, store_id: str = Depends(get_current_store_id)):
     job_id = str(uuid.uuid4())
-    jobs[job_id] = {"status": "pending", "video_url": None, "copy": None, "error": None, "store_id": store_id}
+    job_store.set_job(job_id, {"status": "pending", "video_url": None, "copy": None, "error": None, "store_id": store_id})
 
     background_tasks.add_task(
         _run_pipeline,
@@ -54,17 +48,21 @@ async def generate_video(req: VideoRequest, background_tasks: BackgroundTasks, r
 
 @router.get("/status/{job_id}", response_model=VideoStatusResponse)
 def get_status(job_id: str):
-    job = jobs.get(job_id)
+    job = job_store.get_job(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job não encontrado")
-    return VideoStatusResponse(job_id=job_id, **job)
+    # Mantém só os campos do response model (descarta store_id interno)
+    return VideoStatusResponse(
+        job_id=job_id,
+        status=job.get("status", "pending"),
+        video_url=job.get("video_url"),
+        copy=job.get("copy"),
+        error=job.get("error"),
+    )
 
 
 @router.get("/vehicles")
-async def list_available_vehicles(request: Request):
-    store_id = request.state.store_id
-    if not store_id:
-        raise HTTPException(status_code=400, detail="Loja não identificada para listar veículos")
+async def list_available_vehicles(store_id: str = Depends(get_current_store_id)):
     vehicles = await list_vehicles(store_id)
     return {"vehicles": vehicles}
 
@@ -78,21 +76,21 @@ async def _run_pipeline(
     whatsapp: str,
 ):
     try:
-        jobs[job_id]["status"] = "buscando_fotos"
+        job_store.update_job(job_id, status="buscando_fotos")
         vehicle = await get_vehicle_with_photos(vehicle_id, store_id)
 
         if not vehicle or not vehicle.get("fotos"):
             raise ValueError("Veículo não encontrado ou sem fotos")
 
-        jobs[job_id]["status"] = "gerando_copy"
+        job_store.update_job(job_id, status="gerando_copy")
         copy = await generate_spin_copy(vehicle)
-        jobs[job_id]["copy"] = copy
+        job_store.update_job(job_id, copy=copy)
 
-        jobs[job_id]["status"] = "gerando_audio"
+        job_store.update_job(job_id, status="gerando_audio")
         audio_path = await generate_tts(texto=copy["narracao"], job_id=job_id)
 
-        jobs[job_id]["status"] = "renderizando"
-        await render_video(
+        job_store.update_job(job_id, status="renderizando")
+        local_path = await render_video(
             vehicle=vehicle,
             copy=copy,
             audio_path=audio_path,
@@ -102,8 +100,10 @@ async def _run_pipeline(
             whatsapp=whatsapp,
         )
 
-        jobs[job_id]["status"] = "done"
-        jobs[job_id]["video_url"] = f"/outputs/{job_id}.mp4"
+        # Sobe o MP4 para o Storage (durável e acessível entre workers)
+        job_store.update_job(job_id, status="publicando")
+        video_url = await upload_video(local_path, store_id, job_id)
+
+        job_store.update_job(job_id, status="done", video_url=video_url)
     except Exception as exc:
-        jobs[job_id]["status"] = "error"
-        jobs[job_id]["error"] = str(exc)
+        job_store.update_job(job_id, status="error", error=str(exc))

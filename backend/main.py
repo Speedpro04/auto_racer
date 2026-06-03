@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from middleware import tenant_middleware
-from routes import public_routes, admin_routes, auth_routes, payment_routes, auto_video_routes
+from routes import public_routes, admin_routes, auth_routes, payment_routes, auto_video_routes, superadmin_routes
 from config import get_settings
 from dotenv import load_dotenv
 import os
@@ -19,11 +20,14 @@ app = FastAPI(
 )
 
 # CORS Configuration
-allowed_origins = ["*"] if settings.ENVIRONMENT == "development" else [
-    f"https://{settings.BASE_DOMAIN}"
-]
-allowed_origin_regex = None if settings.ENVIRONMENT == "development" else \
-    rf"^https://([a-z0-9-]+\.)?{re.escape(settings.BASE_DOMAIN)}$"
+# Em dev: libera apenas localhost (qualquer porta) — wildcard "*" é inválido com credentials.
+# Em prod: o domínio base e seus subdomínios (lojas).
+if settings.ENVIRONMENT == "development":
+    allowed_origins = []
+    allowed_origin_regex = r"^http://(localhost|127\.0\.0\.1)(:\d+)?$"
+else:
+    allowed_origins = [f"https://{settings.BASE_DOMAIN}"]
+    allowed_origin_regex = rf"^https://([a-z0-9-]+\.)?{re.escape(settings.BASE_DOMAIN)}$"
 
 app.add_middleware(
     CORSMiddleware,
@@ -46,11 +50,43 @@ app.include_router(admin_routes.router, prefix="/api/v1/admin", tags=["admin"])
 app.include_router(auth_routes.router, prefix="/api/v1/auth", tags=["auth"])
 app.include_router(payment_routes.router, tags=["payments"])
 app.include_router(auto_video_routes.router, prefix="/api/v1/auto-video", tags=["auto-video"])
+app.include_router(superadmin_routes.router, prefix="/api/v1/superadmin", tags=["superadmin"])
 
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok", "version": "1.0.0"}
+    from services.auto_video import job_store
+    if job_store.is_redis_enabled():
+        job_backend = "redis" if job_store.ping() else "redis-unreachable"
+    else:
+        job_backend = "memory"
+    return {"status": "ok", "version": "1.0.0", "job_store": job_backend}
+
+
+# ============================================
+# Servir o frontend buildado (deploy monorepo num serviço só).
+# Só ativa se a pasta existir — não afeta o desenvolvimento local.
+# ============================================
+FRONTEND_DIST = os.getenv(
+    "FRONTEND_DIST",
+    os.path.join(os.path.dirname(__file__), "static"),
+)
+
+if os.path.isdir(FRONTEND_DIST):
+    assets_dir = os.path.join(FRONTEND_DIST, "assets")
+    if os.path.isdir(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        # Não intercepta a API / health / outputs (já roteados acima).
+        if full_path.startswith(("api/", "health", "outputs/", "docs", "redoc", "openapi.json")):
+            return FileResponse(os.path.join(FRONTEND_DIST, "index.html"), status_code=404)
+        candidate = os.path.join(FRONTEND_DIST, full_path)
+        if full_path and os.path.isfile(candidate):
+            return FileResponse(candidate)
+        # SPA fallback: qualquer rota do React devolve o index.html
+        return FileResponse(os.path.join(FRONTEND_DIST, "index.html"))
 
 
 if __name__ == "__main__":

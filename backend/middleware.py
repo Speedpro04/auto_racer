@@ -6,8 +6,8 @@ async def tenant_middleware(request: Request, call_next):
     """
     Extrai o subdomínio do header Host e injeta store_id no contexto da request.
     """
-    # Pular rotas de health check
-    if request.url.path in ["/health", "/docs", "/redoc", "/openapi.json"]:
+    # Só resolve tenant para a API. Frontend estático / SPA / health passam direto.
+    if not request.url.path.startswith("/api"):
         return await call_next(request)
 
     # Extrair subdomínio do header Host (removendo a porta se existir)

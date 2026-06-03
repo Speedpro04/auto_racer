@@ -5,6 +5,7 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from supabase import create_client
+from crypto import encrypt_secret, decrypt_secret
 
 load_dotenv()
 
@@ -41,7 +42,7 @@ async def create_checkout(data: CheckoutRequest, request: Request):
     try:
         pending = supabase.table("pending_registrations").insert({
             "email": data.email,
-            "password_hash": data.password,
+            "password_hash": encrypt_secret(data.password),
             "store_name": data.store_name,
             "phone": data.phone,
             "owner_name": data.owner_name,
@@ -151,7 +152,7 @@ async def stripe_webhook(request: Request):
         # Criar usuário no Supabase Auth
         auth_response = supabase.auth.admin.create_user({
             "email": reg["email"],
-            "password": reg["password_hash"],
+            "password": decrypt_secret(reg["password_hash"]),
             "email_confirm": True
         })
 

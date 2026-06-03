@@ -72,7 +72,7 @@ function RacerRedes() {
     try {
       setLoadingVehicles(true)
       setError('')
-      const response = await api.get('/api/v1/auto-video/vehicles')
+      const response = await api.get('/auto-video/vehicles')
       const items = response.data?.vehicles ?? []
       setVehicles(items)
       if (items.length && !vehicleId) setVehicleId(items[0].id)
@@ -103,7 +103,7 @@ function RacerRedes() {
     setPolling(true)
     for (let i = 0; i < 45; i += 1) {
       await new Promise((r) => setTimeout(r, 2000))
-      const response = await api.get(`/api/v1/auto-video/status/${jobId}`)
+      const response = await api.get(`/auto-video/status/${jobId}`)
       const payload = response.data as JobStatus
       setJob(payload)
       if (payload.status === 'done' || payload.status === 'error') {
@@ -122,7 +122,7 @@ function RacerRedes() {
     try {
       setGenerating(true)
       setError('')
-      const response = await api.post('/api/v1/auto-video/generate', {
+      const response = await api.post('/auto-video/generate', {
         vehicle_id: vehicleId,
         site_url: siteUrl,
         site_nome: siteNome,
@@ -351,7 +351,7 @@ function RacerRedes() {
                   </div>
                   {job.video_url && (
                     <a
-                      href={`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}${job.video_url}`}
+                      href={job.video_url}
                       target="_blank"
                       rel="noreferrer"
                       className="mt-3 inline-flex items-center gap-2 text-[#1dd1a1] hover:underline text-[15px] font-semibold"
