@@ -14,7 +14,7 @@ function Home() {
 
   useSeo({
     title: 'Auto Racer | Vitrine Premium de Carros e Motos no Vale do Paraíba',
-    description: 'Encontre carros seminovos, importados e motos de elite nos melhores lojistas do Vale do Paraíba. Perícia, garantia e financiamento facilitado. Anuncie sua loja na Auto Racer.',
+    description: 'Carros seminovos, importados e motos de elite no Vale do Paraíba, com perícia, garantia e financiamento facilitado. Anuncie sua loja na Auto Racer.',
   })
 
   useEffect(() => {
